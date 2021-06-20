@@ -4,21 +4,20 @@ import LayoutFramework from "/src/layout/layout-framework.vue";
  */
 export const indexResource = [
   {
-    meta: {
-      title: "框架"
-    },
+    title: "框架",
     name: "framework",
     path: "/",
     redirect: "/index",
     component: LayoutFramework,
     children: [
       {
-        meta: {
-          title: "首页"
-        },
+        title: "首页",
         name: "index",
         path: "/index",
-        component: "/framework/home/index.vue"
+        component: "/framework/home/index.vue",
+        meta: {
+          auth: true
+        }
       }
     ]
   }
