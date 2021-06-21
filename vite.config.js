@@ -24,7 +24,7 @@ export default ({ command, mode }) => {
   }
   console.log("devAlias", devAlias);
   return {
-    base: "/",
+    base: "/antdv/",
     plugins: [
       vueJsx(),
       vue(),
