@@ -81,6 +81,9 @@ export const usePageStore = defineStore({
     async openedLoad() {
       // store 赋值
       const value = LocalStorage.get(this.getStorageKey());
+      if (value == null) {
+        return;
+      }
       // 在处理函数中进行数据优化 过滤掉现在已经失效的页签或者已经改变了信息的页签
       // 以 fullPath 字段为准
       // 如果页面过多的话可能需要优化算法

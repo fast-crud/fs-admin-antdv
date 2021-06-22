@@ -1,5 +1,5 @@
 <template>
-  <a-layout class="ant-layout ant-layout-has-sider fs-framework" :has-sider="true">
+  <a-layout class="fs-framework">
     <a-layout-sider>
       <div class="header-logo">
         <img src="/images/logo/rect-black.svg" />

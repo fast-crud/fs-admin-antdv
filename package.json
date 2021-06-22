@@ -22,7 +22,7 @@
     "@iconify/iconify": "^2.0.1",
     "@iconify/json": "^1.1.347",
     "@purge-icons/generated": "^0.7.0",
-    "ant-design-vue": "^2.1.4",
+    "ant-design-vue": "^2.2.0-beta.4",
     "axios": "^0.21.1",
     "axios-mock-adapter": "^1.19.0",
     "base64-js": "^1.5.1",
