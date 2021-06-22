@@ -1,8 +1,12 @@
 import { defineStore } from "pinia";
 import { useResourceStore } from "/src/store/modules/resource";
 import { getPermissions } from "./api";
-import mitt from "mitt";
-
+import { mitter } from "/@/utils/util.mitt";
+//监听注销事件
+mitter.on("app.logout", () => {
+  const permissionStore = usePermissionStore();
+  permissionStore.clear();
+});
 interface PermissionState {
   permissions: [];
   inited: boolean;
@@ -70,10 +74,4 @@ export const usePermissionStore = defineStore({
       this.resolve(menuTree);
     }
   }
-});
-
-const mitter = mitt();
-mitter.on("app.logout", () => {
-  const permissionStore = usePermissionStore();
-  permissionStore.clear();
 });

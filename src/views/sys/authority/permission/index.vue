@@ -1,15 +1,17 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding">
-    <fs-permission-tree
-      class="permission-tree"
-      :tree="crudBinding.data"
-      :checkable="false"
-      :actions="permission"
-      @add="addHandle"
-      @edit="editHandle"
-      @remove="removeHandle"
-    ></fs-permission-tree>
-  </fs-crud>
+  <div class="page">
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <fs-permission-tree
+        class="permission-tree"
+        :tree="crudBinding.data"
+        :checkable="false"
+        :actions="permission"
+        @add="addHandle"
+        @edit="editHandle"
+        @remove="removeHandle"
+      ></fs-permission-tree>
+    </fs-crud>
+  </div>
 </template>
 
 <script lang="ts">

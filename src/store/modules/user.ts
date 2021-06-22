@@ -9,7 +9,9 @@ import * as UserApi from "/src/api/modules/api.user";
 import { LoginReq, UserInfoRes } from "/@/api/modules/api.user";
 import { Modal } from "ant-design-vue";
 import { useI18n } from "vue-i18n";
-import mitt from "mitt";
+
+import { mitter } from "/src/utils/util.mitt";
+
 interface UserState {
   userInfo: Nullable<UserInfoRes>;
   token?: string;
@@ -54,15 +56,14 @@ export const useUserStore = defineStore({
     async login(params: LoginReq): Promise<any> {
       try {
         const data = await UserApi.login(params);
-        const { token } = data;
+        const { token, expire } = data;
 
         // save token
-        this.setToken(token);
+        this.setToken(token, expire);
         // get user info
         const userInfo = await this.getUserInfoAction();
         await router.replace("/");
-        const mitter = mitt();
-        mitter.emit("app.login", { userInfo, token });
+        mitter.emit("app.login", { userInfo, token: data });
         return userInfo;
       } catch (error) {
         return null;
@@ -79,7 +80,6 @@ export const useUserStore = defineStore({
     logout(goLogin = true) {
       this.resetState();
       goLogin && router.push("/login");
-      const mitter = mitt();
       mitter.emit("app.logout");
     },
 

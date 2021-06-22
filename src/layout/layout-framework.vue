@@ -32,7 +32,15 @@
       </a-layout-header>
       <fs-tabs></fs-tabs>
       <a-layout-content class="fs-framework-content">
-        <router-view />
+        <router-view>
+          <template #default="{ Component, route }">
+            <transition name="fade-transverse">
+              <keep-alive v-if="keepAlive" :include="keepAlive">
+                <component :is="Component" :key="route.fullPath" />
+              </keep-alive>
+            </transition>
+          </template>
+        </router-view>
       </a-layout-content>
       <a-layout-footer class="fs-framework-footer"
         >by fast-crud
@@ -49,6 +57,7 @@ import SourceLink from "./components/source-link/index.vue";
 import UserInfo from "./components/user-info.vue";
 import FsTabs from "./components/tabs/index.vue";
 import { useResourceStore } from "../store/modules/resource";
+import { usePageStore } from "/@/store/modules/page";
 export default {
   name: "LayoutFramework",
   // eslint-disable-next-line vue/no-unused-components
@@ -59,10 +68,14 @@ export default {
     const headerMenus = resourceStore.getHeaderMenus;
     const asideMenus = resourceStore.getAsideMenus;
 
+    const pageStore = usePageStore();
+    const keepAlive = pageStore.keepAlive;
+
     return {
       frameworkMenus,
       headerMenus,
-      asideMenus
+      asideMenus,
+      keepAlive
     };
   }
 };
@@ -70,6 +83,7 @@ export default {
 <style lang="less">
 .fs-framework {
   height: 100%;
+  overflow-x: hidden;
   .header-logo {
     width: 100%;
     height: 50px;

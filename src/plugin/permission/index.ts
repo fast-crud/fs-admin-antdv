@@ -1,7 +1,9 @@
 import permissionDirective from "./directive/index";
 import { registerRouterHook } from "./hook";
 import util from "./util.permission";
+export * from "./use-crud-permission";
 export * from "./errors";
+
 export function usePermission() {
   return {
     ...util

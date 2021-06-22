@@ -58,7 +58,10 @@ export default function ({ expose }) {
           type: "text",
           search: { show: true }, // 开启查询
           form: {
-            rules: [{ required: true, message: "请输入用户名" }]
+            rules: [
+              { required: true, message: "请输入用户名" },
+              { max: 50, message: "最大50个字符" }
+            ]
           },
           editForm: { component: { disabled: true } },
           column: {
@@ -73,29 +76,33 @@ export default function ({ expose }) {
             show: false
           },
           form: {
+            rules: [{ max: 50, message: "最大50个字符" }],
             component: {
               showPassword: true
             },
             helper: "填写则修改密码"
           }
         },
-        // avatar: {
-        //   title: "头像",
-        //   type: "avatar-uploader",
-        //   search: {
-        //     show: false
-        //   },
-        //   column: {
-        //     width: 100,
-        //     sortable: "custom"
-        //   }
-        // },
         nickName: {
           title: "昵称",
           type: "text",
           search: { show: true }, // 开启查询
+          form: {
+            rules: [{ max: 50, message: "最大50个字符" }]
+          },
           column: {
             sorter: true
+          }
+        },
+
+        remark: {
+          title: "备注",
+          type: "text",
+          column: {
+            sorter: true
+          },
+          form: {
+            rules: [{ max: 100, message: "最大100个字符" }]
           }
         },
 

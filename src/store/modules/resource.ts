@@ -1,8 +1,13 @@
 import { defineStore } from "pinia";
 // @ts-ignore
 import { frameworkMenus, headerMenus, indexMenus } from "/src/router/resolve";
+import { mitter } from "/src/utils/util.mitt";
 
-// @ts-ignore
+//监听注销事件
+mitter.on("app.logout", () => {
+  const resourceStore = useResourceStore();
+  resourceStore.clear();
+});
 
 interface ResourceState {
   frameworkMenus: Array<any>;
@@ -34,6 +39,9 @@ export const useResourceStore = defineStore({
     }
   },
   actions: {
+    clear() {
+      this.inited = false;
+    },
     /**
      * 初始化资源
      */

@@ -39,7 +39,9 @@ function createService() {
         switch (code) {
           case 0:
             // [ 示例 ] code === 0 代表没有错误
-            if (response.config.unpack) {
+            // @ts-ignore
+            if (response.config.unpack === false) {
+              //如果不需要解包
               return dataAxios;
             }
             return dataAxios.data;
@@ -117,6 +119,7 @@ function createRequestFunction(service) {
     const userStore = useUserStore();
     const token = userStore.getToken;
     if (token != null) {
+      // @ts-ignore
       configDefault.headers.Authorization = token;
     }
     return service(Object.assign(configDefault, config));

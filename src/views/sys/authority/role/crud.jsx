@@ -46,7 +46,13 @@ export default function ({ expose, authz }) {
         name: {
           title: "角色名称",
           type: "text",
-          form: { show: true }, // 表单配置
+          search: { show: true },
+          form: {
+            rules: [
+              { required: true, message: "请输入角色名称" },
+              { max: 50, message: "最大50个字符" }
+            ]
+          }, // 表单配置
           column: {
             sorter: true
           }

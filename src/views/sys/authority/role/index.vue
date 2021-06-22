@@ -1,17 +1,18 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding" />
-
-  <a-modal v-model:visible="authzDialogVisible" width="80%" title="分配权限" @ok="updatePermission">
-    <fs-permission-tree
-      ref="permissionTreeRef"
-      v-model:checkedKeys="checkedKeys"
-      :tree="permissionTreeData"
-      :editable="false"
-      checkable
-      :replace-fields="{ key: 'id', label: 'title' }"
-    >
-    </fs-permission-tree>
-  </a-modal>
+  <div class="page">
+    <fs-crud ref="crudRef" v-bind="crudBinding" />
+    <a-modal v-model:visible="authzDialogVisible" width="860px" title="分配权限" @ok="updatePermission">
+      <fs-permission-tree
+        ref="permissionTreeRef"
+        v-model:checkedKeys="checkedKeys"
+        :tree="permissionTreeData"
+        :editable="false"
+        checkable
+        :replace-fields="{ key: 'id', label: 'title' }"
+      >
+      </fs-permission-tree>
+    </a-modal>
+  </div>
 </template>
 
 <script>
@@ -89,7 +90,17 @@ export default defineComponent({
   name: "AuthorityRole",
   components: { FsPermissionTree },
   setup() {
+    //授权配置
     const authz = useAuthz();
+
+    //按钮权限配置
+    const permission = {
+      prefix: "sys:auth:role",
+      extra: ({ hasActionPermission }) => {
+        return { rowHandle: { buttons: { authz: { show: hasActionPermission("authz") } } } };
+      }
+    };
+
     // crud组件的ref
     const crudRef = ref();
     // crud 配置的ref
@@ -99,7 +110,7 @@ export default defineComponent({
     // 你的crud配置
     const { crudOptions } = createCrudOptions({ expose, authz });
     // 初始化crud配置
-    const { resetCrudOptions } = useCrud({ expose, crudOptions, permission: "sys:auth:role" });
+    const { resetCrudOptions } = useCrud({ expose, crudOptions, permission });
     // 你可以调用此方法，重新初始化crud配置
     // resetCrudOptions(options)
 

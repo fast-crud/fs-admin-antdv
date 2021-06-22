@@ -5,7 +5,6 @@ import { frameworkRoutes } from "/src/router/resolve";
 // @ts-ignore
 import { LocalStorage } from "/src/utils/util.storage";
 import { useUserStore } from "/src/store/modules/user";
-
 const OPENED_CACHE_KEY = "TABS_OPENED";
 
 interface PageState {

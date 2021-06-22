@@ -5,9 +5,10 @@ import "@fast-crud/fast-crud/dist/style.css";
 import FsUploader from "@fast-crud/extends-uploader";
 import "@fast-crud/extends-uploader/dist/style.css";
 import UiAntdv from "@fast-crud/ui-antdv";
-import { usePermission } from "/src/plugin/permission";
 
-function index (app, {i18n}) {
+import { useCrudPermission } from "../permission";
+
+function install(app, { i18n }) {
   app.use(UiAntdv);
   app.use(FastCrud, {
     i18n,
@@ -18,33 +19,17 @@ function index (app, {i18n}) {
      * useCrud时会被执行
      * @param context，useCrud的参数
      */
-    commonOptions(context = {}) {
-      //是否有传权限前缀
-      const permission = context.permission;
-      const { hasPermissions } = usePermission();
-      //根据权限显示按钮
-      function hasActionPermission(action) {
-        if (!permission) {
-          return true;
-        }
-        return hasPermissions(permission + ":" + action);
-      }
-
-      return {
+    commonOptions(context: any = {}) {
+      const opts = {
         table: {
           size: "small",
           pagination: false
         },
-        actionbar: {
-          buttons: {
-            add: { show: hasActionPermission("add") }
-          }
-        },
         rowHandle: {
           buttons: {
-            edit: { type: "link", show: hasActionPermission("edit") },
-            remove: { type: "link", show: hasActionPermission("remove") },
-            view: { type: "link", show: hasActionPermission("view") }
+            edit: { type: "link" },
+            remove: { type: "link" },
+            view: { type: "link" }
           }
         },
         request: {
@@ -77,6 +62,9 @@ function index (app, {i18n}) {
           display: "flex"
         }
       };
+
+      const crudPermission = useCrudPermission(context);
+      return crudPermission.merge(opts);
     }
   });
 
@@ -170,5 +158,5 @@ function index (app, {i18n}) {
 }
 
 export default {
-  install: index
-}
+  install
+};

@@ -43,7 +43,11 @@ export default ({ command, mode }) => {
       jsxFragment: "Fragment"
     },
     resolve: {
-      alias: [...devAlias, { find: "/@", replacement: path.resolve("./src") }],
+      alias: [
+        ...devAlias,
+        { find: "/@", replacement: path.resolve("./src") },
+        { find: "/#", replacement: path.resolve("./types") }
+      ],
       dedupe: ["vue"]
     },
     build: {

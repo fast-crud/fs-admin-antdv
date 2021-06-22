@@ -84,6 +84,10 @@ export default function ({ expose }) {
           title: "权限名称",
           type: "text",
           form: {
+            rules: [
+              { required: true, message: "请输入权限名称" },
+              { max: 50, message: "最大50个字符" }
+            ],
             component: {
               placeholder: "权限名称"
             }
@@ -99,8 +103,11 @@ export default function ({ expose }) {
           column: {
             width: 170
           },
-
           form: {
+            rules: [
+              { required: true, message: "请输入权限代码" },
+              { max: 100, message: "最大100个字符" }
+            ],
             component: {
               placeholder: "例如:sys:user:view"
             }

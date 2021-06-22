@@ -8,14 +8,14 @@ export interface LoginReq {
 }
 
 export interface UserInfoRes {
-  userId: string | number;
+  id: string | number;
   username: string;
   nickName: string;
 }
 
 export interface LoginRes {
-  userId: string | number;
   token: string;
+  expire: number;
 }
 
 export async function login(data: LoginReq): Promise<LoginRes> {
