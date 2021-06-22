@@ -33,7 +33,9 @@
             :selectable="false"
             :menus="headerMenus"
           />
-          <locale />
+          <div class="header-buttons">
+            <locale />
+          </div>
           <user-info></user-info>
         </div>
       </a-layout-header>
@@ -128,6 +130,8 @@ export default {
     background: #f6f6f6;
   }
   .header-buttons {
+    display: flex;
+    align-items: center;
     & > * {
       cursor: pointer;
       padding: 0 10px;
