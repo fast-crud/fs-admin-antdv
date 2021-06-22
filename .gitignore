@@ -6,3 +6,4 @@ dist-ssr
 /stats.html
 !yarn.lock
 .idea
+/.idea/
