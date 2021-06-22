@@ -76,7 +76,6 @@ export const useResourceStore = defineStore({
       this.asideMenus = [...this.fixedAsideMenus, ...asideMenus];
     },
     setAsideMenuByCurrentRoute(matched) {
-      debugger;
       const menuHeader = this.frameworkMenus;
       console.assert(matched && matched.length >= 1);
       const matchedPath = matched[1].path;
