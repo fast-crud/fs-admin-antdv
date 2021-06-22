@@ -91,7 +91,7 @@
       </a-form-item>
 
       <a-form-item class="user-login-other">
-        <router-link class="register" :to="{ name: 'index' }"> 注册 </router-link>
+        <!--        <router-link class="register" :to="{ name: 'index' }"> 注册 </router-link>-->
       </a-form-item>
     </a-form>
   </div>
@@ -105,9 +105,9 @@ export default defineComponent({
     const userStore = useUserStore();
     const formRef = ref();
     const formState = reactive({
-      username: "",
+      username: "admin",
       mobile: "",
-      password: "",
+      password: "123456",
       loginType: "password", //password
       imgCode: "",
       smsCode: ""
