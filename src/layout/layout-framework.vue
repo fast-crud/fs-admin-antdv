@@ -1,6 +1,6 @@
 <template>
   <a-layout class="fs-framework">
-    <a-layout-sider>
+    <a-layout-sider v-model:collapsed="asideCollapsed" :trigger="null" collapsible>
       <div class="header-logo">
         <img src="/images/logo/rect-black.svg" />
       </div>
@@ -11,6 +11,13 @@
 
     <a-layout class="layout-body">
       <a-layout-header class="header">
+        <div class="header-buttons">
+          <div class="menu-fold" @click="asideCollapsedToggle">
+            <MenuUnfoldOutlined v-if="asideCollapsed" />
+            <MenuFoldOutlined v-else />
+          </div>
+        </div>
+
         <fs-menu
           class="header-menu"
           mode="horizontal"
@@ -35,7 +42,7 @@
         <router-view>
           <template #default="{ Component, route }">
             <transition name="fade-transverse">
-              <component :is="Component" />
+              <component :is="Component" :key="route.fullPath" />
             </transition>
           </template>
         </router-view>
@@ -49,7 +56,7 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import FsMenu from "./components/fs-menu.jsx";
 import Locale from "./components/locale.vue";
 import SourceLink from "./components/source-link/index.vue";
@@ -57,10 +64,11 @@ import UserInfo from "./components/user-info.vue";
 import FsTabs from "./components/tabs/index.vue";
 import { useResourceStore } from "../store/modules/resource";
 import { usePageStore } from "/@/store/modules/page";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons-vue";
 export default {
   name: "LayoutFramework",
   // eslint-disable-next-line vue/no-unused-components
-  components: { FsMenu, Locale, SourceLink, UserInfo, FsTabs },
+  components: { MenuFoldOutlined, MenuUnfoldOutlined, FsMenu, Locale, SourceLink, UserInfo, FsTabs },
   setup() {
     const resourceStore = useResourceStore();
     const frameworkMenus = computed(() => {
@@ -76,11 +84,17 @@ export default {
     const pageStore = usePageStore();
     const keepAlive = pageStore.keepAlive;
 
+    const asideCollapsed = ref(false);
+    function asideCollapsedToggle() {
+      asideCollapsed.value = !asideCollapsed.value;
+    }
     return {
       frameworkMenus,
       headerMenus,
       asideMenus,
-      keepAlive
+      keepAlive,
+      asideCollapsed,
+      asideCollapsedToggle
     };
   }
 };
@@ -112,6 +126,12 @@ export default {
     color: rgba(0, 0, 0, 0.85);
     font-size: 14px;
     background: #f6f6f6;
+  }
+  .header-buttons {
+    & > * {
+      cursor: pointer;
+      padding: 0 10px;
+    }
   }
   .header-menu {
     flex: 1;

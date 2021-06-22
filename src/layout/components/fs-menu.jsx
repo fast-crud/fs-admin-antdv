@@ -1,5 +1,5 @@
 import { useRoute, useRouter } from "vue-router";
-import { ref, watch, onMounted, onUnmounted, resolveComponent, nextTick } from "vue";
+import { ref, watch, onMounted, onUnmounted, resolveComponent, nextTick, defineComponent } from "vue";
 import getEachDeep from "deepdash-es/getEachDeep";
 import _ from "lodash-es";
 import BScroll from "better-scroll";
@@ -55,8 +55,9 @@ function useBetterScroll() {
     asideMenuRef
   };
 }
-export default {
+export default defineComponent({
   name: "FsMenu",
+  inheritAttrs: true,
   props: {
     menus: {},
     expandSelected: {
@@ -186,6 +187,7 @@ export default {
             [openKeys.value, "openKeys"],
             [selectedKeys.value, "selectedKeys"]
           ]}
+          {...ctx.attrs}
         />
       );
       if (props.scroll) {
@@ -199,4 +201,4 @@ export default {
       }
     };
   }
-};
+});
