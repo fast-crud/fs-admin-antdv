@@ -49,7 +49,6 @@ function useBetterScroll() {
 
   async function onOpenChange() {
     await nextTick();
-    console.log("bs refresh");
     bsRef.value?.refresh();
   }
   return {
@@ -78,7 +77,6 @@ export default {
       router.push(path);
     }
     function onSelect(item) {
-      console.log("select", item);
       open(item.key);
     }
 
@@ -152,7 +150,6 @@ export default {
         return route.fullPath;
       },
       (path) => {
-        console.log("fullPath", path);
         // path = route.fullPath;
         selectedKeys.value = [path];
         openSelectedParents(path);

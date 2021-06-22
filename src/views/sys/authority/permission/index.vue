@@ -1,6 +1,10 @@
 <template>
   <div class="page">
     <fs-crud ref="crudRef" v-bind="crudBinding">
+      <a-button v-permission="'sys:auth:per:add'" style="margin-left: 20px" @click="addHandle({})">
+        <fs-icon :icon="$fsui.icons.add"></fs-icon>
+        添加</a-button
+      >
       <fs-permission-tree
         class="permission-tree"
         :tree="crudBinding.data"
@@ -16,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose, CrudExpose } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, CrudExpose, useUi } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import FsPermissionTree from "./fs-permission-tree.vue";
 import { usePermission } from "/src/plugin/permission";
@@ -47,7 +51,7 @@ export default defineComponent({
     //用户业务代码
 
     async function addHandle(item) {
-      await expose.openAdd({ initialForm: { parentId: item.id } });
+      await expose.openAdd({ initialForm: { parentId: item?.id ?? -1 } });
     }
     async function editHandle(item) {
       await expose.openEdit({ row: item });

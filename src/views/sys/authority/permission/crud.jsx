@@ -132,6 +132,7 @@ export default function ({ expose }) {
           },
           dict: permissionTreeDict,
           form: {
+            value: -1,
             component: {
               multiple: false,
               defaultExpandAll: true,

@@ -22,7 +22,7 @@ export default {
     if (_.isArray(map)) {
       return map;
     }
-    const array = [];
+    const array: any = [];
     for (const key in map) {
       const item = map[key];
       item.key = key;
