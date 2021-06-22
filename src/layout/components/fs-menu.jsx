@@ -1,9 +1,8 @@
 import { useRoute, useRouter } from "vue-router";
-import { ref, watch, onMounted, onUnmounted, getCurrentInstance, nextTick } from "vue";
+import { ref, watch, onMounted, onUnmounted, resolveComponent, nextTick } from "vue";
 import getEachDeep from "deepdash-es/getEachDeep";
 import _ from "lodash-es";
 import BScroll from "better-scroll";
-
 const eachDeep = getEachDeep(_);
 
 function useBetterScroll() {
@@ -80,29 +79,43 @@ export default {
       open(item.key);
     }
 
+    const FsIconify = resolveComponent("FsIconify");
+
     const buildMenus = (children) => {
       const slots = [];
       if (children == null) {
         return slots;
       }
       for (let sub of children) {
+        const title = () => {
+          if (sub?.meta?.icon) {
+            return (
+              <div class={"menu-item-title"}>
+                <FsIconify icon={sub.meta.icon} />
+                <span>{sub.title}</span>
+              </div>
+            );
+          }
+          return sub.title;
+        };
         if (sub.children && sub.children.length > 0) {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const subSlots = {
             default: () => {
               return buildMenus(sub.children);
-            }
+            },
+            title
           };
           function onTitleClick() {
             if (sub.path && ctx.attrs.mode === "horizontal") {
               open(sub.path);
             }
           }
-          slots.push(<a-sub-menu title={sub.title} key={sub.index} v-slots={subSlots} onTitleClick={onTitleClick} />);
+          slots.push(<a-sub-menu key={sub.index} v-slots={subSlots} onTitleClick={onTitleClick} />);
         } else {
           slots.push(
             <a-menu-item key={sub.path} title={sub.title}>
-              {sub.title}
+              {title}
             </a-menu-item>
           );
         }

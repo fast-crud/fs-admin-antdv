@@ -3,7 +3,6 @@ import _ from "lodash-es";
 import { outsideResource } from "./source/outside";
 import { headerResource } from "./source/header";
 import { frameworkResource } from "./source/framework";
-import { indexResource } from "./source/index";
 // @ts-ignore
 const modules = import.meta.glob("/src/views/**/*.vue");
 
@@ -22,6 +21,7 @@ function transformOneResource(resource) {
     menu = null;
   } else {
     menu = _.cloneDeep(resource);
+    delete menu.component;
   }
   let route;
   if (resource.type !== "menu") {
@@ -87,16 +87,43 @@ function setIndex(menus) {
     }
   }
 }
-const indexRet = buildMenusAndRouters(indexResource);
+
+function findMenus(menus, condition) {
+  const list: any = [];
+  for (const menu of menus) {
+    if (condition(menu)) {
+      list.push(menu);
+    }
+    if (menu.children && menu.children.length > 0) {
+      const subList = findMenus(menu.children, condition);
+      for (const item of subList) {
+        list.push(item);
+      }
+    }
+  }
+  return list;
+}
+
+function filterMenus(menus, condition) {
+  const list = menus.filter((item) => {
+    return condition(item);
+  });
+
+  for (const item of list) {
+    if (item.children && item.children.length > 0) {
+      item.children = filterMenus(item.children, condition);
+    }
+  }
+  return list;
+}
+
 const frameworkRet = buildMenusAndRouters(frameworkResource);
 const outsideRet = buildMenusAndRouters(outsideResource);
 const headerRet = buildMenusAndRouters(headerResource);
 
 const outsideRoutes = outsideRet.routes;
 const frameworkRoutes = frameworkRet.routes;
-const indexRoutes = indexRet.routes;
-const routes = [...outsideRoutes, ...indexRoutes, ...frameworkRoutes];
+const routes = [...outsideRoutes, ...frameworkRoutes];
 const frameworkMenus = frameworkRet.menus;
-const indexMenus = indexRet.menus[0].children;
 const headerMenus = headerRet.menus;
-export { routes, outsideRoutes, indexRoutes, frameworkRoutes, indexMenus, frameworkMenus, headerMenus };
+export { routes, outsideRoutes, frameworkRoutes, frameworkMenus, headerMenus, findMenus, filterMenus };

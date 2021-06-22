@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 // @ts-ignore
-import { frameworkMenus, headerMenus, indexMenus } from "/src/router/resolve";
+import { frameworkMenus, headerMenus, filterMenus, findMenus } from "/src/router/resolve";
+import _ from "lodash-es";
 import { mitter } from "/src/utils/util.mitt";
 
 //监听注销事件
@@ -13,6 +14,7 @@ interface ResourceState {
   frameworkMenus: Array<any>;
   headerMenus: Array<any>;
   asideMenus: Array<any>;
+  fixedAsideMenus: Array<any>;
   inited: boolean;
   currentAsidePath: string;
 }
@@ -24,6 +26,7 @@ export const useResourceStore = defineStore({
     frameworkMenus: [],
     headerMenus: [],
     asideMenus: [],
+    fixedAsideMenus: [],
     inited: false,
     currentAsidePath: ""
   }),
@@ -51,7 +54,14 @@ export const useResourceStore = defineStore({
       }
       this.inited = true;
 
-      this.frameworkMenus = frameworkMenus;
+      const showMenus = _.cloneDeep(frameworkMenus[0].children);
+      this.frameworkMenus = filterMenus(showMenus, (item) => {
+        return item?.meta?.showOnHeader !== false;
+      });
+
+      this.fixedAsideMenus = findMenus(showMenus, (item) => {
+        return item?.meta?.fixedAside === true;
+      });
       this.headerMenus = headerMenus;
       this.setAsideMenu();
     },
@@ -63,12 +73,13 @@ export const useResourceStore = defineStore({
         topMenu = this.frameworkMenus[0];
       }
       const asideMenus = topMenu?.children || [];
-
-      this.asideMenus = [...indexMenus, ...asideMenus];
+      this.asideMenus = [...this.fixedAsideMenus, ...asideMenus];
     },
     setAsideMenuByCurrentRoute(matched) {
+      debugger;
       const menuHeader = this.frameworkMenus;
-      const matchedPath = matched[0].path;
+      console.assert(matched && matched.length >= 1);
+      const matchedPath = matched[1].path;
       const _side = menuHeader.filter((menu) => menu.path === matchedPath);
       if (_side.length > 0) {
         if (this.currentAsidePath === _side[0]) {

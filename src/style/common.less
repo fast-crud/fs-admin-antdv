@@ -83,7 +83,10 @@ h1, h2, h3, h4, h5, h6 {
   background-color:@bg-color
 }
 .ant-menu{
-  background-color: @bg-color
+  background-color: @bg-color;
+  &.ant-menu-submenu-popup{
+    background-color: transparent;
+  }
 }
 .aside-menu{
   .ant-menu-submenu > .ant-menu{
@@ -96,5 +99,4 @@ h1, h2, h3, h4, h5, h6 {
   .ant-menu-item-selected{
     background-color: @bg-menu-item-color !important;
   }
-
 }

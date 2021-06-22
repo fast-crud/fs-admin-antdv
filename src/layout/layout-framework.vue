@@ -35,9 +35,7 @@
         <router-view>
           <template #default="{ Component, route }">
             <transition name="fade-transverse">
-              <keep-alive v-if="keepAlive" :include="keepAlive">
-                <component :is="Component" :key="route.fullPath" />
-              </keep-alive>
+              <component :is="Component" />
             </transition>
           </template>
         </router-view>
@@ -51,6 +49,7 @@
 </template>
 
 <script>
+import { computed } from "vue";
 import FsMenu from "./components/fs-menu.jsx";
 import Locale from "./components/locale.vue";
 import SourceLink from "./components/source-link/index.vue";
@@ -64,9 +63,15 @@ export default {
   components: { FsMenu, Locale, SourceLink, UserInfo, FsTabs },
   setup() {
     const resourceStore = useResourceStore();
-    const frameworkMenus = resourceStore.getFrameworkMenus;
-    const headerMenus = resourceStore.getHeaderMenus;
-    const asideMenus = resourceStore.getAsideMenus;
+    const frameworkMenus = computed(() => {
+      return resourceStore.getFrameworkMenus;
+    });
+    const headerMenus = computed(() => {
+      return resourceStore.getHeaderMenus;
+    });
+    const asideMenus = computed(() => {
+      return resourceStore.getAsideMenus;
+    });
 
     const pageStore = usePageStore();
     const keepAlive = pageStore.keepAlive;

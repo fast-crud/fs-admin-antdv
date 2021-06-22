@@ -7,7 +7,6 @@ import { site } from "../utils/util.site";
 import { routes } from "./resolve";
 import { useResourceStore } from "../store/modules/resource";
 import { useUserStore } from "../store/modules/user";
-console.log("routes", routes);
 const router = createRouter({
   history: createWebHashHistory(),
   routes

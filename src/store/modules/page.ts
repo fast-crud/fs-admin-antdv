@@ -310,6 +310,7 @@ export const usePageStore = defineStore({
       await this.opened2db();
       // 设置当前的页面
       this.current = pageAim;
+      // @ts-ignore
       if (router.currentRoute.fullPath !== pageAim) await router.push(pageAim);
     },
     /**
@@ -343,6 +344,7 @@ export const usePageStore = defineStore({
       // 持久化
       await this.opened2db();
       // 关闭所有的标签页后需要判断一次现在是不是在首页
+      // @ts-ignore
       if (router.currentRoute.name !== "index") {
         await router.push({ name: "index" });
       }
