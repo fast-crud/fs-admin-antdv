@@ -80,7 +80,7 @@ export const frameworkResource = [
                 title: "权限资源管理",
                 name: "permission",
                 meta: {
-                  icon: "ion-sparkles-outline",
+                  icon: "ion-list-outline",
                   //需要校验权限
                   permission: "sys:auth:per:view"
                 },

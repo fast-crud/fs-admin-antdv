@@ -1,5 +1,7 @@
 @import './scroll.less';
 @import './transition.less';
+@import './theme/index.less';
+@import './theme/default.less';
 html,body{
   margin:0;
   padding:0;
@@ -48,36 +50,4 @@ h1, h2, h3, h4, h5, h6 {
 
 .ant-btn-link{
   height:24px;
-}
-
-// theme
-
-@bg-color:  #ebf1f6;
-@bg-menu-item-color:hsla(0,0%,100%,.5);
-.ant-layout{
-  background-color: @bg-color;
-}
-.ant-layout-header {
-  background-color: @bg-color
-}
-.ant-layout-sider {
-  background-color:@bg-color
-}
-.ant-menu{
-  background-color: @bg-color;
-  &.ant-menu-submenu-popup{
-    background-color: transparent;
-  }
-}
-.aside-menu{
-  .ant-menu-submenu > .ant-menu{
-    background-color:@bg-color
-  }
-
-  .ant-menu-item-active{
-    background-color: @bg-menu-item-color;
-  }
-  .ant-menu-item-selected{
-    background-color: @bg-menu-item-color !important;
-  }
 }

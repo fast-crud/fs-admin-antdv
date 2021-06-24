@@ -1,6 +1,6 @@
 <template>
   <a-dropdown>
-    <div class="ant-dropdown-link">您好，{{ userStore.getUserInfo?.nickName }}</div>
+    <div class="fs-user-info">您好，{{ userStore.getUserInfo?.nickName }}</div>
     <template #overlay>
       <a-menu>
         <a-menu-item>
@@ -16,7 +16,7 @@ import { useUserStore } from "/src/store/modules/user";
 import { Modal } from "ant-design-vue";
 import { useI18n } from "vue-i18n";
 export default defineComponent({
-  name: "UserInfo",
+  name: "FsUserInfo",
   setup() {
     const userStore = useUserStore();
     console.log("user", userStore);

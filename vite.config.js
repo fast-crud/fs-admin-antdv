@@ -4,11 +4,22 @@ import visualizer from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
 import PurgeIcons from "vite-plugin-purge-icons";
 import path from "path";
+import { getThemeVariables } from "ant-design-vue/dist/theme";
+const resolve = path.resolve;
 // https://vitejs.dev/config/
 // 增加环境变量
 process.env.VITE_APP_VERSION = require("./package.json").version;
 process.env.VITE_APP_BUILD_TIME = require("dayjs")().format("YYYY-M-D HH:mm:ss");
 
+function generateModifyVars(dark = false) {
+  const modifyVars = getThemeVariables({ dark });
+  console.log("modifyVars", modifyVars);
+  let vars = `${resolve("src/style/theme/index.less")}`;
+  return {
+    ...modifyVars,
+    hack: `true; @import (reference) "${vars}";`
+  };
+}
 export default ({ command, mode }) => {
   console.log("args", command, mode);
 
@@ -53,6 +64,14 @@ export default ({ command, mode }) => {
     build: {
       rollupOptions: {
         plugins: [visualizer()]
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          modifyVars: generateModifyVars(),
+          javascriptEnabled: true
+        }
       }
     },
     server: {

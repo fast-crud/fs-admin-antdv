@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 
 import Antd from "ant-design-vue";
-import "ant-design-vue/dist/antd.css";
+import "ant-design-vue/dist/antd.less";
 import "./style/common.less";
 import "@iconify/iconify";
 import "@purge-icons/generated";
@@ -21,6 +21,6 @@ app.use(i18n);
 app.use(store);
 console.log("i18n", i18n);
 app.use(components);
-app.use(FastCrud,{i18n})
+app.use(FastCrud, { i18n });
 app.use(permission);
 app.mount("#app");

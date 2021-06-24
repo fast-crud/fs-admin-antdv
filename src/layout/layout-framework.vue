@@ -25,7 +25,7 @@
           :selectable="false"
           :menus="frameworkMenus"
         />
-        <div class="header-right">
+        <div class="header-right header-buttons">
           <fs-menu
             class="header-menu"
             mode="horizontal"
@@ -33,10 +33,9 @@
             :selectable="false"
             :menus="headerMenus"
           />
-          <div class="header-buttons">
-            <locale />
-          </div>
-          <user-info></user-info>
+          <fs-locale class="btn" />
+          <fs-theme-set class="btn" />
+          <fs-user-info class="btn" />
         </div>
       </a-layout-header>
       <fs-tabs></fs-tabs>
@@ -59,18 +58,19 @@
 
 <script>
 import { computed, ref } from "vue";
-import FsMenu from "./components/fs-menu.jsx";
-import Locale from "./components/locale.vue";
-import SourceLink from "./components/source-link/index.vue";
-import UserInfo from "./components/user-info.vue";
+import FsMenu from "./components/menu/index.jsx";
+import FsLocale from "./components/locale/index.vue";
+import FsSourceLink from "./components/source-link/index.vue";
+import FsUserInfo from "./components/user-info/index.vue";
 import FsTabs from "./components/tabs/index.vue";
 import { useResourceStore } from "../store/modules/resource";
 import { usePageStore } from "/@/store/modules/page";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons-vue";
+import FsThemeSet from "/@/layout/components/theme/index.vue";
 export default {
   name: "LayoutFramework",
   // eslint-disable-next-line vue/no-unused-components
-  components: { MenuFoldOutlined, MenuUnfoldOutlined, FsMenu, Locale, SourceLink, UserInfo, FsTabs },
+  components: { FsThemeSet, MenuFoldOutlined, MenuUnfoldOutlined, FsMenu, FsLocale, FsSourceLink, FsUserInfo, FsTabs },
   setup() {
     const resourceStore = useResourceStore();
     const frameworkMenus = computed(() => {
@@ -136,6 +136,18 @@ export default {
       cursor: pointer;
       padding: 0 10px;
     }
+
+    & > .btn {
+      &:hover {
+        // background-color: #fff;
+        color: @primary-color;
+      }
+    }
+  }
+  .header-right {
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
   }
   .header-menu {
     flex: 1;
@@ -148,15 +160,7 @@ export default {
     overflow: hidden;
     // overflow-y: auto;
   }
-  .header-right {
-    font-size: 14px;
-    justify-content: flex-end;
-    align-items: center;
-    display: flex;
-    > * {
-      margin: 0 5px;
-    }
-  }
+
   .layout-body {
     flex: 1;
   }

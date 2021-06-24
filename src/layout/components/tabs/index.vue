@@ -62,9 +62,10 @@ import Sortable from "sortablejs";
 import { usePageStore } from "../../../store/modules/page";
 import { computed } from "vue";
 export default {
+  name: "FsTabs",
   components: {
-    FsContextmenu: () => import("../contextmenu/index.vue"),
-    FsContextmenuList: () => import("../contextmenu/components/contentmenuList/index.vue")
+    // FsContextmenu: () => import("../contextmenu/index.vue"),
+    // FsContextmenuList: () => import("../contextmenu/components/contentmenuList/index.vue")
   },
   setup() {
     const pageStore = usePageStore();
