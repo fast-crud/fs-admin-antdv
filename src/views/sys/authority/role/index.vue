@@ -1,5 +1,8 @@
 <template>
-  <div class="page">
+  <fs-page>
+    <template #header>
+      <div class="title">角色管理</div>
+    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding" />
     <a-modal v-model:visible="authzDialogVisible" width="860px" title="分配权限" @ok="updatePermission">
       <fs-permission-tree
@@ -12,7 +15,7 @@
       >
       </fs-permission-tree>
     </a-modal>
-  </div>
+  </fs-page>
 </template>
 
 <script>

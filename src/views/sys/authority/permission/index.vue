@@ -1,5 +1,8 @@
 <template>
-  <div class="page">
+  <fs-page>
+    <template #header>
+      <div class="title">权限管理</div>
+    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <a-button v-permission="'sys:auth:per:add'" style="margin-left: 20px" @click="addHandle({})">
         <fs-icon :icon="$fsui.icons.add"></fs-icon>
@@ -15,7 +18,7 @@
         @remove="removeHandle"
       ></fs-permission-tree>
     </fs-crud>
-  </div>
+  </fs-page>
 </template>
 
 <script lang="ts">

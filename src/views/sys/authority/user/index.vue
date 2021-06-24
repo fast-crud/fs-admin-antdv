@@ -1,7 +1,10 @@
 <template>
-  <div class="page">
+  <fs-page>
+    <template #header>
+      <div class="title">用户管理</div>
+    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding" />
-  </div>
+  </fs-page>
 </template>
 
 <script>

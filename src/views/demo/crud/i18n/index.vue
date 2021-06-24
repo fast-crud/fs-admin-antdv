@@ -1,9 +1,15 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding">
-    <template #actionbar-right>
-      <a-alert class="ml-10" type="warning" message="右上角切换语言查看效果" />
+  <fs-page>
+    <template #header>
+      <div class="title">CRUD示例【国际化】</div>
+      <div class="more"><a-button>更多</a-button></div>
     </template>
-  </fs-crud>
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <a-alert class="ml-10" type="warning" message="右上角切换语言查看效果" />
+      </template>
+    </fs-crud>
+  </fs-page>
 </template>
 
 <script>

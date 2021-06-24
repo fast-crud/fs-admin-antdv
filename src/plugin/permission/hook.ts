@@ -1,5 +1,5 @@
 import router from "/src/router";
-import { useUserStore } from "../../store/modules/user";
+import { useUserStore } from "/@/store/modules/user";
 import { usePermissionStore } from "./store.permission";
 import util from "./util.permission";
 import { message } from "ant-design-vue";
@@ -11,6 +11,7 @@ export function registerRouterHook() {
     if (permissionStore.isInited) {
       if (to.meta.permission) {
         //校验权限
+        // @ts-ignore
         if (!util.hasPermissions(to.meta.permission)) {
           //没有权限
           message.warn("对不起，您没有权限");
