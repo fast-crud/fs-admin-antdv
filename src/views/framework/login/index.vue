@@ -87,7 +87,7 @@
         </a-tab-pane>
       </a-tabs>
       <a-form-item>
-        <a-button type="primary" size="large" html-type="submit" class="login-button">登录</a-button>
+        <a-button type="primary" size="large" html-type="submit" :loading="loading" class="login-button">登录</a-button>
       </a-form-item>
 
       <a-form-item class="user-login-other">
@@ -102,6 +102,7 @@ import { useUserStore } from "/src/store/modules/user";
 export default defineComponent({
   name: "Login",
   setup() {
+    const loading = ref(false);
     const userStore = useUserStore();
     const formRef = ref();
     const formState = reactive({
@@ -154,7 +155,12 @@ export default defineComponent({
 
     const handleFinish = async (values) => {
       console.log(values, formState);
-      const userInfo = await userStore.login(toRaw(formState));
+      loading.value = true;
+      try {
+        const userInfo = await userStore.login(toRaw(formState));
+      } finally {
+        loading.value = false;
+      }
     };
 
     const handleFinishFailed = (errors) => {
@@ -185,6 +191,7 @@ export default defineComponent({
       //api.sendSmsCode();
     }
     return {
+      loading,
       formState,
       formRef,
       rules,

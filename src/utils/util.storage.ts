@@ -96,7 +96,7 @@ export const createStorage = (option: Partial<CreateStorageParams> = {}): WebSto
 export type Options = Partial<CreateStorageParams>;
 
 function getStorageShortName() {
-  return env.MODE + "_" + env.get("STORAGE", "certd");
+  return env.MODE + "_" + env.get("STORAGE", "certd") + "_";
 }
 
 export const createSessionStorage = (options: Options = {}): WebStorage => {

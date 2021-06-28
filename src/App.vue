@@ -9,6 +9,7 @@ import zhCN from "ant-design-vue/es/locale/zh_CN";
 import { provide, ref, nextTick } from "vue";
 import { usePageStore } from "/src/store/modules/page";
 import { useResourceStore } from "/src/store/modules/resource";
+import { useSettingStore } from "/@/store/modules/settings";
 export default {
   name: "App",
   setup() {
@@ -23,6 +24,8 @@ export default {
     resourceStore.init();
     const pageStore = usePageStore();
     pageStore.init();
+    const settingStore = useSettingStore();
+    settingStore.init();
 
     return {
       routerEnabled

@@ -9,7 +9,7 @@
 import { defineComponent, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 export default defineComponent({
-  name: "SourceLink",
+  name: "FsSourceLink",
   setup() {
     const router = useRouter();
     const showSourceLink = ref(false);

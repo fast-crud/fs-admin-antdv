@@ -50,7 +50,7 @@
       </a-layout-content>
       <a-layout-footer class="fs-framework-footer"
         >by fast-crud
-        <source-link />
+        <fs-source-link />
       </a-layout-footer>
     </a-layout>
   </a-layout>

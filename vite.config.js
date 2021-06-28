@@ -5,6 +5,10 @@ import viteCompression from "vite-plugin-compression";
 import PurgeIcons from "vite-plugin-purge-icons";
 import path from "path";
 import { getThemeVariables } from "ant-design-vue/dist/theme";
+
+import { defineConfig, Plugin } from "vite";
+import { viteThemePlugin, mixLighten, mixDarken, tinycolor } from "vite-plugin-theme";
+
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 // 增加环境变量
@@ -44,6 +48,10 @@ export default ({ command, mode }) => {
         iconSource: "local",
         remoteDataAPI: "https://gitee.com/fast-crud/collections-json/raw/master/json",
         includedCollections: ["ion"]
+      }),
+      viteThemePlugin({
+        // Match the color to be modified
+        colorVariables: ["#1890ff"]
       })
     ],
     // optimizeDeps: {
