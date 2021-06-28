@@ -13,6 +13,7 @@ import { useSettingStore } from "/@/store/modules/settings";
 export default {
   name: "App",
   setup() {
+    //刷新页面方法
     const routerEnabled = ref(true);
     async function reload() {
       routerEnabled.value = false;
@@ -20,6 +21,8 @@ export default {
       routerEnabled.value = true;
     }
     provide("fn:router.reload", reload);
+
+    //其他初始化
     const resourceStore = useResourceStore();
     resourceStore.init();
     const pageStore = usePageStore();
