@@ -84,7 +84,7 @@ export default function ({ expose }) {
               placeholder: "异步计算远程获取options",
               options: asyncCompute({
                 async asyncFn(watchValue, context) {
-                  const url = "/dicts/OpenStatusEnum?remote";
+                  const url = "/mock/dicts/OpenStatusEnum?remote";
                   return await requestForMock({ url });
                 }
               })
@@ -107,7 +107,9 @@ export default function ({ expose }) {
                 },
                 async asyncFn(watchValue) {
                   message.info("监听switch,触发远程获取options");
-                  const url = watchValue ? "/dicts/OpenStatusEnum?remote" : "/dicts/moreOpenStatusEnum?remote";
+                  const url = watchValue
+                    ? "/mock/dicts/OpenStatusEnum?remote"
+                    : "/mock/dicts/moreOpenStatusEnum?remote";
                   return await requestForMock({ url });
                 }
               })

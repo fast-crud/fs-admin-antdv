@@ -1,6 +1,6 @@
 export default {
   app: {
-    demo: { i18n: { name: "姓名", city: "城市", status: "状态" } },
+    crud: { i18n: { name: "姓名", city: "城市", status: "状态" } },
     login: {
       logoutTip: "确认",
       logoutMessage: "确定要注销登录吗？"

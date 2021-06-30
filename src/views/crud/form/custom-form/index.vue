@@ -1,10 +1,12 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding">
-    <template #actionbar-right>
-      <a-divider type="vertical" />
-      <a-button @click="openCustomForm">打开自定义表单对话框</a-button>
-    </template>
-  </fs-crud>
+  <fs-page>
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <a-divider type="vertical" />
+        <a-button @click="openCustomForm">打开自定义表单对话框</a-button>
+      </template>
+    </fs-crud>
+  </fs-page>
 </template>
 
 <script>

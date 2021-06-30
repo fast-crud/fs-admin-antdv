@@ -38,12 +38,12 @@ export default function ({ expose }) {
           }
         },
         name: {
-          title: t("app.i18n.name"),
+          title: t("app.crud.i18n.name"),
           type: "text",
           search: { show: true }
         },
         city: {
-          title: t("app.i18n.city"),
+          title: t("app.crud.i18n.city"),
           type: "dict-select",
           search: { show: true },
           dict: dict({
@@ -51,7 +51,7 @@ export default function ({ expose }) {
             label: "text",
             data: [
               { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: "primary" },
+              { id: "gz", text: "广州", color: "blue" },
               { id: "bj", text: "北京" },
               { id: "wh", text: "武汉" },
               { id: "sh", text: "上海" }
@@ -59,7 +59,7 @@ export default function ({ expose }) {
           })
         },
         radio: {
-          title: t("app.i18n.status"),
+          title: t("app.crud.i18n.status"),
           search: { show: true },
           type: "dict-radio",
           dict: dict({

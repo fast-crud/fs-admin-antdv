@@ -1,5 +1,7 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding" />
+  <fs-page>
+    <fs-crud ref="crudRef" v-bind="crudBinding" />
+  </fs-page>
 </template>
 
 <script>
@@ -7,7 +9,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 export default defineComponent({
-  name: "FormCompute",
+  name: "BasisCompute",
   setup() {
     // crud组件的ref
     const crudRef = ref();

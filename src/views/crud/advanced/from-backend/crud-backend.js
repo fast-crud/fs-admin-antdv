@@ -18,7 +18,7 @@ export const crudOptions = `
           search: { show: true },
           type: "dict-radio",
           dict: dict({
-            url: "/dicts/OpenStatusEnum?single"
+            url: "/mock/dicts/OpenStatusEnum?single"
           })
         }
       }

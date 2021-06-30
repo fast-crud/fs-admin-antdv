@@ -126,7 +126,7 @@ export default function ({ expose }) {
           },
           type: "dict-select",
           dict: dict({
-            url: "/dicts/OpenStatusEnum?simple"
+            url: "/mock/dicts/OpenStatusEnum?simple"
           }),
           form: {
             helper: "测试单选与图片组件同时存在时没有下拉框的bug",

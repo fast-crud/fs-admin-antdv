@@ -1,29 +1,32 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding">
-    <template #actionbar-right>
-      <a-alert class="ml-10" type="info" message=" ↓↓↓ 通过cell字段插槽，可以做一些很复杂的显示" />
-    </template>
-    <template #cell_like="scope">
-      <a-statistic title="自定义复杂显示" :value="scope.row.like" style="margin-right: 50px">
-        <template #suffix>
-          <like-outlined />
-        </template>
-      </a-statistic>
-    </template>
-    <template #cell_createDate="scope">
-      创建时间：{{ dateFormat(scope.row.createDate) }}<br />
-      修改时间：{{ dateFormat(scope.row.updateDate) }}
-    </template>
-  </fs-crud>
+  <fs-page>
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <a-alert class="ml-10" type="info" message=" ↓↓↓ 通过cell字段插槽，可以做一些很复杂的显示" />
+      </template>
+      <template #cell_like="scope">
+        <a-statistic title="自定义复杂显示" :value="scope.row.like" style="margin-right: 50px">
+          <template #suffix>
+            <like-outlined />
+          </template>
+        </a-statistic>
+      </template>
+      <template #cell_createDate="scope">
+        创建时间：{{ dateFormat(scope.row.createDate) }}<br />
+        修改时间：{{ dateFormat(scope.row.updateDate) }}
+      </template>
+    </fs-crud>
+  </fs-page>
 </template>
 
 <script>
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
-import moment from "moment";
+import FsPage from "../../../../components/fs-page";
 export default defineComponent({
   name: "SlotsCell",
+  components: { FsPage },
   setup() {
     // crud组件的ref
     const crudRef = ref();

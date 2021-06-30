@@ -206,10 +206,13 @@ export default {
 //common
 .fs-multiple-page-control-group {
   width: 100%;
-  overflow: hidden;
   display: flex;
   .fs-multiple-page-control-content {
     flex: 1;
+    overflow-x: auto;
+  }
+  .fs-multiple-page-control-btn {
+    flex: 0;
   }
 }
 //antdv
@@ -265,6 +268,10 @@ export default {
       color: #666;
       border-bottom: 1px solid #f0f0f0;
     }
+  }
+
+  .ant-tabs-tab-arrow-show {
+    border-color: #e5e7eb;
   }
 }
 //element

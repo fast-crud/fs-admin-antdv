@@ -1,13 +1,15 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding">
-    <template #actionbar-right>
-      <a-alert
-        class="ml-10"
-        type="warning"
-        message="分发时复制，当columns[x].dict分发到addForm、editForm、viewForm、search、table.columns时将会clone一份"
-      />
-    </template>
-  </fs-crud>
+  <fs-page>
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <a-alert
+          class="ml-10"
+          type="warning"
+          message="分发时复制，当columns[x].dict分发到addForm、editForm、viewForm、search、table.columns时将会clone一份"
+        />
+      </template>
+    </fs-crud>
+  </fs-page>
 </template>
 
 <script>

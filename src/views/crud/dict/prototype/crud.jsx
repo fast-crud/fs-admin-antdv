@@ -59,7 +59,7 @@ export default function ({ expose }) {
             valueChange({ form, value, getComponentRef }) {
               console.log("form", value);
               const targetDict = getComponentRef("remote").getDict();
-              targetDict.url = form.modifyDict ? "/dicts/moreOpenStatusEnum?remote" : "/dicts/OpenStatusEnum?remote";
+              targetDict.url = form.modifyDict ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
               targetDict.reloadDict();
             }
           },
@@ -71,7 +71,7 @@ export default function ({ expose }) {
             valueChange({ value, getComponentRef }) {
               console.log("value", value);
               const targetDict = getComponentRef("remote").getDict();
-              targetDict.url = value ? "/dicts/moreOpenStatusEnum?remote" : "/dicts/OpenStatusEnum?remote";
+              targetDict.url = value ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
               targetDict.reloadDict();
             }
           }

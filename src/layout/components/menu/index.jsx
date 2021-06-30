@@ -5,50 +5,54 @@ import _ from "lodash-es";
 import BScroll from "better-scroll";
 const eachDeep = getEachDeep(_);
 
-function useBetterScroll() {
+function useBetterScroll(enabled = true) {
   let bsRef = ref(null);
   let asideMenuRef = ref();
 
-  function bsInit() {
-    if (asideMenuRef.value == null) {
-      return;
+  let onOpenChange = () => {};
+  if (enabled) {
+    function bsInit() {
+      if (asideMenuRef.value == null) {
+        return;
+      }
+      bsRef.value = new BScroll(asideMenuRef.value, {
+        mouseWheel: true,
+        click: true,
+        momentum: false,
+        // 如果你愿意可以打开显示滚动条
+        scrollbar: {
+          fade: true,
+          interactive: false
+        },
+        bounce: false
+      });
     }
-    bsRef.value = new BScroll(asideMenuRef.value, {
-      mouseWheel: true,
-      click: true,
-      momentum: false,
-      // 如果你愿意可以打开显示滚动条
-      scrollbar: {
-        fade: true,
-        interactive: false
-      },
-      bounce: false
-    });
-  }
 
-  function bsDestroy() {
-    if (bsRef.value != null && bsRef.value.destroy) {
-      try {
-        bsRef.value.destroy();
-      } catch (e) {
-        // console.error(e);
-      } finally {
-        bsRef.value = null;
+    function bsDestroy() {
+      if (bsRef.value != null && bsRef.value.destroy) {
+        try {
+          bsRef.value.destroy();
+        } catch (e) {
+          // console.error(e);
+        } finally {
+          bsRef.value = null;
+        }
       }
     }
-  }
 
-  onMounted(() => {
-    bsInit();
-  });
+    onMounted(() => {
+      bsInit();
+    });
 
-  onUnmounted(() => {
-    bsDestroy();
-  });
-
-  async function onOpenChange() {
-    await nextTick();
-    bsRef.value?.refresh();
+    onUnmounted(() => {
+      bsDestroy();
+    });
+    onOpenChange = async () => {
+      await nextTick();
+      setTimeout(() => {
+        bsRef.value?.refresh();
+      }, 300);
+    };
   }
   return {
     onOpenChange,
@@ -173,7 +177,7 @@ export default defineComponent({
       }
     );
 
-    const { asideMenuRef, onOpenChange } = useBetterScroll();
+    const { asideMenuRef, onOpenChange } = useBetterScroll(props.scroll);
 
     return () => {
       const menu = (
@@ -190,15 +194,12 @@ export default defineComponent({
           {...ctx.attrs}
         />
       );
-      if (props.scroll) {
-        return (
-          <div ref={asideMenuRef} class={"menu-wrapper"} style={"height:100%;overflow-y:hidden"}>
-            {menu}
-          </div>
-        );
-      } else {
-        return menu;
-      }
+      const classNames = { "fs-menu-wrapper": true, "fs-menu-better-scroll": props.scroll };
+      return (
+        <div ref={asideMenuRef} class={classNames}>
+          {menu}
+        </div>
+      );
     };
   }
 });

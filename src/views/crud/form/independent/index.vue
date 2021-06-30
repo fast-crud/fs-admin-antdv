@@ -1,20 +1,22 @@
 <template>
-  <a-row :gutter="10">
-    <a-col :span="12">
-      <a-card title="直接显示表单">
-        <fs-form ref="formRef" v-bind="formOptions" />
-        <div style="margin-top: 10px">
-          <a-button @click="formSubmit">提交表单</a-button>
-        </div>
-      </a-card>
-    </a-col>
-    <a-col span="12">
-      <a-card title="打开表单对话框">
-        <a-button @click="openFormWrapper">打开表单对话框</a-button>
-        <fs-form-wrapper ref="formWrapperRef" v-bind="formWrapperOptions" />
-      </a-card>
-    </a-col>
-  </a-row>
+  <fs-page>
+    <a-row :gutter="10">
+      <a-col :span="12">
+        <a-card title="直接显示表单">
+          <fs-form ref="formRef" v-bind="formOptions" />
+          <div style="margin-top: 10px">
+            <a-button @click="formSubmit">提交表单</a-button>
+          </div>
+        </a-card>
+      </a-col>
+      <a-col span="12">
+        <a-card title="打开表单对话框">
+          <a-button @click="openFormWrapper">打开表单对话框</a-button>
+          <fs-form-wrapper ref="formWrapperRef" v-bind="formWrapperOptions" />
+        </a-card>
+      </a-col>
+    </a-row>
+  </fs-page>
 </template>
 
 <script>

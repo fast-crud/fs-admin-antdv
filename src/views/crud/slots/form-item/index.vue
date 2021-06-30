@@ -1,27 +1,29 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding">
-    <template #actionbar-right>
-      <a-alert class="ml-10" type="info" message=" ← form表单字段插槽，可以做一些很复杂的输入" />
-    </template>
+  <fs-page>
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <a-alert class="ml-10" type="info" message=" ← form表单字段插槽，可以做一些很复杂的输入" />
+      </template>
 
-    <template #form_topics="scope">
-      <a-input-search
-        v-for="(item, index) in scope.form.topics"
-        :key="index"
-        v-model:value="scope.form.topics[index]"
-        :disabled="scope.mode === 'view'"
-        class="d2-mb-5"
-        @search="removeTopic(index, scope.form, scope.key)"
-      >
-        <template #enterButton>
-          <a-button :disabled="scope.mode === 'view'">
-            <DeleteOutlined />
-          </a-button>
-        </template>
-      </a-input-search>
-      <a-button :disabled="scope.mode === 'view'" @click="addTopic(scope.form, scope.key)">添加主题</a-button>
-    </template>
-  </fs-crud>
+      <template #form_topics="scope">
+        <a-input-search
+          v-for="(item, index) in scope.form.topics"
+          :key="index"
+          v-model:value="scope.form.topics[index]"
+          :disabled="scope.mode === 'view'"
+          class="d2-mb-5"
+          @search="removeTopic(index, scope.form, scope.key)"
+        >
+          <template #enterButton>
+            <a-button :disabled="scope.mode === 'view'">
+              <DeleteOutlined />
+            </a-button>
+          </template>
+        </a-input-search>
+        <a-button :disabled="scope.mode === 'view'" @click="addTopic(scope.form, scope.key)">添加主题</a-button>
+      </template>
+    </fs-crud>
+  </fs-page>
 </template>
 
 <script>

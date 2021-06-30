@@ -64,7 +64,7 @@ export default function ({ expose }) {
               // 这里不能使用remoteDict,因为在分发时已经clone到form配置中了
               // 这里dict修改不会影响列里面的数据
               const targetDict = getComponentRef("remote").dict;
-              targetDict.url = row.modifyDict ? "/dicts/moreOpenStatusEnum?remote" : "/dicts/OpenStatusEnum?remote";
+              targetDict.url = row.modifyDict ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
               targetDict.reloadDict();
             }
           },
@@ -77,7 +77,7 @@ export default function ({ expose }) {
               // 这里不能使用remoteDict,因为在分发时已经clone到form配置中了
               // 这里dict修改不会影响列里面的数据
               const targetDict = getComponentRef("remote").dict;
-              targetDict.url = form.modifyDict ? "/dicts/moreOpenStatusEnum?remote" : "/dicts/OpenStatusEnum?remote";
+              targetDict.url = form.modifyDict ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
               targetDict.reloadDict();
             }
           }

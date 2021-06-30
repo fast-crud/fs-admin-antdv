@@ -1,5 +1,7 @@
 <template>
-  <fs-crud ref="crudRef" custom-class="demo-button" v-bind="crudBinding" />
+  <fs-page>
+    <fs-crud ref="crudRef" custom-class="demo-button" v-bind="crudBinding" />
+  </fs-page>
 </template>
 
 <script>
@@ -8,7 +10,7 @@ import { useCrud } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import { useExpose } from "@fast-crud/fast-crud";
 export default defineComponent({
-  name: "FormButton",
+  name: "ComponentButton",
   setup() {
     // crud组件的ref
     const crudRef = ref();

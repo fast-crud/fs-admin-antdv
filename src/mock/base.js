@@ -52,7 +52,7 @@ export default {
     options.list = list;
     return [
       {
-        path: "/" + name + "/page",
+        path: "/mock/" + name + "/page",
         method: "get",
         handle(req) {
           let data = [...list];
@@ -166,7 +166,7 @@ export default {
         }
       },
       {
-        path: "/" + name + "/get",
+        path: "/mock/" + name + "/get",
         method: "get",
         handle(req) {
           let id = req.params.id;
@@ -186,7 +186,7 @@ export default {
         }
       },
       {
-        path: "/" + name + "/add",
+        path: "/mock/" + name + "/add",
         method: "post",
         handle(req) {
           req.body.id = ++options.idGenerator;
@@ -199,7 +199,7 @@ export default {
         }
       },
       {
-        path: "/" + name + "/update",
+        path: "/mock/" + name + "/update",
         method: "post",
         handle(req) {
           const item = findById(req.body.id, list);
@@ -214,7 +214,7 @@ export default {
         }
       },
       {
-        path: "/" + name + "/delete",
+        path: "/mock/" + name + "/delete",
         method: "post",
         handle(req) {
           delById(req, list);
@@ -226,7 +226,7 @@ export default {
         }
       },
       {
-        path: "/" + name + "/batchDelete",
+        path: "/mock/" + name + "/batchDelete",
         method: "post",
         handle(req) {
           const ids = req.body.ids;

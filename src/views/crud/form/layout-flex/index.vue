@@ -1,9 +1,10 @@
 <template>
-  <fs-crud ref="crudRef" custom-class="page-layout" v-bind="crudBinding">
-    <template #header-top>
-      <div class="page-header">表单布局</div>
+  <fs-page>
+    <template #header>
+      <div class="title">表单布局</div>
     </template>
-  </fs-crud>
+    <fs-crud ref="crudRef" custom-class="page-layout" v-bind="crudBinding"> </fs-crud>
+  </fs-page>
 </template>
 
 <script>

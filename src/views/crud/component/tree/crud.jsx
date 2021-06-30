@@ -41,7 +41,7 @@ export default function ({ expose }) {
           type: "dict-tree",
           dict: dict({
             isTree: true,
-            url: "/dicts/cascaderData?single"
+            url: "/mock/dicts/cascaderData?single"
           })
         },
         multiple: {
@@ -51,7 +51,7 @@ export default function ({ expose }) {
           dict: dict({
             cloneable: false,
             isTree: true,
-            url: "/dicts/cascaderData?single"
+            url: "/mock/dicts/cascaderData?single"
           }),
           form: {
             component: {

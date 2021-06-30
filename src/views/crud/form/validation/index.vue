@@ -1,5 +1,7 @@
 <template>
-  <fs-crud ref="crudRef" v-bind="crudBinding" />
+  <fs-page>
+    <fs-crud ref="crudRef" v-bind="crudBinding" />
+  </fs-page>
 </template>
 
 <script>
@@ -7,8 +9,10 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useCrud } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import { useExpose } from "@fast-crud/fast-crud";
+import FsPage from "../../../../components/fs-page";
 export default defineComponent({
   name: "FormValidation",
+  components: { FsPage },
   setup() {
     // crud组件的ref
     const crudRef = ref();
