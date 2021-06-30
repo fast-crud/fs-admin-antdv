@@ -3,6 +3,7 @@ import { ref, watch, onMounted, onUnmounted, resolveComponent, nextTick, defineC
 import getEachDeep from "deepdash-es/getEachDeep";
 import _ from "lodash-es";
 import BScroll from "better-scroll";
+import "./index.less";
 const eachDeep = getEachDeep(_);
 
 function useBetterScroll(enabled = true) {
@@ -159,7 +160,11 @@ export default defineComponent({
         }
       });
       if (keys.length > 0) {
-        openKeys.value = keys;
+        for (let key of keys) {
+          if (openKeys.value.indexOf(key) === -1) {
+            openKeys.value.push(key);
+          }
+        }
       }
     }
 

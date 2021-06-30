@@ -271,7 +271,15 @@ export default {
   }
 
   .ant-tabs-tab-arrow-show {
-    border-color: #e5e7eb;
+    border: 1px solid #e5e7eb;
+  }
+  .ant-tabs-tab-prev {
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .ant-tabs-tab-next {
+    border-left: 0;
+    border-bottom: 0;
   }
 }
 //element

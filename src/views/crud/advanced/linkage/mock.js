@@ -75,7 +75,7 @@ function omitChildren(orignalListt) {
   return list;
 }
 mock.push({
-  path: "/linkage/province",
+  path: "/mock/linkage/province",
   method: "get",
   handle() {
     const list = omitChildren(tree);
@@ -88,7 +88,7 @@ mock.push({
 });
 
 mock.push({
-  path: "/linkage/city",
+  path: "/mock/linkage/city",
   method: "get",
   handle(req) {
     const province = parseInt(req.params.province);
@@ -105,7 +105,7 @@ mock.push({
 });
 
 mock.push({
-  path: "/linkage/county",
+  path: "/mock/linkage/county",
   method: "get",
   handle(req) {
     const province = parseInt(req.params.province);
