@@ -3,7 +3,7 @@
     <div class="d2-page-cover__title" @click="$open('https://github.com/fast-crud/fast-crud')">
       <div class="title-line">
         <img width="50" src="./image/logo.svg" />
-        Fast Admin v{{ version }}
+        FsAdmin v{{ version }}
       </div>
     </div>
     <p class="d2-page-cover__sub-title">面向配置的crud编程，快速开发crud功能</p>

@@ -6,9 +6,9 @@
         <div class="top">
           <div class="header flex-row">
             <img src="/images/logo/rect-black.svg" class="logo" alt="logo" />
-            <span class="title"></span>
+            <span class="title">FsAdmin</span>
           </div>
-          <div class="desc">certd 让你的证书永不过期</div>
+          <div class="desc">fast-crud，开发crud快如闪电</div>
         </div>
 
         <router-view />

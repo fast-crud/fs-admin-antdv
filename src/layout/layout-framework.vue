@@ -3,6 +3,7 @@
     <a-layout-sider v-model:collapsed="asideCollapsed" :trigger="null" collapsible>
       <div class="header-logo">
         <img src="/images/logo/rect-black.svg" />
+        <span v-if="!asideCollapsed" class="title">FsAdmin</span>
       </div>
       <div class="aside-menu">
         <fs-menu :scroll="true" :menus="asideMenus" :expand-selected="true" />
@@ -26,15 +27,15 @@
           :menus="frameworkMenus"
         />
         <div class="header-right header-buttons">
-          <button
-            w:bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
-            w:text="sm white"
-            w:font="mono light"
-            w:p="y-2 x-4"
-            w:border="2 rounded blue-200"
-          >
-            Button
-          </button>
+          <!--          <button-->
+          <!--            w:bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"-->
+          <!--            w:text="sm white"-->
+          <!--            w:font="mono light"-->
+          <!--            w:p="y-2 x-4"-->
+          <!--            w:border="2 rounded blue-200"-->
+          <!--          >-->
+          <!--            Button-->
+          <!--          </button>-->
           <fs-menu
             class="header-menu"
             mode="horizontal"
@@ -120,11 +121,16 @@ export default {
     display: flex;
     justify-items: center;
     align-items: center;
+    justify-content: center;
+
     // margin: 16px 24px 16px 0;
     //background: rgba(255, 255, 255, 0.3);
     img {
-      width: 100%;
       height: 80%;
+    }
+    .title {
+      margin-left: 5px;
+      font-weight: bold;
     }
   }
   .fs-framework-content {
