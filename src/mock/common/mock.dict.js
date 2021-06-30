@@ -1,5 +1,6 @@
 import cascaderData from "./cascader-data";
-import { TreeNodesLazyLoader } from "./pcas-data";
+import pcaDataLittle from "./pca-data-little";
+import { TreeNodesLazyLoader, getPcaData } from "./pcas-data";
 
 const openStatus = [
   { value: "1", label: "打开", color: "success" },
@@ -69,6 +70,29 @@ export default [
         code: 0,
         msg: "success",
         data: cascaderData
+      };
+    }
+  },
+  {
+    path: "/mock/dicts/pca",
+    method: "get",
+    async handle() {
+      const data = await getPcaData();
+      return {
+        code: 0,
+        msg: "success",
+        data: data
+      };
+    }
+  },
+  {
+    path: "/mock/dicts/littlePca",
+    method: "get",
+    async handle() {
+      return {
+        code: 0,
+        msg: "success",
+        data: pcaDataLittle
       };
     }
   },

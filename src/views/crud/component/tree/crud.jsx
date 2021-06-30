@@ -37,7 +37,7 @@ export default function ({ expose }) {
         },
         tree: {
           title: "树形选择",
-          search: { show: true },
+          search: { show: false },
           type: "dict-tree",
           dict: dict({
             isTree: true,
@@ -46,7 +46,7 @@ export default function ({ expose }) {
         },
         multiple: {
           title: "多选",
-          search: { show: true },
+          search: { show: false },
           type: "dict-tree",
           dict: dict({
             cloneable: false,
@@ -56,6 +56,22 @@ export default function ({ expose }) {
           form: {
             component: {
               "tree-checkable": true
+            }
+          }
+        },
+        fieldReplace: {
+          title: "数据value配置",
+          search: { show: false },
+          type: "dict-tree",
+          dict: dict({
+            isTree: true,
+            url: "/mock/dicts/littlePca",
+            value: "code",
+            label: "name"
+          }),
+          form: {
+            component: {
+              replaceFields: { title: "name", key: "code", value: "code" }
             }
           }
         }

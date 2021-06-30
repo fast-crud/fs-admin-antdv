@@ -1,7 +1,12 @@
 import _ from "lodash-es";
-async function getPcasData() {
+export async function getPcasData() {
   const pcasData = () => import("china-division/dist/pcas-code.json");
   const ret = await pcasData();
+  return ret.default;
+}
+export async function getPcaData() {
+  const pcaData = () => import("china-division/dist/pca-code.json");
+  const ret = await pcaData();
   return ret.default;
 }
 export const TreeNodesLazyLoader = {

@@ -38,21 +38,6 @@ export default {
     return {
       locale: zhCN
     };
-  },
-  renderTracked({ key, target, type }) {
-    console.log("tracked", "app", { key, target, type });
-    /* 当组件第一次渲染时，这将被记录下来:
-    {
-      key: "cart",
-      target: {
-        cart: 0
-      },
-      type: "get"
-    }
-    */
-  },
-  renderTriggered({ key, target, type }) {
-    console.log("triggerd", "app", { key, target, type });
   }
 };
 </script>

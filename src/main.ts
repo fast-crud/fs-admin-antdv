@@ -19,7 +19,6 @@ app.use(Antd);
 app.use(router);
 app.use(i18n);
 app.use(store);
-console.log("i18n", i18n);
 app.use(components);
 app.use(FastCrud, { i18n });
 app.use(permission);

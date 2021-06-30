@@ -8,10 +8,10 @@ import UiAntdv from "@fast-crud/ui-antdv";
 
 import { useCrudPermission } from "../permission";
 
-function install(app, { i18n }) {
+function install(app, options: any = {}) {
   app.use(UiAntdv);
   app.use(FastCrud, {
-    i18n,
+    i18n: options.i18n,
     async dictRequest({ url }) {
       if (url && url.startsWith("/mock")) {
         //如果是crud开头的dict请求视为mock
