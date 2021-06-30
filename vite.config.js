@@ -30,11 +30,11 @@ export default ({ command, mode }) => {
   let devAlias = [];
   if (mode === "debug") {
     devAlias = [
-      { find: /@fast-crud\/fast-crud\/dist/, replacement: path.resolve("../fast-crud/src/") },
-      { find: /@fast-crud\/fast-crud$/, replacement: path.resolve("../fast-crud/src/") },
-      { find: /@fast-crud\/extends-uploader\/dist/, replacement: path.resolve("../extends/extends-uploader/src/") },
-      { find: /@fast-crud\/extends-uploader$/, replacement: path.resolve("../extends/extends-uploader/src/") },
-      { find: /@fast-crud\/ui-antdv$/, replacement: path.resolve("../ui/ui-antdv/src/") }
+      { find: /@fast-crud\/fast-crud\/dist/, replacement: path.resolve("../../fast-crud/src/") },
+      { find: /@fast-crud\/fast-crud$/, replacement: path.resolve("../../fast-crud/src/") },
+      { find: /@fast-crud\/extends-uploader\/dist/, replacement: path.resolve("../../extends/extends-uploader/src/") },
+      { find: /@fast-crud\/extends-uploader$/, replacement: path.resolve("../../extends/extends-uploader/src/") },
+      { find: /@fast-crud\/ui-antdv$/, replacement: path.resolve("../../ui/ui-antdv/src/") }
     ];
   }
   console.log("devAlias", devAlias);

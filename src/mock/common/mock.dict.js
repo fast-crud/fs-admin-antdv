@@ -29,7 +29,7 @@ export function GetNodesByValues(values) {
 
 export default [
   {
-    path: "/dicts/OpenStatusEnum",
+    path: "/mock/dicts/OpenStatusEnum",
     method: "get",
     handle() {
       return {
@@ -40,7 +40,7 @@ export default [
     }
   },
   {
-    path: "/dicts/_OpenStatusEnum2",
+    path: "/mock/dicts/_OpenStatusEnum2",
     method: "get",
     handle() {
       return {
@@ -51,7 +51,7 @@ export default [
     }
   },
   {
-    path: "/dicts/moreOpenStatusEnum",
+    path: "/mock/dicts/moreOpenStatusEnum",
     method: "get",
     handle() {
       return {
@@ -62,7 +62,7 @@ export default [
     }
   },
   {
-    path: "/dicts/cascaderData",
+    path: "/mock/dicts/cascaderData",
     method: "get",
     handle() {
       return {
@@ -73,7 +73,7 @@ export default [
     }
   },
   {
-    path: "/tree/GetTreeChildrenByParentId",
+    path: "/mock/tree/GetTreeChildrenByParentId",
     method: "get",
     async handle({ params }) {
       const list = await GetTreeChildrenByParentId(params.parentId);
@@ -85,7 +85,7 @@ export default [
     }
   },
   {
-    path: "/tree/GetNodesByValues",
+    path: "/mock/tree/GetNodesByValues",
     method: "get",
     async handle({ params }) {
       const list = await GetNodesByValues(params.values);

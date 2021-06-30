@@ -13,6 +13,10 @@ function install(app, { i18n }) {
   app.use(FastCrud, {
     i18n,
     async dictRequest({ url }) {
+      if (url && url.startsWith("/dicts")) {
+        //如果是crud开头的dict请求视为mock
+        return await requestForMock({ url, method: "post" });
+      }
       return await request({ url, method: "post" });
     },
     /**
