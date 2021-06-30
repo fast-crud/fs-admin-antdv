@@ -1,14 +1,12 @@
 <template>
   <div id="userLayout" :class="['user-layout-wrapper']">
-    <div class="container">
+    <div class="login-container flex-center">
       <div class="user-layout-lang"></div>
       <div class="user-layout-content">
         <div class="top">
-          <div class="header">
-            <a href="/">
-              <img src="/images/logo/rect-black.svg" class="logo" alt="logo" />
-              <span class="title"></span>
-            </a>
+          <div class="header flex-row">
+            <img src="/images/logo/rect-black.svg" class="logo" alt="logo" />
+            <span class="title"></span>
           </div>
           <div class="desc">certd 让你的证书永不过期</div>
         </div>
@@ -46,7 +44,7 @@ export default {
     }
   }
 
-  .container {
+  .login-container {
     width: 100%;
     min-height: 100%;
     background: #f0f2f5 url(/src/assets/background.svg) no-repeat 50%;

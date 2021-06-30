@@ -4,30 +4,19 @@ import visualizer from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
 import PurgeIcons from "vite-plugin-purge-icons";
 import path from "path";
-import { getThemeVariables } from "ant-design-vue/dist/theme";
+import WindiCSS from "vite-plugin-windicss";
+import { generateModifyVars } from "./build/modify-vars";
+import { configThemePlugin } from "./build/theme-plugin";
 
-import { defineConfig, Plugin } from "vite";
-import { viteThemePlugin, mixLighten, mixDarken, tinycolor } from "vite-plugin-theme";
-
-const resolve = path.resolve;
 // https://vitejs.dev/config/
 // 增加环境变量
 process.env.VITE_APP_VERSION = require("./package.json").version;
 process.env.VITE_APP_BUILD_TIME = require("dayjs")().format("YYYY-M-D HH:mm:ss");
 
-function generateModifyVars(dark = false) {
-  const modifyVars = getThemeVariables({ dark });
-  console.log("modifyVars", modifyVars);
-  let vars = `${resolve("src/style/theme/index.less")}`;
-  return {
-    ...modifyVars,
-    hack: `true; @import (reference) "${vars}";`
-  };
-}
 export default ({ command, mode }) => {
   console.log("args", command, mode);
 
-  let devAlias = [];
+  let devAlias: any[] = [];
   if (mode === "debug") {
     devAlias = [
       { find: /@fast-crud\/fast-crud\/dist/, replacement: path.resolve("../../fast-crud/src/") },
@@ -43,16 +32,21 @@ export default ({ command, mode }) => {
     plugins: [
       vueJsx(),
       vue(),
+      // 压缩build后的代码
       viteCompression(),
       PurgeIcons({
         iconSource: "local",
         remoteDataAPI: "https://gitee.com/fast-crud/collections-json/raw/master/json",
         includedCollections: ["ion"]
       }),
-      viteThemePlugin({
-        // Match the color to be modified
-        colorVariables: ["#1890ff"]
-      })
+      //主题色替换
+      ...configThemePlugin(true),
+      // viteThemePlugin({
+      //   // Match the color to be modified
+      //   colorVariables: ["#1890ff", "#40a9ff"]
+      // }),
+      // windicss tailwindcss
+      WindiCSS()
     ],
     // optimizeDeps: {
     //   exclude: ["@fast-crud/fast-crud-extends"],
@@ -77,6 +71,7 @@ export default ({ command, mode }) => {
     css: {
       preprocessorOptions: {
         less: {
+          // 修改默认主题颜色，配置less变量
           modifyVars: generateModifyVars(),
           javascriptEnabled: true
         }
