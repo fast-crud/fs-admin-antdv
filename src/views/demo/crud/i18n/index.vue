@@ -2,7 +2,7 @@
   <fs-page>
     <template #header>
       <div class="title">CRUD示例【国际化】</div>
-      <div class="more"><a-button>更多</a-button></div>
+      <div class="more"><a-button @click="showDemo">更多</a-button></div>
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
@@ -17,6 +17,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useCrud } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import { useExpose } from "@fast-crud/fast-crud";
+import { message } from "ant-design-vue";
 export default defineComponent({
   name: "CrudI18n",
   setup() {
@@ -39,9 +40,13 @@ export default defineComponent({
       expose.doRefresh();
     });
 
+    function showDemo() {
+      message("演示按钮");
+    }
     return {
       crudBinding,
-      crudRef
+      crudRef,
+      showDemo
     };
   }
 });

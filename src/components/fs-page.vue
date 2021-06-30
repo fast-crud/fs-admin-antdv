@@ -1,13 +1,13 @@
 <template>
   <div class="fs-page">
-    <div class="fs-page-header">
+    <div v-if="$slots.header != null" class="fs-page-header">
       <slot name="header"></slot>
     </div>
 
     <div class="fs-page-content">
       <slot></slot>
     </div>
-    <div class="fs-page-footer">
+    <div v-if="$slots.footer != null" class="fs-page-footer">
       <slot name="footer"></slot>
     </div>
   </div>
@@ -33,7 +33,7 @@ export default {
   .fs-page-header {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
     > .title {
       flex: 1;
       justify-self: flex-start;
@@ -49,6 +49,7 @@ export default {
   }
   .fs-page-content {
     flex: 1;
+    overflow-y: auto;
   }
 }
 </style>

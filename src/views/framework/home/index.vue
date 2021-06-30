@@ -1,7 +1,7 @@
 <template>
-  <fs-container class="home—index">
+  <fs-page class="home—index">
     <page-cover />
-  </fs-container>
+  </fs-page>
 </template>
 
 <script>
