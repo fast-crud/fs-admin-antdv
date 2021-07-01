@@ -146,6 +146,7 @@ export default defineComponent({
         return;
       }
       const keys = [];
+      let changed = false;
       eachDeep(props.menus, (value, key, parent, context) => {
         if (value == null) {
           return;
@@ -163,10 +164,14 @@ export default defineComponent({
         for (let key of keys) {
           if (openKeys.value.indexOf(key) === -1) {
             openKeys.value.push(key);
+            changed = true;
           }
         }
       }
+      return changed;
     }
+
+    const { asideMenuRef, onOpenChange } = useBetterScroll(props.scroll);
 
     watch(
       () => {
@@ -175,15 +180,15 @@ export default defineComponent({
       (path) => {
         // path = route.fullPath;
         selectedKeys.value = [path];
-        openSelectedParents(path);
+        const changed = openSelectedParents(path);
+        if (changed) {
+          onOpenChange();
+        }
       },
       {
         immediate: true
       }
     );
-
-    const { asideMenuRef, onOpenChange } = useBetterScroll(props.scroll);
-
     return () => {
       const menu = (
         <a-menu
