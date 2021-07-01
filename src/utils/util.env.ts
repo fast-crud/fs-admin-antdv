@@ -9,6 +9,7 @@ export class EnvConfig {
   MODE;
   STORAGE;
   TITLE;
+  PM_ENABLED;
   constructor() {
     this.init();
   }

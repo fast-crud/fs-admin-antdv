@@ -1,3 +1,2 @@
-VITE_APP_API=http://www.docmirror.cn:7001/api
 #登录与权限开启
 VITE_APP_PM_ENABLED=true

@@ -2,11 +2,14 @@ import { defineStore } from "pinia";
 import { useResourceStore } from "/src/store/modules/resource";
 import { getPermissions } from "./api";
 import { mitter } from "/@/utils/util.mitt";
+import { env } from "/@/utils/util.env";
+
 //监听注销事件
 mitter.on("app.logout", () => {
   const permissionStore = usePermissionStore();
   permissionStore.clear();
 });
+
 interface PermissionState {
   permissions: [];
   inited: boolean;
@@ -61,17 +64,23 @@ export const usePermissionStore = defineStore({
       const permissions = formatPermissions(resourceTree);
       this.init({ permissions });
 
-      //过滤没有权限额菜单
+      //过滤没有权限的菜单
       const resourceStore = useResourceStore();
       resourceStore.filterByPermission(permissions);
     },
     async loadFromRemote() {
-      let menuTree = await getPermissions();
-      if (menuTree == null) {
-        menuTree = [];
+      let permissionTree = [];
+      if (env.PM_ENABLED) {
+        const data = await getPermissions();
+        if (data != null) {
+          permissionTree = data;
+        } else {
+          console.warn("当前获取到的权限列表为空");
+        }
+      } else {
+        console.warn("当前PM未开启，权限列表为空");
       }
-      console.log("获取权限数据成功：", menuTree);
-      this.resolve(menuTree);
+      this.resolve(permissionTree);
     }
   }
 });
