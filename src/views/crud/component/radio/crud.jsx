@@ -42,6 +42,17 @@ export default function ({ expose }) {
           dict: dict({
             url: "/mock/dicts/OpenStatusEnum?single"
           })
+        },
+        bool: {
+          title: "布尔类型",
+          search: { show: true },
+          type: "dict-radio",
+          dict: dict({
+            data: [
+              { value: true, label: "TRUE" },
+              { value: false, label: "FALSE" }
+            ]
+          })
         }
       }
     }

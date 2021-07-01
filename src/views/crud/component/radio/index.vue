@@ -31,9 +31,11 @@ export default defineComponent({
       expose.doRefresh();
     });
 
+    const value = ref(null);
     return {
       crudBinding,
-      crudRef
+      crudRef,
+      value
     };
   }
 });

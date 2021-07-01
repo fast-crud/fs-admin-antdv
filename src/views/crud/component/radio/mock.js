@@ -5,10 +5,12 @@ const options = {
 };
 const list = [
   {
-    radio: "1"
+    radio: "1",
+    bool: true
   },
   {
-    radio: "2"
+    radio: "2",
+    bool: false
   },
   {
     radio: "0"
