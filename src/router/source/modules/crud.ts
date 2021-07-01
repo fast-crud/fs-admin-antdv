@@ -40,7 +40,7 @@ export const crudResources = [
         title: "数据字典",
         name: "dict",
         path: "/crud/dict",
-        redirect: "/dict/single",
+        redirect: "/crud/dict/single",
         meta: {
           icon: "ion-book-outline"
         },
@@ -69,7 +69,7 @@ export const crudResources = [
         title: "组件示例",
         name: "component",
         path: "/crud/component",
-        redirect: "/component/text",
+        redirect: "/crud/component/text",
         meta: {
           icon: "ion-cube-outline"
         },
@@ -170,7 +170,7 @@ export const crudResources = [
         title: "Form表单",
         name: "form",
         path: "/crud/form",
-        redirect: "/form/text",
+        redirect: "/crud/form/layout",
         meta: {
           icon: "ion-document-text-outline"
         },
@@ -233,10 +233,11 @@ export const crudResources = [
       },
       {
         title: "表格特性",
-        path: "feature",
+        path: "/crud/feature",
         meta: {
           icon: "ion-beer-outline"
         },
+        redirect: "/crud/feature/dropdown",
         children: [
           {
             title: "操作列按钮折叠",
@@ -315,7 +316,8 @@ export const crudResources = [
       {
         title: "插槽",
         name: "Slots",
-        path: "slots",
+        path: "/crud/slots",
+        redirect: "/crud/slots/layout",
         meta: {
           icon: "ion-extension-puzzle-outline"
         },
@@ -355,7 +357,8 @@ export const crudResources = [
       {
         title: "复杂需求",
         name: "Advanced",
-        path: "advanced",
+        path: "/crud/advanced",
+        redirect: "/crud/advanced/linkage",
         meta: {
           icon: "ion-flame-outline"
         },
