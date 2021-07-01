@@ -20,7 +20,7 @@ export interface LoginRes {
 }
 
 export async function login(data: LoginReq): Promise<LoginRes> {
-  if (!env.PM_ENABLED) {
+  if (env.PM_ENABLED === "false") {
     //没有开启权限模块，模拟登录
     return await requestForMock({
       url: "/login",
@@ -37,7 +37,7 @@ export async function login(data: LoginReq): Promise<LoginRes> {
 }
 
 export async function mine(): Promise<UserInfoRes> {
-  if (!env.PM_ENABLED) {
+  if (env.PM_ENABLED === "false") {
     //没有开启权限模块，模拟登录
     return await requestForMock({
       url: "/sys/authority/user/mine",

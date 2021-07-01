@@ -13,6 +13,9 @@ export const crudResources = [
         name: "basis",
         path: "/crud/basis",
         redirect: "/crud/basis/i18n",
+        meta: {
+          icon: "ion-disc-outline"
+        },
         children: [
           {
             title: "动态计算",
@@ -38,6 +41,9 @@ export const crudResources = [
         name: "dict",
         path: "/crud/dict",
         redirect: "/dict/single",
+        meta: {
+          icon: "ion-book-outline"
+        },
         children: [
           {
             title: "单例",
@@ -64,6 +70,9 @@ export const crudResources = [
         name: "component",
         path: "/crud/component",
         redirect: "/component/text",
+        meta: {
+          icon: "ion-cube-outline"
+        },
         children: [
           {
             title: "文本输入(input)",
@@ -162,6 +171,9 @@ export const crudResources = [
         name: "form",
         path: "/crud/form",
         redirect: "/form/text",
+        meta: {
+          icon: "ion-document-text-outline"
+        },
         children: [
           {
             title: "表单Grid布局",
@@ -222,6 +234,9 @@ export const crudResources = [
       {
         title: "表格特性",
         path: "feature",
+        meta: {
+          icon: "ion-beer-outline"
+        },
         children: [
           {
             title: "操作列按钮折叠",
@@ -301,6 +316,9 @@ export const crudResources = [
         title: "插槽",
         name: "Slots",
         path: "slots",
+        meta: {
+          icon: "ion-extension-puzzle-outline"
+        },
         children: [
           {
             title: "页面占位插槽",
@@ -338,6 +356,9 @@ export const crudResources = [
         title: "复杂需求",
         name: "Advanced",
         path: "advanced",
+        meta: {
+          icon: "ion-flame-outline"
+        },
         children: [
           {
             title: "选择联动",

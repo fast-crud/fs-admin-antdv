@@ -3,7 +3,6 @@ import { getThemeVariables } from "ant-design-vue/dist/theme";
 // const resolve = path.resolve;
 export function generateModifyVars(dark = false) {
   const modifyVars = getThemeVariables({ dark });
-  console.log("modifyVars", modifyVars);
   // const vars = `${resolve("src/style/theme/index.less")}`;
   return {
     ...modifyVars

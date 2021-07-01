@@ -1,6 +1,6 @@
 <template>
-  <div class="fs-theme">
-    <fs-iconify icon="ion-sparkles-outline" @click="show()" />
+  <div class="fs-theme" @click="show()">
+    <fs-iconify icon="ion-sparkles-outline" />
     <a-drawer
       v-model:visible="visible"
       title="主题设置"

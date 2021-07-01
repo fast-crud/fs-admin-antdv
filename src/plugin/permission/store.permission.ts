@@ -70,15 +70,16 @@ export const usePermissionStore = defineStore({
     },
     async loadFromRemote() {
       let permissionTree = [];
-      if (env.PM_ENABLED) {
+      if (env.PM_ENABLED === "false") {
+        console.warn("当前权限模块未开启，权限列表为空");
+      } else {
+        //开启了权限模块，向后台请求权限列表
         const data = await getPermissions();
         if (data != null) {
           permissionTree = data;
         } else {
           console.warn("当前获取到的权限列表为空");
         }
-      } else {
-        console.warn("当前PM未开启，权限列表为空");
       }
       this.resolve(permissionTree);
     }
