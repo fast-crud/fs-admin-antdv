@@ -23,10 +23,8 @@
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
-import FsPage from "../../../../components/fs-page";
 export default defineComponent({
   name: "SlotsCell",
-  components: { FsPage },
   setup() {
     // crud组件的ref
     const crudRef = ref();

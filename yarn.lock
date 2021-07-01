@@ -449,10 +449,10 @@
     vue "^3.0.7"
     vue-cropperjs "^5.0.0"
 
-"@fast-crud/fast-crud@^0.10.4":
-  version "0.10.4"
-  resolved "https://registry.npmjs.org/@fast-crud/fast-crud/-/fast-crud-0.10.4.tgz#86aa580b80360ed6429406581fd16d7d84764232"
-  integrity sha512-JjE0LMWeCOWarkLOFvq58vIjONwNHZr9rDIlMVhkeH/+V4vvFQJm+nd48KwOg6F2mStCXx2InjjkmNPHEERaKQ==
+"@fast-crud/fast-crud@^0.10.5":
+  version "0.10.5"
+  resolved "https://registry.npmjs.org/@fast-crud/fast-crud/-/fast-crud-0.10.5.tgz#37cecec16154ad28c38d782ea97608acb27cda8a"
+  integrity sha512-kFsYiXrmQZE9x9giaqYNPzxPzh/1dnZNwawGdY0YIKJES4DcfHuQSTSiVrTvNNjczaMZ9jMqgmuJtEIV3vyuog==
   dependencies:
     "@fast-crud/ui-interface" "^0.10.1"
     dayjs "^1.10.4"
