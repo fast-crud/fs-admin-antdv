@@ -19,35 +19,35 @@ import { defineComponent, ref } from "vue";
 const colorListDefine = [
   {
     key: "薄暮",
-    color: "#F5222D"
+    color: "#f5222d"
   },
   {
     key: "火山",
-    color: "#FA541C"
+    color: "#fa541c"
   },
   {
     key: "日暮",
-    color: "#FAAD14"
+    color: "#faad14"
   },
   {
     key: "明青",
-    color: "#13C2C2"
+    color: "#13c2c2"
   },
   {
     key: "极光绿",
-    color: "#52C41A"
+    color: "#52c41a"
   },
   {
     key: "拂晓蓝（默认）",
-    color: "#1890FF"
+    color: "#1890ff"
   },
   {
     key: "极客蓝",
-    color: "#2F54EB"
+    color: "#2f54eb"
   },
   {
     key: "酱紫",
-    color: "#722ED1"
+    color: "#722ed1"
   }
 ];
 export default defineComponent({

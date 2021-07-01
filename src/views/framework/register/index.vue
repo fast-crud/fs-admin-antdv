@@ -125,7 +125,7 @@ export default defineComponent({
   }
 
   .login-title {
-    color: #1890ff;
+    color: @primary-color;
     font-size: 18px;
     text-align: center;
     margin: 20px;
@@ -162,7 +162,7 @@ export default defineComponent({
       transition: color 0.3s;
 
       &:hover {
-        color: #1890ff;
+        color: @primary-color;
       }
     }
 

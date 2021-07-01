@@ -4,7 +4,7 @@
  */
 import type { Plugin } from "vite";
 import path from "path";
-import { viteThemePlugin, antdDarkThemePlugin, mixLighten, mixDarken, tinycolor } from "vite-plugin-theme";
+import { viteThemePlugin, mixLighten, mixDarken, tinycolor, antdDarkThemePlugin } from "vite-plugin-theme";
 import { getThemeColors, generateColors } from "./theme-colors";
 import { generateModifyVars } from "./modify-vars";
 
@@ -14,23 +14,24 @@ export function configThemePlugin(isBuild: boolean): Plugin[] {
     mixLighten,
     tinycolor
   });
+  const colorVariables = [...getThemeColors(), ...colors];
   const plugin = [
     viteThemePlugin({
-      resolveSelector: (s) => {
-        s = s.trim();
-        switch (s) {
-          case ".ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon":
-            return ".ant-steps-item-icon > .ant-steps-icon";
-          case ".ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)":
-          case ".ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover":
-          case ".ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active":
-            return s;
-          case ".ant-steps-item-icon > .ant-steps-icon":
-            return s;
-        }
-        return `[data-theme] ${s}`;
-      },
-      colorVariables: [...getThemeColors(), ...colors]
+      // resolveSelector: (s) => {
+      //   s = s.trim();
+      //   switch (s) {
+      //     case ".ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon":
+      //       return ".ant-steps-item-icon > .ant-steps-icon";
+      //     case ".ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)":
+      //     case ".ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover":
+      //     case ".ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active":
+      //       return s;
+      //     case ".ant-steps-item-icon > .ant-steps-icon":
+      //       return s;
+      //   }
+      //   return `[data-theme] ${s}`;
+      // },
+      colorVariables
     }),
     antdDarkThemePlugin({
       preloadFiles: [
