@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <a-alert class="ml-10" type="info" message=" ← 在表单的各个位置都可以插入自定义内容" />
+        <a-alert class="ml-1" type="info" message=" ← 在表单的各个位置都可以插入自定义内容" />
       </template>
 
       <template #form-header-left>

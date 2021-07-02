@@ -3,7 +3,7 @@
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
         <a-alert
-          class="ml-10"
+          class="ml-1"
           type="warning"
           message="分发时复制，当columns[x].dict分发到addForm、editForm、viewForm、search、table.columns时将会clone一份"
         />

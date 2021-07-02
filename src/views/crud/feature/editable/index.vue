@@ -2,22 +2,22 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <!--      <fs-button class="ml-10" @click="addRow">添加行</fs-button>-->
-        <a-radio-group value="crudBinding.table.editable.enabled" class="ml-10" @update:value="enabledChanged">
+        <!--      <fs-button class="ml-1" @click="addRow">添加行</fs-button>-->
+        <a-radio-group value="crudBinding.table.editable.enabled" class="ml-1" @update:value="enabledChanged">
           <a-radio-button :value="true">启用编辑</a-radio-button>
           <a-radio-button :value="false">退出编辑</a-radio-button>
         </a-radio-group>
-        <!--            <a-radio-group class="ml-10" v-model="crudBinding.table.editable.mode">-->
+        <!--            <a-radio-group class="ml-1" v-model="crudBinding.table.editable.mode">-->
         <!--              <a-radio-button label="free">自由模式</a-radio-button>-->
         <!--              <a-radio-button label="row">行编辑模式</a-radio-button>-->
         <!--            </a-radio-group>-->
         <template v-if="crudBinding.table.editable.enabled">
-          <fs-button class="ml-10" @click="active">激活全部编辑</fs-button>
+          <fs-button class="ml-1" @click="active">激活全部编辑</fs-button>
 
-          <fs-button class="ml-10" @click="inactive">反激活全部</fs-button>
-          <fs-button class="ml-10" @click="editCol">编辑列</fs-button>
-          <fs-button class="ml-10" @click="cancel">取消/恢复原状</fs-button>
-          <fs-button class="ml-10" @click="save">保存</fs-button>
+          <fs-button class="ml-1" @click="inactive">反激活全部</fs-button>
+          <fs-button class="ml-1" @click="editCol">编辑列</fs-button>
+          <fs-button class="ml-1" @click="cancel">取消/恢复原状</fs-button>
+          <fs-button class="ml-1" @click="save">保存</fs-button>
         </template>
       </template>
     </fs-crud>

@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <a-alert class="ml-10" type="info" message=" ← form表单字段插槽，可以做一些很复杂的输入" />
+        <a-alert class="ml-1" type="info" message=" ← form表单字段插槽，可以做一些很复杂的输入" />
       </template>
 
       <template #form_topics="scope">
