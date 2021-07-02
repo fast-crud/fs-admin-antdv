@@ -43,6 +43,19 @@ export default function ({ expose }) {
             url: "/mock/dicts/OpenStatusEnum?single"
           })
         },
+        button: {
+          title: "按钮样式",
+          search: { show: true },
+          type: "dict-radio",
+          dict: dict({
+            url: "/mock/dicts/OpenStatusEnum?single"
+          }),
+          form: {
+            component: {
+              radioName: "a-radio-button"
+            }
+          }
+        },
         bool: {
           title: "布尔类型",
           search: { show: true },
