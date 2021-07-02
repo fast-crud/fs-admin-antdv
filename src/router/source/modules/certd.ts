@@ -1,4 +1,4 @@
-export const crudResources = [
+export const certdResources = [
   {
     title: "CertD",
     name: "certd",
@@ -12,15 +12,7 @@ export const crudResources = [
         title: "证书",
         name: "cert",
         path: "/certd/cert",
-        component: "certd/cert/index.vue",
-        meta: {
-          icon: "ion-disc-outline"
-        }
-      },
-      {
-        title: "证书",
-        name: "cert",
-        path: "/certd/cert",
+        component: "/certd/cert/index.vue",
         meta: {
           icon: "ion-disc-outline"
         }
