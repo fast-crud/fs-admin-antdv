@@ -1166,12 +1166,11 @@ ant-design-vue@^2.1.4:
     vue-types "^3.0.0"
     warning "^4.0.0"
 
-ant-design-vue@^2.2.0-beta.4:
-  version "2.2.0-beta.4"
-  resolved "https://registry.npmjs.org/ant-design-vue/-/ant-design-vue-2.2.0-beta.4.tgz#acd4a62fa06dcae9bce60bd6a30b3bd32a249f6b"
-  integrity sha512-QDKKSeXVKDj/oKeZ24kXi8/ViQgugXpo47bZIGTK8njwgzYkMXSxuR5iq4tYPn7umtP4M8oWaV9Dt7qT3kds1w==
+ant-design-vue@^2.2.0-rc.1:
+  version "2.2.0-rc.1"
+  resolved "https://registry.npmjs.org/ant-design-vue/-/ant-design-vue-2.2.0-rc.1.tgz#5e32e102c64f517d469c7af403cd6133b4ac8b45"
+  integrity sha512-cRqOpPrw6aoW+1LmMMf8cFlVKzhBSrmZUCfEn8jA1yp7gp6zj+wGkhT9jz6NUfPWRXmGgbf0hXi0rHkhWaFAOQ==
   dependencies:
-    "@ant-design-vue/use" "^0.0.1-0"
     "@ant-design/icons-vue" "^6.0.0"
     "@babel/runtime" "^7.10.5"
     "@simonwep/pickr" "~1.8.0"
