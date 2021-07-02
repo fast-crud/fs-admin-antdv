@@ -3,8 +3,8 @@
     <div class="login-container flex-center">
       <div class="user-layout-lang"></div>
       <div class="user-layout-content">
-        <div class="top">
-          <div class="header flex-row">
+        <div class="top flex flex-col items-center justify-center">
+          <div class="header flex flex-row items-center">
             <img src="/images/logo/rect-black.svg" class="logo" alt="logo" />
             <span class="title">FsAdmin</span>
           </div>
