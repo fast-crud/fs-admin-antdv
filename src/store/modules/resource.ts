@@ -77,7 +77,9 @@ export const useResourceStore = defineStore({
     },
     setAsideMenuByCurrentRoute(matched) {
       const menuHeader = this.frameworkMenus;
-      console.assert(matched && matched.length >= 1);
+      if (matched?.length <= 1) {
+        return;
+      }
       const matchedPath = matched[1].path;
       const _side = menuHeader.filter((menu) => menu.path === matchedPath);
       if (_side.length > 0) {
