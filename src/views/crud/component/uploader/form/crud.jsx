@@ -47,74 +47,74 @@ export default function ({ expose }) {
             }
           }
         },
-        // pictureCard: {
-        //   title: "照片墙",
-        //   type: "image-uploader",
-        //   form: {
-        //     component: {
-        //       limit: 1,
-        //       uploader: {
-        //         type: "form"
-        //       }
-        //     },
-        //     helper: "最大可上传1个文件"
-        //   }
-        // },
-        // cropper: {
-        //   title: "裁剪",
-        //   type: "cropper-uploader",
-        //   form: {
-        //     component: {
-        //       uploader: {
-        //         type: "form"
-        //       }
-        //     }
-        //   }
-        // },
-        // limit: {
-        //   title: "限制数量",
-        //   type: "file-uploader",
-        //   form: {
-        //     component: {
-        //       limit: 2,
-        //       uploader: {
-        //         type: "form"
-        //       }
-        //     },
-        //     helper: "最大可上传2个文件"
-        //   }
-        // },
-        // sizeLimit: {
-        //   title: "限制大小",
-        //   type: "file-uploader",
-        //   form: {
-        //     component: {
-        //       sizeLimit: 1024,
-        //       uploader: {
-        //         type: "form"
-        //       }
-        //     },
-        //     helper: "大小不能超过1k"
-        //   }
-        // },
-        // validation: {
-        //   title: "校验",
-        //   type: "file-uploader",
-        //   form: {
-        //     rules: [
-        //       { required: true, message: "此项必传" },
-        //       {
-        //         validator: AllSuccessValidator(),
-        //         message: "还有文件正在上传，请稍候"
-        //       }
-        //     ],
-        //     component: {
-        //       uploader: {
-        //         type: "form"
-        //       }
-        //     }
-        //   }
-        // },
+        pictureCard: {
+          title: "照片墙",
+          type: "image-uploader",
+          form: {
+            component: {
+              limit: 1,
+              uploader: {
+                type: "form"
+              }
+            },
+            helper: "最大可上传1个文件"
+          }
+        },
+        cropper: {
+          title: "裁剪",
+          type: "cropper-uploader",
+          form: {
+            component: {
+              uploader: {
+                type: "form"
+              }
+            }
+          }
+        },
+        limit: {
+          title: "限制数量",
+          type: "file-uploader",
+          form: {
+            component: {
+              limit: 2,
+              uploader: {
+                type: "form"
+              }
+            },
+            helper: "最大可上传2个文件"
+          }
+        },
+        sizeLimit: {
+          title: "限制大小",
+          type: "file-uploader",
+          form: {
+            component: {
+              sizeLimit: 1024,
+              uploader: {
+                type: "form"
+              }
+            },
+            helper: "大小不能超过1k"
+          }
+        },
+        validation: {
+          title: "校验",
+          type: "file-uploader",
+          form: {
+            rules: [
+              { required: true, message: "此项必传" },
+              {
+                validator: AllSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
+                message: "还有文件正在上传，请稍候"
+              }
+            ],
+            component: {
+              uploader: {
+                type: "form"
+              }
+            }
+          }
+        },
         statusRemote: {
           title: "单选",
           search: {

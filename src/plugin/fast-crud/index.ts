@@ -89,7 +89,7 @@ function install(app, options: any = {}) {
       getAuthorization(custom) {
         // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
         return request({
-          url: "/upload/cos/getAuthorization",
+          url: "http://www.docmirror.cn:7070/api/upload/cos/getAuthorization",
           method: "get"
         }).then((ret) => {
           // 返回结构如下
@@ -117,7 +117,7 @@ function install(app, options: any = {}) {
       getAuthorization(custom, context) {
         // 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
         return request({
-          url: "/upload/alioss/getAuthorization",
+          url: "http://www.docmirror.cn:7070/api/upload/alioss/getAuthorization",
           method: "get"
         }).then((ret) => {
           console.log("ret", ret);
@@ -138,7 +138,7 @@ function install(app, options: any = {}) {
       bucket: "d2p-demo",
       getToken(options) {
         return request({
-          url: "/upload/qiniu/getToken",
+          url: "http://www.docmirror.cn:7070/api/upload/qiniu/getToken",
           method: "get"
         }).then((ret) => {
           return ret; // {token:xxx,expires:xxx}
