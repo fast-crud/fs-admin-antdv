@@ -1,9 +1,8 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
-import { dict } from "@fast-crud/fast-crud";
+import { dict, asyncCompute } from "@fast-crud/fast-crud";
 import { reactive } from "vue";
 import _ from "lodash-es";
-import { asyncCompute, compute } from "../../../../../../../fast-crud/src";
 function useSearchRemote() {
   let lastFetchId = 0;
   const state = reactive({
