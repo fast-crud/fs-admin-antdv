@@ -1,6 +1,43 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
 import { dict } from "@fast-crud/fast-crud";
+import { reactive } from "vue";
+import _ from "lodash-es";
+import { asyncCompute, compute } from "../../../../../../../fast-crud/src";
+function useSearchRemote() {
+  let lastFetchId = 0;
+  const state = reactive({
+    data: [],
+    value: [],
+    fetching: false
+  });
+  const fetchUser = _.debounce((value) => {
+    console.log("fetching user", value);
+    lastFetchId += 1;
+    const fetchId = lastFetchId;
+    state.data = [];
+    state.fetching = true;
+    fetch("https://randomuser.me/api/?results=5")
+      .then((response) => response.json())
+      .then((body) => {
+        if (fetchId !== lastFetchId) {
+          // for fetch callback order
+          return;
+        }
+        const data = body.results.map((user) => ({
+          text: `${user.name.first} ${user.name.last}`,
+          value: user.login.username
+        }));
+        state.data = data;
+        state.fetching = false;
+      });
+  }, 800);
+
+  return {
+    fetchUser,
+    searchState: state
+  };
+}
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -16,6 +53,8 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+
+  const { fetchUser, searchState } = useSearchRemote();
   return {
     crudOptions: {
       request: {
@@ -29,6 +68,16 @@ export default function ({ expose }) {
         col: { span: 24 },
         labelCol: { span: 4 },
         wrapperCol: { span: 18 }
+      },
+      rowHandle: {
+        fixed: "right",
+        align: "center"
+      },
+      table: {
+        scroll: {
+          //启用横向滚动条，设置一个大于所有列宽之和的值，一般大于表格宽度
+          x: 1400
+        }
       },
       columns: {
         id: {
@@ -156,7 +205,6 @@ export default function ({ expose }) {
         multiple: {
           title: "多选自动染色",
           sortable: true,
-          width: 180,
           type: "dict-select",
           form: {
             title: "多选本地",
@@ -175,7 +223,7 @@ export default function ({ expose }) {
             ]
           }),
           column: {
-            width: "200px",
+            width: 290,
             component: { color: "auto" } // 自动染色
           }
         },
@@ -192,6 +240,40 @@ export default function ({ expose }) {
                 { value: "wh", label: "武汉" },
                 { value: "sh", label: "上海" }
               ]
+            }
+          }
+        },
+        search: {
+          title: "远程搜索",
+          search: { show: true, component: { style: { width: "240px" } } },
+          form: {
+            component: {
+              name: "a-select",
+              vModel: "value",
+              filterOption: false,
+              labelInValue: true,
+              showSearch: true,
+              allowClear: true,
+              placeholder: "输入远程搜索，数据仅供演示",
+              options: asyncCompute({
+                watch: () => {
+                  return searchState.data;
+                },
+                asyncFn: (data) => {
+                  return data;
+                }
+              }),
+              onSearch() {
+                fetchUser();
+              },
+              children: {
+                notFoundContent() {
+                  if (searchState.fetching) {
+                    return <a-spin size="small" />;
+                  }
+                  return "暂无记录";
+                }
+              }
             }
           }
         }
