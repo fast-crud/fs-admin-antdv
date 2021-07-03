@@ -1,21 +1,21 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
 import { dict, asyncCompute } from "@fast-crud/fast-crud";
-import { reactive } from "vue";
+import { ref } from "vue";
 import _ from "lodash-es";
 function useSearchRemote() {
   let lastFetchId = 0;
-  const state = reactive({
-    data: [],
-    value: [],
-    fetching: false
-  });
+
+  const state = {
+    data: ref([]),
+    fetching: ref(false)
+  };
   const fetchUser = _.debounce((value) => {
     console.log("fetching user", value);
     lastFetchId += 1;
     const fetchId = lastFetchId;
-    state.data = [];
-    state.fetching = true;
+    state.data.value = [];
+    state.fetching.value = true;
     fetch("https://randomuser.me/api/?results=5")
       .then((response) => response.json())
       .then((body) => {
@@ -27,8 +27,8 @@ function useSearchRemote() {
           text: `${user.name.first} ${user.name.last}`,
           value: user.login.username
         }));
-        state.data = data;
-        state.fetching = false;
+        state.data.value = data;
+        state.fetching.value = false;
       });
   }, 800);
 
@@ -124,7 +124,7 @@ export default function ({ expose }) {
         },
         customDictGetData: {
           title: "自定义字典请求",
-          search: {},
+          search: { show: false },
           type: "dict-select",
           dict: dict({
             getData({ dict }) {
@@ -137,7 +137,7 @@ export default function ({ expose }) {
             }
           }),
           form: {
-            value: "2", //默认值
+            value: "2", //默认值, 注意search也会影响到，需要将search.value=null，取消search的默认值
             helper: "dict.getData可以覆盖全局配置的getRemoteDictFunc"
           },
           column: {
@@ -250,24 +250,17 @@ export default function ({ expose }) {
               name: "a-select",
               vModel: "value",
               filterOption: false,
-              labelInValue: true,
+              //labelInValue: true,
               showSearch: true,
               allowClear: true,
               placeholder: "输入远程搜索，数据仅供演示",
-              options: asyncCompute({
-                watch: () => {
-                  return searchState.data;
-                },
-                asyncFn: (data) => {
-                  return data;
-                }
-              }),
-              onSearch() {
-                fetchUser();
+              options: searchState.data,
+              onSearch(value) {
+                fetchUser(value);
               },
               children: {
                 notFoundContent() {
-                  if (searchState.fetching) {
+                  if (searchState.fetching.value) {
                     return <a-spin size="small" />;
                   }
                   return "暂无记录";

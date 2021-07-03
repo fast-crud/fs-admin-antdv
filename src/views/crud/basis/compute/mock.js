@@ -5,6 +5,7 @@ const options = {
 };
 const list = [
   {
+    ref: "根据showRef显示",
     compute: true,
     status: "1",
     remote: "2",

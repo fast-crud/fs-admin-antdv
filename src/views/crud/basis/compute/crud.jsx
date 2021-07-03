@@ -1,8 +1,8 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
-import { dict } from "@fast-crud/fast-crud";
 import { useCompute } from "@fast-crud/fast-crud";
 import { message } from "ant-design-vue";
+import { ref, computed } from "vue";
 const { asyncCompute, compute } = useCompute();
 export default function ({ expose }) {
   const pageRequest = async (query) => {
@@ -19,7 +19,18 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+
+  //普通的ref引用，可以动态切换配置
+  const showRef = ref(false);
+  const showTableRef = ref(true);
+  const showTableComputed = computed(() => {
+    return showTableRef.value;
+  });
   return {
+    output: {
+      showRef,
+      showTableRef
+    },
     crudOptions: {
       request: {
         pageRequest,
@@ -27,9 +38,13 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
+      table: {
+        //通过switch动态显隐table
+        show: showTableComputed //不仅支持computed，直接传showTableRef也是可以的
+      },
       form: {
         labelCol: { span: 8 },
-        wrapperCol: { span: 16 }
+        wrapperCol: { span: 14 }
       },
       columns: {
         id: {
@@ -41,6 +56,23 @@ export default function ({ expose }) {
           },
           form: {
             show: false
+          }
+        },
+        refSwitch: {
+          title: "ref引用切换",
+          type: "text",
+          form: {
+            helper: "点我切换右边的输入框显示"
+          }
+        },
+        ref: {
+          title: "根据ref引用显示",
+          type: ["text"],
+          form: {
+            component: {
+              show: showRef
+            },
+            helper: "我会根据showRef进行显隐"
           }
         },
         compute: {
@@ -89,7 +121,7 @@ export default function ({ expose }) {
                 }
               })
             },
-            helper: "我的options是异步计算远程获取的"
+            helper: "我的options是异步计算远程获取的,只会获取一次"
           }
         },
         remote2: {
