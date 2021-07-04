@@ -21,8 +21,8 @@ export default ({ command, mode }) => {
     devAlias = [
       { find: /@fast-crud\/fast-crud\/dist/, replacement: path.resolve("../../fast-crud/src/") },
       { find: /@fast-crud\/fast-crud$/, replacement: path.resolve("../../fast-crud/src/") },
-      { find: /@fast-crud\/extends-uploader\/dist/, replacement: path.resolve("../../extends/extends-uploader/src/") },
-      { find: /@fast-crud\/extends-uploader$/, replacement: path.resolve("../../extends/extends-uploader/src/") },
+      { find: /@fast-crud\/fast-extends\/dist/, replacement: path.resolve("../../fast-extends/src/") },
+      { find: /@fast-crud\/fast-extends$/, replacement: path.resolve("../../fast-extends/src/") },
       { find: /@fast-crud\/ui-antdv$/, replacement: path.resolve("../../ui/ui-antdv/src/") }
     ];
   }

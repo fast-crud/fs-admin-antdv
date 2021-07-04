@@ -163,6 +163,12 @@ export const crudResources = [
             name: "ComponentUploaderQiniu",
             path: "/crud/component/uploader/qiniu",
             component: "/crud/component/uploader/qiniu/index.vue"
+          },
+          {
+            title: "富文本编辑器",
+            name: "ComponentEditor",
+            path: "/crud/component/editor",
+            component: "/crud/component/editor/index.vue"
           }
         ]
       },

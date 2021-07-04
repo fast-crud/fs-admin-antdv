@@ -1,5 +1,5 @@
 import * as api from "./api";
-import { AllSuccessValidator } from "@fast-crud/extends-uploader";
+import { AllUploadSuccessValidator } from "@fast-crud/extends-uploader";
 import { dict } from "@fast-crud/fast-crud";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
@@ -104,7 +104,7 @@ export default function ({ expose }) {
             rules: [
               { required: true, message: "此项必传" },
               {
-                validator: AllSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
+                validator: AllUploadSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
                 message: "还有文件正在上传，请稍候"
               }
             ],
