@@ -17,7 +17,7 @@ export default ({ command, mode }) => {
   console.log("args", command, mode);
 
   let devAlias: any[] = [];
-  if (mode === "debug") {
+  if (mode.startsWith("debug")) {
     devAlias = [
       { find: /@fast-crud\/fast-crud\/dist/, replacement: path.resolve("../../fast-crud/src/") },
       { find: /@fast-crud\/fast-crud$/, replacement: path.resolve("../../fast-crud/src/") },
