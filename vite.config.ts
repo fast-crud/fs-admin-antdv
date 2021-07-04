@@ -35,9 +35,9 @@ export default ({ command, mode }) => {
       // 压缩build后的代码
       viteCompression(),
       PurgeIcons({
-        iconSource: "local",
-        remoteDataAPI: "https://gitee.com/fast-crud/collections-json/raw/master/json",
-        includedCollections: ["ion"]
+        iconSource: "local"
+        // remoteDataAPI: "https://gitee.com/fast-crud/collections-json/raw/master/json",
+        // includedCollections: ["ion"]
       }),
       //主题色替换
       ...configThemePlugin(true),

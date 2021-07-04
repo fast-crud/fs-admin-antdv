@@ -1,7 +1,10 @@
 <template>
   <fs-page>
     <template #header>
-      <div class="title">动态计算</div>
+      <div class="title">
+        动态计算
+        <fs-icon icon="ion:apps-sharp" :spin="true" />
+      </div>
       <div class="more">
         <a href="http://fast-crud.docmirror.cn/guide/advance/compute.html">帮助说明</a>
       </div>

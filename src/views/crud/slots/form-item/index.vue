@@ -11,7 +11,7 @@
           :key="index"
           v-model:value="scope.form.topics[index]"
           :disabled="scope.mode === 'view'"
-          class="d2-mb-5"
+          class="mb-1"
           @search="removeTopic(index, scope.form, scope.key)"
         >
           <template #enterButton>

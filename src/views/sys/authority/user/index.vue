@@ -1,5 +1,5 @@
 <template>
-  <fs-page>
+  <fs-page class="page-sys-user">
     <template #header>
       <div class="title">用户管理</div>
     </template>

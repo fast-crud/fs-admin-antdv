@@ -5,7 +5,7 @@ export const crudResources = [
     path: "/crud",
     redirect: "/crud/basis",
     meta: {
-      icon: "ion-apps-sharp"
+      icon: "ion:apps-sharp"
     },
     children: [
       {
