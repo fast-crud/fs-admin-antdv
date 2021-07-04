@@ -26,7 +26,11 @@ export default function ({ expose }) {
       rowHandle: {
         dropdown: {
           // 操作列折叠
-          atLeast: 2 // 至少几个以上的按钮才会被折叠,注意show=false的按钮也会计算在内（行编辑按钮默认是隐藏的也会占一个位置）
+          atLeast: 2, // 至少几个以上的按钮才会被折叠,注意show=false的按钮也会计算在内（行编辑按钮默认是隐藏的也会占一个位置）
+          more: {
+            text: "更多",
+            icon: null
+          }
         }
       },
       columns: {
