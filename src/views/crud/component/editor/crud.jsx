@@ -76,22 +76,25 @@ export default function ({ expose }) {
             ]
           })
         },
-        content: {
+        content_quill: {
           title: "内容",
           column: {
             show: false
           },
-          type: ["textarea", "colspan"],
+          type: ["editor-quill", "colspan"],
           form: {
             show: compute(({ form }) => {
               return form.change === "quill";
             }),
             component: {
               disabled: compute(({ form }) => {
-                return form.disable;
+                return form.disabled;
               }),
               uploader: {
-                type: "form" // 上传后端类型【cos,aliyun,oss,form】
+                type: "form", // 上传后端类型【cos,aliyun,oss,form】
+                buildUrl(res) {
+                  return "http://www.docmirror.cn:7070" + res.url;
+                }
               },
               on: {
                 "text-change": (event) => {
@@ -115,12 +118,15 @@ export default function ({ expose }) {
             }),
             component: {
               disabled: compute(({ form }) => {
-                return form.disable;
+                return form.disabled;
               }),
               id: "1", // 当同一个页面有多个editor时，需要配置不同的id
-              config: {
-                // withCredentials: false,
-                // uploadImgServer: 'http://localhost:7070/api/upload/form/upload'
+              config: {},
+              uploader: {
+                type: "form",
+                buildUrl(res) {
+                  return "http://www.docmirror.cn:7070" + res.url;
+                }
               }
             }
           }
