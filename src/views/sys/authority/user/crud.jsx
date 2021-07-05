@@ -104,7 +104,14 @@ export default function ({ expose }) {
           title: "头像",
           type: "cropper-uploader",
           column: {
-            width: 100
+            width: 100,
+            component: {
+              //设置高度，修复操作列错位的问题
+              style: {
+                height: "30px",
+                width: "auto"
+              }
+            }
           }
         },
         remark: {
