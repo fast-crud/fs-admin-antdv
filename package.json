@@ -1,6 +1,6 @@
 {
   "name": "@fast-crud/fs-admin-antdv",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -18,9 +18,9 @@
   "license": "MIT",
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
-    "@fast-crud/fast-extends": "^0.13.0",
-    "@fast-crud/fast-crud": "^0.13.0",
-    "@fast-crud/ui-antdv": "^0.13.0",
+    "@fast-crud/fast-extends": "^0.14.0",
+    "@fast-crud/fast-crud": "^0.14.0",
+    "@fast-crud/ui-antdv": "^0.14.0",
     "@iconify/iconify": "^2.0.1",
     "@iconify/json": "^1.1.347",
     "@purge-icons/generated": "^0.7.0",
