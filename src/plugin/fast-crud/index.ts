@@ -31,9 +31,9 @@ function install(app, options: any = {}) {
         },
         rowHandle: {
           buttons: {
-            edit: { type: "link" },
-            remove: { type: "link" },
-            view: { type: "link" }
+            view: { type: "link", text: null, icon: "ion:eye-outline" },
+            edit: { type: "link", text: null, icon: "ion:create-outline" },
+            remove: { type: "link", style: { color: "red" }, text: null, icon: "ion:trash-outline" }
           },
           dropdown: {
             more: {
