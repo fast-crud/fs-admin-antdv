@@ -11,20 +11,20 @@ const list = [
     remote: "2",
     shower: "---> 点右边编辑查看示例效果",
     remote2: "2",
-    editable: false
+    editable: true
   },
   {
     compute: false,
     status: "2",
     remote: "0",
     remote2: "2",
-    editable: true
+    editable: false
   },
   {
     compute: true,
     status: "0",
     remote2: "2",
-    editable: false
+    editable: true
   }
 ];
 options.list = list;
