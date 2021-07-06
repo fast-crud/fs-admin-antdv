@@ -37,34 +37,77 @@ export default function ({ expose }) {
             show: false
           }
         },
-        name: {
-          title: t("app.crud.i18n.name"),
-          type: "text",
-          search: { show: true }
+        domains: {
+          title: "域名",
+          type: ["dict-select", "colspan"],
+          search: { show: false },
+          form: {
+            component: {
+              mode: "tags"
+            },
+            valueResolve({ form }) {
+              form.domains = form.domains?.join(",");
+            },
+            rules: [{ required: true, message: "请填写域名" }]
+          }
         },
-        city: {
-          title: t("app.crud.i18n.city"),
+        email: {
+          title: "邮箱",
+          type: "text",
+          search: { show: false },
+          form: {
+            rules: [{ required: true, type: "email", message: "请填写邮箱" }]
+          }
+        },
+        certIssuerId: {
+          title: "证书签发者",
           type: "dict-select",
-          search: { show: true },
+          dict: dict({ data: [{ value: "letencrypt", label: "LetEncrypt" }] }),
+          form: {
+            value: "letencrypt"
+          }
+        },
+        challengeType: {
+          title: "校验方式",
+          type: "dict-select",
+          dict: dict({ data: [{ value: "dns", label: "DNS校验" }] }),
+          form: {
+            value: "dns"
+          }
+        },
+        challengeAccessId: {
+          title: "校验Dns授权",
+          type: "dict-select",
           dict: dict({
-            value: "id",
-            label: "text",
             data: [
-              { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: "blue" },
-              { id: "bj", text: "北京" },
-              { id: "wh", text: "武汉" },
-              { id: "sh", text: "上海" }
+              { value: 1, label: "Aliyun" },
+              { value: 2, label: "DnsPod" }
             ]
           })
         },
-        radio: {
-          title: t("app.crud.i18n.status"),
-          search: { show: true },
-          type: "dict-radio",
-          dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
+        country: {
+          title: "国家",
+          type: "text"
+        },
+        state: {
+          title: "省份",
+          type: "text"
+        },
+        locality: {
+          title: "市区",
+          type: "text"
+        },
+        organization: {
+          title: "单位",
+          type: "text"
+        },
+        organizationUnit: {
+          title: "部门",
+          type: "text"
+        },
+        remark: {
+          title: "备注",
+          type: "text"
         }
       }
     }
