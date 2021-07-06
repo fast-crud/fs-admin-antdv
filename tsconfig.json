@@ -17,7 +17,8 @@
     "outDir": "./dist/ts",
     "types": [
       "mocha",
-      "chai"
+      "chai",
+      "node"
     ],
     "paths": {
       "/@/*": ["src/*"],

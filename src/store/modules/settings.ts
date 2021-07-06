@@ -7,7 +7,10 @@ import { getThemeColors, generateColors } from "/src/../build/theme-colors";
 
 import { mixLighten, mixDarken, tinycolor } from "vite-plugin-theme/es/colorUtils";
 
-export async function changeTheme(color: string) {
+export async function changeTheme(color?: string) {
+  if (color == null) {
+    return;
+  }
   const colors = generateColors({
     mixDarken,
     mixLighten,
@@ -33,12 +36,7 @@ export const useSettingStore = defineStore({
   }),
   getters: {
     getTheme(): any {
-      return (
-        this.theme ||
-        LocalStorage.get(SETTING_THEME_KEY) || {
-          primaryColor: "#1890FF"
-        }
-      );
+      return this.theme || LocalStorage.get(SETTING_THEME_KEY) || {};
     }
   },
   actions: {

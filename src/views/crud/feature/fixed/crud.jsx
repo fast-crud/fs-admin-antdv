@@ -26,8 +26,9 @@ export default function ({ expose }) {
       },
       table: {
         scroll: {
-          //需要设置它，否则滚动条拖动时，表头不会动
-          fixed: true
+          //当你表格宽度大到需要使用固定列时，需要设置此值，并且是大于等于列宽度之和的值
+          //否则可能会出现将自动宽度列挤变形，或者拖动滚动条表头不动等问题。
+          x: 1400
         }
       },
       columns: {
@@ -35,7 +36,8 @@ export default function ({ expose }) {
           title: "text1",
           type: "text",
           column: {
-            //固定左侧，并且被固定在左侧列要放在最前面
+            // 固定左侧
+            // 注意被固定在左侧的列要放在最前面，否则会出现某些列错位不显示的问题
             fixed: "left",
             width: 260
           }

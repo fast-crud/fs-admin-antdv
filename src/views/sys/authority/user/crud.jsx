@@ -26,6 +26,12 @@ export default function ({ expose }) {
       rowHandle: {
         fixed: "right"
       },
+      table: {
+        scroll: {
+          //使用固定列时需要设置此值，并且大于等于列宽度之和的值
+          x: 1400
+        }
+      },
       columns: {
         id: {
           title: "id",
@@ -94,7 +100,20 @@ export default function ({ expose }) {
             sorter: true
           }
         },
-
+        avatar: {
+          title: "头像",
+          type: "cropper-uploader",
+          column: {
+            width: 100,
+            component: {
+              //设置高度，修复操作列错位的问题
+              style: {
+                height: "30px",
+                width: "auto"
+              }
+            }
+          }
+        },
         remark: {
           title: "备注",
           type: "text",
@@ -105,7 +124,6 @@ export default function ({ expose }) {
             rules: [{ max: 100, message: "最大100个字符" }]
           }
         },
-
         roles: {
           title: "角色",
           type: "dict-select",

@@ -2,7 +2,7 @@ import * as api from "./api";
 import { utils } from "@fast-crud/fast-crud";
 import moment from "moment";
 console.log("utils", utils);
-export default function ({ crudRef }) {
+export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };

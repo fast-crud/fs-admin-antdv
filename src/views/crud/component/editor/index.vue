@@ -1,23 +1,8 @@
 <template>
   <fs-page>
-    <template #header>
-      <div class="title">
-        动态计算
-        <fs-icon icon="ion:apps-sharp" :spin="true" />
-      </div>
-      <div class="more">
-        <a href="http://fast-crud.docmirror.cn/guide/advance/compute.html">帮助说明</a>
-      </div>
-    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <a-tooltip title="我能控制表格显隐">
-          <span class="ml-1">表格显隐:<a-switch v-model:checked="showTableRef"></a-switch></span>
-        </a-tooltip>
-        <a-alert class="ml-1" type="info" message="点击下方右边的编辑按钮查看示例效果-----------> ↓↓↓↓↓" />
-      </template>
-      <template #form_refSwitch>
-        <a-switch v-model:checked="showRef"></a-switch>
+        <a-alert style="margin-left: 10px" message="富文本" />
       </template>
     </fs-crud>
   </fs-page>
@@ -25,10 +10,11 @@
 
 <script>
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { useCrud } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
+import { useExpose } from "@fast-crud/fast-crud";
 export default defineComponent({
-  name: "BasisCompute",
+  name: "FormEditor",
   setup() {
     // crud组件的ref
     const crudRef = ref();
@@ -37,7 +23,7 @@ export default defineComponent({
     // 暴露的方法
     const { expose } = useExpose({ crudRef, crudBinding });
     // 你的crud配置
-    const { crudOptions, output } = createCrudOptions({ expose });
+    const { crudOptions } = createCrudOptions({ expose });
     // 初始化crud配置
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
     const { resetCrudOptions } = useCrud({ expose, crudOptions });
@@ -51,8 +37,7 @@ export default defineComponent({
 
     return {
       crudBinding,
-      crudRef,
-      ...output
+      crudRef
     };
   }
 });

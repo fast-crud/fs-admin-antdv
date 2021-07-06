@@ -91,7 +91,7 @@ export default function ({ crudRef }) {
                 targetOption.loading = true;
 
                 const ret = await requestForMock({
-                  url: "/tree/GetTreeChildrenByParentId",
+                  url: "/mock/tree/GetTreeChildrenByParentId",
                   params: { parentId: targetOption.value }
                 });
                 targetOption.loading = false;

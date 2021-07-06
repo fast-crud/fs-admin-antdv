@@ -1,9 +1,9 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.less";
+import "virtual:windi.css";
 import "./style/common.less";
 import "@iconify/iconify";
 import "@purge-icons/generated";
@@ -13,7 +13,7 @@ import store from "./store";
 import components from "./components";
 import FastCrud from "./plugin/fast-crud";
 import permission from "./plugin/permission";
-import "virtual:windi.css";
+
 // @ts-ignore
 const app = createApp(App);
 app.use(Antd);

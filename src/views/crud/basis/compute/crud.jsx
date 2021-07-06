@@ -1,8 +1,8 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
-import { dict } from "@fast-crud/fast-crud";
 import { useCompute } from "@fast-crud/fast-crud";
 import { message } from "ant-design-vue";
+import { ref, computed } from "vue";
 const { asyncCompute, compute } = useCompute();
 export default function ({ expose }) {
   const pageRequest = async (query) => {
@@ -19,7 +19,18 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+
+  //普通的ref引用，可以动态切换配置
+  const showRef = ref(false);
+  const showTableRef = ref(true);
+  const showTableComputed = computed(() => {
+    return showTableRef.value;
+  });
   return {
+    output: {
+      showRef,
+      showTableRef
+    },
     crudOptions: {
       request: {
         pageRequest,
@@ -27,9 +38,31 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
+      table: {
+        scroll: {
+          x: 1500
+        },
+        //通过switch动态显隐table
+        show: showTableComputed //不仅支持computed，直接传showTableRef也是可以的
+      },
       form: {
         labelCol: { span: 8 },
-        wrapperCol: { span: 16 }
+        wrapperCol: { span: 14 }
+      },
+      rowHandle: {
+        fixed: "right",
+        buttons: {
+          edit: {
+            show: compute(({ row }) => {
+              return row.editable;
+            })
+          },
+          remove: {
+            show: compute(({ row }) => {
+              return row.editable;
+            })
+          }
+        }
       },
       columns: {
         id: {
@@ -43,11 +76,29 @@ export default function ({ expose }) {
             show: false
           }
         },
+        refSwitch: {
+          title: "ref引用切换",
+          type: "text",
+          form: {
+            helper: "点我切换右边的输入框显示"
+          }
+        },
+        ref: {
+          title: "根据ref引用显示",
+          type: ["text"],
+          form: {
+            component: {
+              show: showRef
+            },
+            helper: "我会根据showRef进行显隐"
+          }
+        },
         compute: {
           title: "compute",
           search: { show: false },
           type: "text",
           column: {
+            show: false,
             component: {
               name: "a-switch",
               vModel: "checked"
@@ -71,6 +122,9 @@ export default function ({ expose }) {
                 return form.compute;
               })
             }
+          },
+          column: {
+            width: 250
           }
         },
         remote: {
@@ -89,7 +143,7 @@ export default function ({ expose }) {
                 }
               })
             },
-            helper: "我的options是异步计算远程获取的"
+            helper: "我的options是异步计算远程获取的,只会获取一次"
           }
         },
         remote2: {
@@ -115,6 +169,24 @@ export default function ({ expose }) {
               })
             },
             helper: "监听其他属性修改后，触发重新计算"
+          },
+          column: {
+            width: 200
+          }
+        },
+        editable: {
+          title: "可编辑",
+          search: { show: false },
+          type: "text",
+          column: {
+            fixed: "right",
+            component: {
+              name: "a-switch",
+              vModel: "checked"
+            }
+          },
+          form: {
+            show: false
           }
         }
       }

@@ -31,6 +31,14 @@ export function configThemePlugin(isBuild: boolean): Plugin[] {
       //   }
       //   return `[data-theme] ${s}`;
       // },
+      resolveSelector: (s) => {
+        s = s.trim();
+        if (s === ".ant-btn:hover,.ant-btn:focus") {
+          // console.log("ssss", s);
+          return ".theme-discard-xxxxxxx";
+        }
+        return s;
+      },
       colorVariables
     }),
     antdDarkThemePlugin({

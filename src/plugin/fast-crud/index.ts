@@ -2,8 +2,8 @@ import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
 import { FastCrud } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
-import FsUploader from "@fast-crud/extends-uploader";
-import "@fast-crud/extends-uploader/dist/style.css";
+import { FsExtendsUploader, FsExtendsEditor } from "@fast-crud/fast-extends";
+import "@fast-crud/fast-extends/dist/style.css";
 import UiAntdv from "@fast-crud/ui-antdv";
 
 import { useCrudPermission } from "../permission";
@@ -31,9 +31,9 @@ function install(app, options: any = {}) {
         },
         rowHandle: {
           buttons: {
-            edit: { type: "link" },
-            remove: { type: "link" },
-            view: { type: "link" }
+            view: { type: "link", text: null, icon: "ion:eye-outline" },
+            edit: { type: "link", text: null, icon: "ion:create-outline" },
+            remove: { type: "link", style: { color: "red" }, text: null, icon: "ion:trash-outline" }
           },
           dropdown: {
             more: {
@@ -77,8 +77,15 @@ function install(app, options: any = {}) {
     }
   });
 
-  //配置uploader 公共参数
-  app.use(FsUploader, {
+  // fast-extends里面的扩展组件均为异步组件，只有在使用时才会被加载，并不会影响首页加载速度
+  //安装editor
+  app.use(FsExtendsEditor, {
+    //编辑器的公共配置
+    wangEditor: {},
+    quillEditor: {}
+  });
+  //安装uploader 公共参数
+  app.use(FsExtendsUploader, {
     defaultType: "cos",
     cos: {
       domain: "https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com",
@@ -89,7 +96,7 @@ function install(app, options: any = {}) {
       getAuthorization(custom) {
         // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
         return request({
-          url: "/upload/cos/getAuthorization",
+          url: "http://www.docmirror.cn:7070/api/upload/cos/getAuthorization",
           method: "get"
         }).then((ret) => {
           // 返回结构如下
@@ -114,15 +121,14 @@ function install(app, options: any = {}) {
       region: "oss-cn-shenzhen",
       accessKeyId: "",
       accessKeySecret: "",
-      getAuthorization(custom, context) {
+      async getAuthorization(custom, context) {
         // 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-        return request({
-          url: "/upload/alioss/getAuthorization",
+        const ret = await request({
+          url: "http://www.docmirror.cn:7070/api/upload/alioss/getAuthorization",
           method: "get"
-        }).then((ret) => {
-          console.log("ret", ret);
-          return ret;
         });
+        console.log("ret", ret);
+        return ret;
       },
       sdkOpts: {
         // sdk配置
@@ -136,13 +142,12 @@ function install(app, options: any = {}) {
     },
     qiniu: {
       bucket: "d2p-demo",
-      getToken(options) {
-        return request({
-          url: "/upload/qiniu/getToken",
+      async getToken(options) {
+        const ret = await request({
+          url: "http://www.docmirror.cn:7070/api/upload/qiniu/getToken",
           method: "get"
-        }).then((ret) => {
-          return ret; // {token:xxx,expires:xxx}
         });
+        return ret; // {token:xxx,expires:xxx}
       },
       successHandle(ret) {
         // 上传完成后可以在此处处理结果，修改url什么的
@@ -155,12 +160,22 @@ function install(app, options: any = {}) {
       action: "http://www.docmirror.cn:7070/api/upload/form/upload",
       name: "file",
       withCredentials: false,
+      uploadRequest: async ({ action, file }) => {
+        // @ts-ignore
+        const data = new FormData();
+        data.append("file", file);
+        return await request({
+          url: action,
+          method: "post",
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          data
+        });
+      },
       successHandle(ret) {
-        // 上传完成后的结果处理， 此处后台返回的结果应该为 ret = {code:0,msg:'',data:fileUrl}
-        if (!ret.data) {
-          throw new Error("上传失败");
-        }
-        return { url: ret.data };
+        // 上传完成后的结果处理， 此处应返回格式为{url:xxx}
+        return { url: ret };
       }
     }
   });
