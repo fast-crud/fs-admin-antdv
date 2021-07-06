@@ -39,12 +39,30 @@ export default function ({ expose }) {
         delRequest
       },
       table: {
+        scroll: {
+          x: 1500
+        },
         //通过switch动态显隐table
         show: showTableComputed //不仅支持computed，直接传showTableRef也是可以的
       },
       form: {
         labelCol: { span: 8 },
         wrapperCol: { span: 14 }
+      },
+      rowHandle: {
+        fixed: "right",
+        buttons: {
+          edit: {
+            show: compute(({ row }) => {
+              return row.editable;
+            })
+          },
+          remove: {
+            show: compute(({ row }) => {
+              return row.editable;
+            })
+          }
+        }
       },
       columns: {
         id: {
@@ -80,6 +98,7 @@ export default function ({ expose }) {
           search: { show: false },
           type: "text",
           column: {
+            show: false,
             component: {
               name: "a-switch",
               vModel: "checked"
@@ -103,6 +122,9 @@ export default function ({ expose }) {
                 return form.compute;
               })
             }
+          },
+          column: {
+            width: 250
           }
         },
         remote: {
@@ -147,6 +169,24 @@ export default function ({ expose }) {
               })
             },
             helper: "监听其他属性修改后，触发重新计算"
+          },
+          column: {
+            width: 200
+          }
+        },
+        editable: {
+          title: "可编辑",
+          search: { show: false },
+          type: "text",
+          column: {
+            fixed: "right",
+            component: {
+              name: "a-switch",
+              vModel: "checked"
+            }
+          },
+          form: {
+            show: false
           }
         }
       }

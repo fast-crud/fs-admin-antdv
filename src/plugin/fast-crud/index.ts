@@ -160,7 +160,7 @@ function install(app, options: any = {}) {
       action: "http://www.docmirror.cn:7070/api/upload/form/upload",
       name: "file",
       withCredentials: false,
-      uploadRequest: async ({ action, file }): Promise<{ url: string }> => {
+      uploadRequest: async ({ action, file }) => {
         // @ts-ignore
         const data = new FormData();
         data.append("file", file);
