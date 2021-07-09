@@ -169,6 +169,12 @@ export const crudResources = [
             name: "ComponentEditor",
             path: "/crud/component/editor",
             component: "/crud/component/editor/index.vue"
+          },
+          {
+            title: "图标",
+            name: "ComponentIcon",
+            path: "/crud/component/icon",
+            component: "/crud/component/icon/index.vue"
           }
         ]
       },
