@@ -41,7 +41,19 @@ export default function ({ expose }) {
           column: {
             component: {
               name: "fs-icon",
-              vModel: "icon"
+              vModel: "icon",
+              style: "font-size:18px"
+            }
+          },
+          form: {
+            helper: {
+              render() {
+                return (
+                  <a target={"_blank"} href={"https://iconify.design/icon-sets/ion/"}>
+                    点击此处选择图标名称
+                  </a>
+                );
+              }
             }
           }
         }
