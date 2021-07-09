@@ -24,6 +24,12 @@ export const crudResources = [
             component: "/crud/basis/compute/index.vue"
           },
           {
+            title: "动态计算-更多示例",
+            name: "BasisComputeMore",
+            path: "/crud/basis/compute-more",
+            component: "/crud/basis/compute-more/index.vue"
+          },
+          {
             title: "国际化",
             name: "BasisI18n",
             path: "/crud/basis/i18n",
