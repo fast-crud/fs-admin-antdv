@@ -3,7 +3,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import visualizer from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
 import PurgeIcons from "vite-plugin-purge-icons";
-import path from "path";
+import * as path from "path";
 import WindiCSS from "vite-plugin-windicss";
 import { generateModifyVars } from "./build/modify-vars";
 import { configThemePlugin } from "./build/theme-plugin";
@@ -16,6 +16,7 @@ process.env.VITE_APP_BUILD_TIME = require("dayjs")().format("YYYY-M-D HH:mm:ss")
 export default ({ command, mode }) => {
   console.log("args", command, mode);
 
+  let devServerFs: any = {};
   let devAlias: any[] = [];
   if (mode.startsWith("debug")) {
     devAlias = [
@@ -25,8 +26,14 @@ export default ({ command, mode }) => {
       { find: /@fast-crud\/fast-extends$/, replacement: path.resolve("../../fast-extends/src/") },
       { find: /@fast-crud\/ui-antdv$/, replacement: path.resolve("../../ui/ui-antdv/src/") }
     ];
+    devServerFs = {
+      // 如果是你自己的项目，这项可以删掉
+      // 这里配置dev启动时读取的项目根目录
+      allow: ["../../"]
+    };
+    console.log("devAlias", devAlias);
   }
-  console.log("devAlias", devAlias);
+
   return {
     base: "/antdv/",
     plugins: [
@@ -78,10 +85,7 @@ export default ({ command, mode }) => {
       }
     },
     server: {
-      fs: {
-        // Allow serving files from one level up to the project root
-        allow: ["../../"]
-      },
+      fs: devServerFs,
       proxy: {
         // with options
         "/api": {
