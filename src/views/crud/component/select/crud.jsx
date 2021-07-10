@@ -1,6 +1,6 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
-import { dict, asyncCompute } from "@fast-crud/fast-crud";
+import { dict } from "@fast-crud/fast-crud";
 import { ref } from "vue";
 import _ from "lodash-es";
 function useSearchRemote() {
@@ -122,6 +122,50 @@ export default function ({ expose }) {
             rules: [{ required: true, message: "请选择一个选项" }]
           }
         },
+        filter: {
+          title: "本地过滤",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/OpenStatusEnum?simple"
+          }),
+          form: {
+            component: {
+              showSearch: true,
+              //默认的filterOptions仅支持value的过滤，label并不会加入查询
+              //所以需要自定义filterOption
+              filterOption(inputValue, option) {
+                return option.label.indexOf(inputValue) >= 0 || option.value.indexOf(inputValue) >= 0;
+              }
+            }
+          }
+        },
+        search: {
+          title: "远程搜索",
+          search: { show: true, component: { style: { width: "240px" } } },
+          form: {
+            component: {
+              name: "a-select",
+              vModel: "value",
+              filterOption: false,
+              //labelInValue: true,
+              showSearch: true,
+              allowClear: true,
+              placeholder: "输入远程搜索，数据仅供演示",
+              options: searchState.data,
+              onSearch(value) {
+                fetchUser(value);
+              },
+              children: {
+                notFoundContent() {
+                  if (searchState.fetching.value) {
+                    return <a-spin size="small" />;
+                  }
+                  return "暂无记录";
+                }
+              }
+            }
+          }
+        },
         customDictGetData: {
           title: "自定义字典请求",
           search: { show: false },
@@ -167,6 +211,9 @@ export default function ({ expose }) {
               }
             },
             helper: "禁用字典选项"
+          },
+          column: {
+            width: 150
           }
         },
         firstDefault: {
@@ -239,33 +286,6 @@ export default function ({ expose }) {
                 { value: "wh", label: "武汉" },
                 { value: "sh", label: "上海" }
               ]
-            }
-          }
-        },
-        search: {
-          title: "远程搜索",
-          search: { show: true, component: { style: { width: "240px" } } },
-          form: {
-            component: {
-              name: "a-select",
-              vModel: "value",
-              filterOption: false,
-              //labelInValue: true,
-              showSearch: true,
-              allowClear: true,
-              placeholder: "输入远程搜索，数据仅供演示",
-              options: searchState.data,
-              onSearch(value) {
-                fetchUser(value);
-              },
-              children: {
-                notFoundContent() {
-                  if (searchState.fetching.value) {
-                    return <a-spin size="small" />;
-                  }
-                  return "暂无记录";
-                }
-              }
             }
           }
         }

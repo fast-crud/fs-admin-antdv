@@ -1,5 +1,13 @@
 <template>
   <fs-page>
+    <template #header>
+      <a-select ref="select" style="width: 120px" :show-search="true">
+        <a-select-option value="3">Jack</a-select-option>
+        <a-select-option value="4">Lucy</a-select-option>
+        <a-select-option value="1" disabled>Disabled</a-select-option>
+        <a-select-option value="2">yiminghe</a-select-option>
+      </a-select>
+    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding" />
   </fs-page>
 </template>
