@@ -34,6 +34,12 @@ export const crudResources = [
             name: "BasisI18n",
             path: "/crud/basis/i18n",
             component: "/crud/basis/i18n/index.vue"
+          },
+          {
+            title: "ValueChange",
+            name: "BasisValueChange",
+            path: "/crud/basis/value-change",
+            component: "/crud/basis/value-change/index.vue"
           }
           // {
           //   title: "debug",
