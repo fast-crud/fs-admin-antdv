@@ -131,7 +131,7 @@ export default function ({ expose }) {
           form: {
             component: {
               showSearch: true,
-              //默认的filterOptions仅支持value的过滤，label并不会加入查询
+              //默认的filterOption仅支持value的过滤，label并不会加入查询
               //所以需要自定义filterOption
               filterOption(inputValue, option) {
                 return option.label.indexOf(inputValue) >= 0 || option.value.indexOf(inputValue) >= 0;
