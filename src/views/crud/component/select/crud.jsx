@@ -148,6 +148,7 @@ export default function ({ expose }) {
               vModel: "value",
               filterOption: false,
               //labelInValue: true,
+              mode: "multiple",
               showSearch: true,
               allowClear: true,
               placeholder: "输入远程搜索，数据仅供演示",
