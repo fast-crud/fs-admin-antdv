@@ -16,6 +16,15 @@ export const certdResources = [
         meta: {
           icon: "ion-disc-outline"
         }
+      },
+      {
+        title: "授权",
+        name: "access",
+        path: "/certd/access",
+        component: "/certd/access/index.vue",
+        meta: {
+          icon: "ion-disc-outline"
+        }
       }
     ]
   }
