@@ -9,7 +9,7 @@ export const headerResource = [
     children: [
       {
         title: "Element版",
-        path: "http://fast-admin.docmirror.cn/element/"
+        path: "http://fast-crud.docmirror.cn/element/"
       },
       {
         title: "VbenAdmin",
