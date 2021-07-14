@@ -400,6 +400,12 @@ export const crudResources = [
             component: "/crud/advanced/from-backend/index.vue"
           },
           {
+            title: "本地分页",
+            name: "AdvancedLocalPagination",
+            path: "/crud/advanced/local-pagination",
+            component: "/crud/advanced/local-pagination/index.vue"
+          },
+          {
             title: "嵌套子表格",
             name: "AdvancedNest",
             path: "/crud/advanced/nest",
