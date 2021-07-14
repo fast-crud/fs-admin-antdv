@@ -57,7 +57,7 @@ export default {
         handle(req) {
           let data = [...list];
           let limit = 20;
-          let offset = 1;
+          let offset = 0;
           for (const item of list) {
             if (item.children != null && item.children.length === 0) {
               item.hasChildren = false;
