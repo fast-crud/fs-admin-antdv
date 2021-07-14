@@ -3,7 +3,7 @@
     <template #header>
       <div class="title">本地分页</div>
     </template>
-    <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
+    <fs-crud v-if="crudBinding" ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
 
