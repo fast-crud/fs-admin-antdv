@@ -113,9 +113,11 @@ export default function ({ expose }) {
           },
           type: ["editor-wang", "colspan"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
           form: {
+            // 动态显隐字段
             // show: compute(({ form }) => {
             //   return form.change === "wang";
             // }),
+            rules: [{ required: true, message: "此项必填" }],
             component: {
               disabled: compute(({ form }) => {
                 return form.disabled;

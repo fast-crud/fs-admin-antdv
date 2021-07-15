@@ -31,6 +31,11 @@ export default function ({ expose, props, ctx }) {
         delRequest
       },
       search: { show: false },
+      form: {
+        wrapper: {
+          is: "a-drawer"
+        }
+      },
       columns: {
         id: {
           title: "ID",
