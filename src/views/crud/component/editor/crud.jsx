@@ -65,45 +65,46 @@ export default function ({ expose }) {
             ]
           })
         },
-        change: {
-          title: "切换编辑器",
-          type: "dict-radio",
-          disabled: true,
-          dict: dict({
-            data: [
-              { value: "quill", label: "Quill" },
-              { value: "wang", label: "WangEditor" }
-            ]
-          })
-        },
-        content_quill: {
-          title: "内容",
-          column: {
-            show: false
-          },
-          type: ["editor-quill", "colspan"],
-          form: {
-            show: compute(({ form }) => {
-              return form.change === "quill";
-            }),
-            component: {
-              disabled: compute(({ form }) => {
-                return form.disabled;
-              }),
-              uploader: {
-                type: "form", // 上传后端类型【cos,aliyun,oss,form】
-                buildUrl(res) {
-                  return "http://www.docmirror.cn:7070" + res.url;
-                }
-              },
-              on: {
-                "text-change": (event) => {
-                  console.log("text-change:", event);
-                }
-              }
-            }
-          }
-        },
+        // 放弃支持quill，两年没有更新了，关键是bug修复不了
+        // change: {
+        //   title: "切换编辑器",
+        //   type: "dict-radio",
+        //   disabled: true,
+        //   dict: dict({
+        //     data: [
+        //       { value: "quill", label: "Quill" },
+        //       { value: "wang", label: "WangEditor" }
+        //     ]
+        //   })
+        // },
+        // content_quill: {
+        //   title: "内容",
+        //   column: {
+        //     show: false
+        //   },
+        //   type: ["editor-quill", "colspan"],
+        //   form: {
+        //     show: compute(({ form }) => {
+        //       return form.change === "quill";
+        //     }),
+        //     component: {
+        //       disabled: compute(({ form }) => {
+        //         return form.disabled;
+        //       }),
+        //       uploader: {
+        //         type: "form", // 上传后端类型【cos,aliyun,oss,form】
+        //         buildUrl(res) {
+        //           return "http://www.docmirror.cn:7070" + res.url;
+        //         }
+        //       },
+        //       on: {
+        //         "text-change": (event) => {
+        //           console.log("text-change:", event);
+        //         }
+        //       }
+        //     }
+        //   }
+        // },
         content_wang: {
           title: "内容",
           column: {
@@ -111,11 +112,10 @@ export default function ({ expose }) {
             show: false
           },
           type: ["editor-wang", "colspan"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
-          disabled: true, // 设置true可以在行展示中隐藏
           form: {
-            show: compute(({ form }) => {
-              return form.change === "wang";
-            }),
+            // show: compute(({ form }) => {
+            //   return form.change === "wang";
+            // }),
             component: {
               disabled: compute(({ form }) => {
                 return form.disabled;
