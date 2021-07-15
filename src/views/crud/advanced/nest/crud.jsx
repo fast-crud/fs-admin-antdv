@@ -36,6 +36,11 @@ export default function ({ expose, asideTableRef }) {
         showSizeChanger: false, // antdv
         showQuickJumper: false // antdv
       },
+      form: {
+        wrapper: {
+          is: "a-drawer"
+        }
+      },
       request: {
         pageRequest: api.GetList,
         addRequest,
