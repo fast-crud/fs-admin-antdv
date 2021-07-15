@@ -248,6 +248,12 @@ export const crudResources = [
             component: "/crud/form/custom-form/index.vue"
           },
           {
+            title: "字段帮助说明",
+            name: "FormHelper",
+            path: "/crud/form/helper",
+            component: "/crud/form/helper/index.vue"
+          },
+          {
             title: "独立使用表单",
             name: "FormIndependent",
             path: "/crud/form/independent",
