@@ -7,7 +7,7 @@ export default function ({ expose }) {
       throw new Error("请输入密码");
     }
     if (getFormData().password2 !== "") {
-      getFormRef().$refs.formRef.validateField("password2");
+      getFormRef().getFormRef().validateFields(["password2"]);
     }
   };
   const validatePass2 = async (rule, value) => {
