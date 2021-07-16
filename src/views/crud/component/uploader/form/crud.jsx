@@ -44,6 +44,18 @@ export default function ({ expose }) {
               uploader: {
                 type: "form"
               }
+            },
+            //如果后台保存的值不是完整的url链接，则需要先buildUrl才能正确打开
+            buildUrl(value) {
+              return "http://www.docmirror.cn:7070" + value;
+            }
+          },
+          column: {
+            component: {
+              //如果后台保存的值不是完整的url链接，则需要先buildUrl才能正确打开
+              buildUrl(value) {
+                return "http://www.docmirror.cn:7070" + value;
+              }
             }
           }
         },
@@ -54,7 +66,14 @@ export default function ({ expose }) {
             component: {
               limit: 1,
               uploader: {
-                type: "form"
+                type: "form",
+                // 上传成功后处理url
+                successHandle(res) {
+                  // 返回格式{ url:string,key:string}
+                  return {
+                    url: "http://www.docmirror.cn:7070" + res
+                  };
+                }
               }
             },
             helper: "最大可上传1个文件"
@@ -66,7 +85,12 @@ export default function ({ expose }) {
           form: {
             component: {
               uploader: {
-                type: "form"
+                type: "form",
+                successHandle(res) {
+                  return {
+                    url: "http://www.docmirror.cn:7070" + res
+                  };
+                }
               }
             }
           }
@@ -78,7 +102,12 @@ export default function ({ expose }) {
             component: {
               limit: 2,
               uploader: {
-                type: "form"
+                type: "form",
+                successHandle(res) {
+                  return {
+                    url: "http://www.docmirror.cn:7070" + res
+                  };
+                }
               }
             },
             helper: "最大可上传2个文件"
@@ -91,7 +120,12 @@ export default function ({ expose }) {
             component: {
               sizeLimit: 1024,
               uploader: {
-                type: "form"
+                type: "form",
+                successHandle(res) {
+                  return {
+                    url: "http://www.docmirror.cn:7070" + res
+                  };
+                }
               }
             },
             helper: "大小不能超过1k"
@@ -110,27 +144,14 @@ export default function ({ expose }) {
             ],
             component: {
               uploader: {
-                type: "form"
+                type: "form",
+                successHandle(res) {
+                  return {
+                    url: "http://www.docmirror.cn:7070" + res
+                  };
+                }
               }
             }
-          }
-        },
-        statusRemote: {
-          title: "单选",
-          search: {
-            show: true,
-            rules: null,
-            component: {
-              style: { width: "100px" }
-            }
-          },
-          type: "dict-select",
-          dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?simple"
-          }),
-          form: {
-            helper: "测试单选与图片组件同时存在时没有下拉框的bug",
-            rules: [{ required: true, message: "请选择一个选项" }]
           }
         }
       }
