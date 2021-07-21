@@ -2,7 +2,7 @@ import { usePermission } from "/@/plugin/permission";
 import _ from "lodash-es";
 
 /**
- * 设置动作权限
+ * 设置按钮动作权限
  * @param permission {prefix,extra}
  */
 export function useCrudPermission({ permission }) {

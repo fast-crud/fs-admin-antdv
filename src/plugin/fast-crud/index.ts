@@ -72,6 +72,7 @@ function install(app, options: any = {}) {
         }
       };
 
+      // 从 useCrud({permission}) 里获取permission参数，去设置各个按钮的权限
       const crudPermission = useCrudPermission(context);
       return crudPermission.merge(opts);
     }

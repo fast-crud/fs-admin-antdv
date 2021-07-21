@@ -96,14 +96,6 @@ export default defineComponent({
     //授权配置
     const authz = useAuthz();
 
-    //按钮权限配置
-    const permission = {
-      prefix: "sys:auth:role",
-      extra: ({ hasActionPermission }) => {
-        return { rowHandle: { buttons: { authz: { show: hasActionPermission("authz") } } } };
-      }
-    };
-
     // crud组件的ref
     const crudRef = ref();
     // crud 配置的ref
@@ -113,6 +105,15 @@ export default defineComponent({
     // 你的crud配置
     const { crudOptions } = createCrudOptions({ expose, authz });
     // 初始化crud配置
+    // 此处传入permission进行通用按钮权限设置，会通过commonOptions去设置actionbar和rowHandle的按钮的show属性
+    // 更多关于按钮权限的源代码设置，请参考 ./src/plugin/fast-crud/index.ts （75-77行）
+    const permission = {
+      prefix: "sys:auth:role", //权限代码前缀
+      extra: ({ hasActionPermission }) => {
+        //额外按钮权限控制
+        return { rowHandle: { buttons: { authz: { show: hasActionPermission("authz") } } } };
+      }
+    };
     const { resetCrudOptions } = useCrud({ expose, crudOptions, permission });
     // 你可以调用此方法，重新初始化crud配置
     // resetCrudOptions(options)
