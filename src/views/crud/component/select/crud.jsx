@@ -271,7 +271,10 @@ export default function ({ expose }) {
           }),
           column: {
             width: 290,
-            component: { color: "auto" } // 自动染色
+            component: {
+              color: "auto", // 自动染色
+              defaultLabel: "未知城市" //无数据字典时的默认文本
+            }
           }
         },
         statusSimple: {

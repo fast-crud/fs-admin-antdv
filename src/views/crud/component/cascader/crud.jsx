@@ -60,12 +60,13 @@ export default function ({ crudRef }) {
             value: "code",
             label: "name",
             isTree: true,
-            getNodes(values) {
+            prototype: true,
+            getNodesByValues(values) {
               if (values == null) {
                 return [];
               }
               return requestForMock({
-                url: "/tree/GetNodesByValues",
+                url: "/mock/tree/GetNodesByValues",
                 params: { values }
               });
             }
