@@ -7,16 +7,23 @@ const list = [
   {
     status: "1",
     remote: "2",
-    modifyDict: false
+    modifyDict: false,
+    switch: true,
+    dynamicGetData: "1",
+    dynamicUrl: "2"
   },
   {
     status: "2",
     remote: "0",
-    modifyDict: false
+    modifyDict: false,
+    dynamicGetData: "1",
+    dynamicUrl: "2"
   },
   {
     status: "0",
-    modifyDict: false
+    modifyDict: false,
+    dynamicGetData: "1",
+    dynamicUrl: "2"
   }
 ];
 options.list = list;

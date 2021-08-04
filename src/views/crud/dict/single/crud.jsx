@@ -75,7 +75,9 @@ export default function ({ expose }) {
             },
             valueChange({ form }) {
               console.log("changed", form.modifyDict);
-              remoteDict.url = form.modifyDict ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
+              remoteDict.url = form.modifyDict
+                ? "/mock/dicts/moreOpenStatusEnum?remote"
+                : "/mock/dicts/OpenStatusEnum?remote";
               // 由于remoteDict.cloneable =false,所以全局公用一个实例，修改会影响全部地方
               remoteDict.reloadDict();
             }
@@ -86,7 +88,9 @@ export default function ({ expose }) {
               vModel: "checked",
               on: {
                 onChange({ $event }) {
-                  remoteDict.url = $event ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
+                  remoteDict.url = $event
+                    ? "/mock/dicts/moreOpenStatusEnum?remote"
+                    : "/mock/dicts/OpenStatusEnum?remote";
                   remoteDict.reloadDict();
                 }
               }

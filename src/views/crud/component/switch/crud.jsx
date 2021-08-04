@@ -54,7 +54,10 @@ export default function ({ expose }) {
           column: {
             component: {
               name: "fs-dict-switch",
-              vModel: "checked"
+              vModel: "checked",
+              onChange(value) {
+                console.log("switch changed", value);
+              }
             }
           },
           dict: dict({
