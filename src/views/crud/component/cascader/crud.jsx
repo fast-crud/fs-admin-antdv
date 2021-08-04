@@ -62,6 +62,7 @@ export default function ({ crudRef }) {
             isTree: true,
             prototype: true,
             getNodesByValues(values) {
+              //给cell展示组件调用，根据value值获取节点，每行都会请求一次
               if (values == null) {
                 return [];
               }
@@ -104,7 +105,6 @@ export default function ({ crudRef }) {
                     isLeaf: item.leaf === true
                   });
                 }
-                console.log("layz loaded", list);
                 targetOption.children = list;
                 //options.value = [...options.value];
               },

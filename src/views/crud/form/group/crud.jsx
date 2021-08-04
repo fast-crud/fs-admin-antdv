@@ -58,6 +58,10 @@ export default function ({ expose }) {
             itemProps: { labelWidth: "0px" }
           }
         },
+        slotField: {
+          title: "插槽示例",
+          type: "text"
+        },
         product: {
           title: "未分组字段",
           type: "text",
@@ -93,7 +97,7 @@ export default function ({ expose }) {
             info: {
               header: "详情",
               collapsed: true, //默认折叠
-              columns: ["intro", "content"]
+              columns: ["intro", "content", "slotField"]
             }
             // custom: {
             //   title: "自定义",
