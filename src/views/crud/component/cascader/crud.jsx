@@ -77,13 +77,13 @@ export default function ({ crudRef }) {
               vModel: "value",
               options: [
                 {
-                  value: "11",
-                  label: "北京",
+                  code: "11",
+                  name: "北京",
                   isLeaf: false
                 },
                 {
-                  value: "12",
-                  label: "天津",
+                  code: "12",
+                  name: "天津",
                   isLeaf: false
                 }
               ],
@@ -94,14 +94,14 @@ export default function ({ crudRef }) {
 
                 const ret = await requestForMock({
                   url: "/mock/tree/GetTreeChildrenByParentId",
-                  params: { parentId: targetOption.value }
+                  params: { parentId: targetOption.code }
                 });
                 targetOption.loading = false;
                 const list = [];
                 for (const item of ret) {
                   list.push({
-                    value: item.code,
-                    label: item.name,
+                    code: item.code,
+                    name: item.name,
                     isLeaf: item.leaf === true
                   });
                 }
