@@ -1,6 +1,7 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
 import { dict, compute } from "@fast-crud/fast-crud";
+import { asyncCompute } from "../../../../../../../fast-crud";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -55,9 +56,14 @@ export default function ({ expose }) {
             component: {
               name: "fs-dict-switch",
               vModel: "checked",
-              onChange(value) {
-                console.log("switch changed", value);
-              }
+              onChange: asyncCompute({
+                watch(context) {
+                  return context.form.switch;
+                },
+                asyncFn(value) {
+                  console.log("onChange", value);
+                }
+              })
             }
           },
           dict: dict({
