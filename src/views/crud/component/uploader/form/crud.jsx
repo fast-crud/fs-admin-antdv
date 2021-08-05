@@ -1,6 +1,7 @@
 import * as api from "./api";
 import { AllUploadSuccessValidator } from "@fast-crud/fast-extends";
 import { dict } from "@fast-crud/fast-crud";
+import { nextTick } from "vue";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -23,6 +24,15 @@ export default function ({ expose }) {
         addRequest,
         editRequest,
         delRequest
+      },
+      form: {
+        wrapper: {
+          async onOpened() {
+            // 异步组件实例的获取
+            const componentRef = await expose.getFormComponentRef("file", true);
+            console.log("componentRef", componentRef);
+          }
+        }
       },
       columns: {
         id: {

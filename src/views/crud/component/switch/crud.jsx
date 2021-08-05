@@ -1,7 +1,5 @@
 import * as api from "./api";
-import { requestForMock } from "/src/api/service";
 import { dict, compute } from "@fast-crud/fast-crud";
-import { asyncCompute } from "../../../../../../../fast-crud";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -52,17 +50,25 @@ export default function ({ expose }) {
           title: "cell显示",
           search: { show: true },
           type: "dict-switch",
+          form: {
+            component: {
+              onChange: compute((context) => {
+                //动态onChange方法测试
+                return () => {
+                  console.log("onChange", context.form.switch);
+                };
+              })
+            }
+          },
           column: {
             component: {
               name: "fs-dict-switch",
               vModel: "checked",
-              onChange: asyncCompute({
-                watch(context) {
-                  return context.form.switch;
-                },
-                asyncFn(value) {
-                  console.log("onChange", value);
-                }
+              onChange: compute((context) => {
+                //动态onChange方法测试
+                return () => {
+                  console.log("onChange", context.row.switch);
+                };
               })
             }
           },
