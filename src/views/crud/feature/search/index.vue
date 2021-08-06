@@ -1,6 +1,12 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding" />
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <a-button class="ml-1" @click="getSearchFormData">getSearchFormData</a-button>
+        <a-button class="ml-1" @click="setSearchFormData">setSearchFormData</a-button>
+        <a-button class="ml-1" @click="clearSearchForm">clearSearchForm</a-button>
+      </template>
+    </fs-crud>
   </fs-page>
 </template>
 
@@ -9,6 +15,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useCrud } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import { useExpose } from "@fast-crud/fast-crud";
+import { message } from "ant-design-vue";
 export default defineComponent({
   name: "FeatureSearch",
   setup() {
@@ -33,7 +40,17 @@ export default defineComponent({
 
     return {
       crudBinding,
-      crudRef
+      crudRef,
+      getSearchFormData() {
+        const form = expose.getSearchFormData();
+        message.info(`searchForm:${JSON.stringify(form)}`);
+      },
+      setSearchFormData() {
+        expose.setSearchFormData({ form: { radio: "1", test: 2 }, mergeForm: true });
+      },
+      clearSearchForm() {
+        expose.setSearchFormData({ form: {}, mergeForm: false });
+      }
     };
   }
 });
