@@ -1,6 +1,6 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding" />
+    <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
 
@@ -33,7 +33,10 @@ export default defineComponent({
 
     return {
       crudBinding,
-      crudRef
+      crudRef,
+      uploadChange(a, b, c) {
+        console.log("upload change", a, b, c);
+      }
     };
   }
 });

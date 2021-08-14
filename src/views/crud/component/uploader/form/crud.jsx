@@ -51,6 +51,7 @@ export default function ({ expose }) {
           type: "file-uploader",
           form: {
             component: {
+              multiple: true, //可选择多个
               uploader: {
                 type: "form"
               }

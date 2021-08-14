@@ -127,7 +127,7 @@ export default function ({ expose }) {
               uploader: {
                 type: "form",
                 buildUrl(res) {
-                  return "http://www.docmirror.cn:7070" + res.url;
+                  return res.url;
                 }
               }
             }
