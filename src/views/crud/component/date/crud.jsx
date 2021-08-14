@@ -44,7 +44,11 @@ export default function ({ expose }) {
         timestamp: {
           title: "时间戳",
           type: "datetime",
-          search: { show: true, width: 185 },
+          search: {
+            show: true,
+            width: 185,
+            component: {}
+          },
           valueBuilder({ value, row, key }) {
             if (value != null) {
               row[key] = moment(value);

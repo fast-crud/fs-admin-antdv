@@ -2,6 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
+        <a-date-picker :show-time="true" :on-change="test()"></a-date-picker>
         <a-alert
           style="margin-left: 10px"
           message="关于日期时间，建议前后端统一使用时间戳（long类型）进行交互，可以避免时区转化带来的问题"
@@ -40,7 +41,10 @@ export default defineComponent({
 
     return {
       crudBinding,
-      crudRef
+      crudRef,
+      test() {
+        console.log("test");
+      }
     };
   }
 });
