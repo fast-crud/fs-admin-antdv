@@ -9,7 +9,7 @@ import { generateModifyVars } from "./build/modify-vars";
 import { configThemePlugin } from "./build/theme-plugin";
 
 // https://vitejs.dev/config/
-// 增加环境变量
+// 增加环境变量 _
 process.env.VITE_APP_VERSION = require("./package.json").version;
 process.env.VITE_APP_BUILD_TIME = require("dayjs")().format("YYYY-M-D HH:mm:ss");
 
