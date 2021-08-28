@@ -346,6 +346,12 @@ export const crudResources = [
             name: "FeatureSearch",
             path: "/crud/feature/search",
             component: "/crud/feature/search/index.vue"
+          },
+          {
+            title: "列排序",
+            name: "FeatureColumnSort",
+            path: "/crud/feature/column-sort",
+            component: "/crud/feature/column-sort/index.vue"
           }
         ]
       },
