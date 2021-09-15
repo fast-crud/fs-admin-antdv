@@ -88,7 +88,7 @@ export const crudResources = [
         children: [
           {
             title: "文本输入(input)",
-            name: "ComponentInput",
+            name: "ComponentText",
             path: "/crud/component/text",
             component: "/crud/component/text/index.vue"
           },

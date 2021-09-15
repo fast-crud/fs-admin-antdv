@@ -123,12 +123,32 @@ function filterMenus(menus, condition) {
   return list;
 }
 
+function flatChildren(list, children) {
+  for (const child of children) {
+    list.push(child);
+    if (child.children && child.children.length > 0) {
+      flatChildren(list, child.children);
+    }
+    child.children = null;
+  }
+}
+function flatSubRouters(routers) {
+  for (const router of routers) {
+    const children: Array<any> = [];
+    if (router.children && router.children.length > 0) {
+      flatChildren(children, router.children);
+    }
+    router.children = children;
+  }
+  return routers;
+}
+
 const frameworkRet = buildMenusAndRouters(frameworkResource);
 const outsideRet = buildMenusAndRouters(outsideResource);
 const headerRet = buildMenusAndRouters(headerResource);
 
 const outsideRoutes = outsideRet.routes;
-const frameworkRoutes = frameworkRet.routes;
+const frameworkRoutes = flatSubRouters(frameworkRet.routes);
 const routes = [...outsideRoutes, ...frameworkRoutes];
 const frameworkMenus = frameworkRet.menus;
 const headerMenus = headerRet.menus;

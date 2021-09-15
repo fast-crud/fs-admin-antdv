@@ -1,6 +1,6 @@
 import mockUtil from "/src/mock/base";
 const options = {
-  name: "formCheckbox",
+  name: "ComponentCheckbox",
   idGenerator: 0
 };
 const list = [

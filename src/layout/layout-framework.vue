@@ -50,15 +50,15 @@
       </a-layout-header>
       <fs-tabs></fs-tabs>
       <a-layout-content class="fs-framework-content">
-        <keep-alive>
-          <router-view>
-            <template #default="{ Component, route }">
-              <transition name="fade-transverse">
+        <router-view>
+          <template #default="{ Component, route }">
+            <transition name="fade-transverse">
+              <keep-alive :include="keepAlive">
                 <component :is="Component" :key="route.fullPath" />
-              </transition>
-            </template>
-          </router-view>
-        </keep-alive>
+              </keep-alive>
+            </transition>
+          </template>
+        </router-view>
       </a-layout-content>
       <a-layout-footer class="fs-framework-footer"
         >by fast-crud

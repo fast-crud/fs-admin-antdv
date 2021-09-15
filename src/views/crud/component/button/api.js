@@ -1,6 +1,6 @@
 import { requestForMock } from "/src/api/service";
 const request = requestForMock;
-const apiPrefix = "/mock/FormButton";
+const apiPrefix = "/mock/ComponentButton";
 export function GetList(query) {
   return request({
     url: apiPrefix + "/page",

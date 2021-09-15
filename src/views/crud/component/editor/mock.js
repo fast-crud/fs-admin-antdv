@@ -1,7 +1,7 @@
 import mockUtil from "/src/mock/base";
 
 const options = {
-  name: "FormEditor",
+  name: "ComponentEditor",
   idGenerator: 0
 };
 const list = [

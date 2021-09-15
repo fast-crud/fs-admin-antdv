@@ -1,6 +1,6 @@
 import mockUtil from "/src/mock/base";
 const options = {
-  name: "FormUploader",
+  name: "ComponentUploader",
   idGenerator: 0
 };
 const list = [

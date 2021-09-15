@@ -32,7 +32,7 @@ export default function ({ expose }) {
           maskStyle: {
             position: "absolute"
           },
-          wrapClassName: "fs-form-wrapper  fs-dialog-inner"
+          customClass: "fs-dialog-inner"
         }
       },
       columns: {
@@ -43,6 +43,32 @@ export default function ({ expose }) {
         age: {
           title: "年龄",
           type: "text"
+        },
+        area: {
+          title: "地区",
+          type: "dict-select",
+          dict: dict({
+            value: "id",
+            label: "text",
+            data: [
+              { id: "sz", text: "深圳", color: "success" },
+              { id: "gz", text: "广州", color: "blue" },
+              { id: "bj", text: "北京" },
+              { id: "wh", text: "武汉" },
+              { id: "sh", text: "上海" }
+            ]
+          }),
+          form: {
+            component: {
+              props: {
+                slots: {
+                  suffixIcon: () => {
+                    return <SyncOutlined />;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

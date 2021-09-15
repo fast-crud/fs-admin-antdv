@@ -10,7 +10,7 @@ import { useCrud } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import { useExpose } from "@fast-crud/fast-crud";
 export default defineComponent({
-  name: "FormNumber",
+  name: "ComponentNumber",
   setup() {
     // crud组件的ref
     const crudRef = ref();
