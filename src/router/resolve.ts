@@ -66,6 +66,12 @@ export const buildMenusAndRouters = (resources) => {
       menu.children = menuChildren;
     }
     if (route) {
+      if (route?.meta?.cache !== false) {
+        if (route.meta == null) {
+          route.meta = {};
+        }
+        route.meta.cache = true;
+      }
       routes.push(route);
       route.children = routeChildren;
     }

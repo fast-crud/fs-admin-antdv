@@ -68,7 +68,7 @@ export default function ({ expose }) {
         },
         password: {
           title: "密码",
-          type: "text",
+          type: "password",
           column: {
             component: {
               render() {
@@ -85,7 +85,7 @@ export default function ({ expose }) {
         },
         password2: {
           title: "确认密码",
-          type: "text",
+          type: "password",
           column: { show: false },
           form: {
             rules: [

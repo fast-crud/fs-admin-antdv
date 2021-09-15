@@ -33,7 +33,6 @@ export default function ({ expose }) {
             }
           }
         },
-
         search: {
           title: "搜索",
           type: "text",

@@ -254,6 +254,12 @@ export const crudResources = [
             component: "/crud/form/helper/index.vue"
           },
           {
+            title: "页面内部弹出表单",
+            name: "FormInner",
+            path: "/crud/form/inner",
+            component: "/crud/form/inner/index.vue"
+          },
+          {
             title: "独立使用表单",
             name: "FormIndependent",
             path: "/crud/form/independent",
