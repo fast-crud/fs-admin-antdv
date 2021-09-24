@@ -434,6 +434,12 @@ export const crudResources = [
             name: "AdvancedNest",
             path: "/crud/advanced/nest",
             component: "/crud/advanced/nest/index.vue"
+          },
+          {
+            title: "自定义布局",
+            name: "AdvancedCustomLayout",
+            path: "/crud/advanced/custom-layout",
+            component: "/crud/advanced/custom-layout/index.vue"
           }
         ]
       }
