@@ -1,6 +1,8 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding" />
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <a-alert class="ml-1" type="info" message="配置order即可控制字段的顺序，数字越小越靠前，默认值100" />
+    </fs-crud>
   </fs-page>
 </template>
 
