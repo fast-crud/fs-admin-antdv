@@ -20,11 +20,13 @@ export default function ({ expose }) {
         delRequest
       },
       toolbar: {
+        //工具按钮排序
         buttons: {
           search: { order: 1 } // 查询按钮排到前面
         }
       },
       form: {
+        //表单跨列
         col: { span: 24 },
         labelCol: { span: 6 }
       },
