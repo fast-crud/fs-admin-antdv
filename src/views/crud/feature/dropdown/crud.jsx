@@ -35,7 +35,7 @@ export default function ({ expose }) {
             text: "我排前面",
             title: "按钮排序示例",
             type: "link",
-            order: 0 //数字越小，越靠前,查看、编辑、删除按钮的排序号分别为1，2，3
+            order: 0 //数字越小，越靠前,默认排序号为1
           }
         },
         dropdown: {
