@@ -14,6 +14,10 @@ export const headerResource = [
       {
         title: "VbenAdmin",
         path: "http://fast-crud.docmirror.cn/vben/"
+      },
+      {
+        title: "cool-admin-vue",
+        path: "http://fast-crud.docmirror.cn/cool/"
       }
     ]
   },
