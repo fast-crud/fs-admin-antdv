@@ -97,7 +97,7 @@ export default defineComponent({
           if (sub?.meta?.icon) {
             return (
               <div class={"menu-item-title"}>
-                <FsIconify icon={sub.meta.icon} />
+                <FsIcon icon={sub.meta.icon} />
                 <span>{sub.title}</span>
               </div>
             );

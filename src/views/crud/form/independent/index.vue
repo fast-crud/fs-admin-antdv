@@ -25,6 +25,8 @@ import { message } from "ant-design-vue";
 
 function useFormDirect() {
   const formRef = ref();
+
+  // 以下代码实际上 == crudBinding.addForm 或者 crudBinding.editForm
   const formOptions = ref({
     col: {
       span: 12
@@ -83,6 +85,8 @@ function useFormDirect() {
 }
 function useFormWrapper() {
   const formWrapperRef = ref();
+
+  // 以下代码实际上== crudBinding.addForm 或者 crudBinding.editForm
   const formWrapperOptions = ref({
     labelPosition: "right",
     labelWidth: "80px",

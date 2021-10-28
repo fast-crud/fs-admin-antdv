@@ -24,12 +24,14 @@ export default function ({ expose }) {
         delRequest
       },
       rowHandle: {
+        width: 290,
         buttons: {
           remove: {
             // 根据row的值判断按钮是否显示
             show: compute(({ row }) => {
               return row.radio !== "0";
-            })
+            }),
+            dropdown: true //---------》给想要折叠的按钮配置dropdown为true，就会放入dropdown中《---------------
           },
           orderExample: {
             text: "我排前面",
@@ -40,7 +42,8 @@ export default function ({ expose }) {
         },
         dropdown: {
           // 操作列折叠
-          atLeast: 2, // 至少几个以上的按钮才会被折叠,注意show=false的按钮也会计算在内（行编辑按钮默认是隐藏的也会占一个位置）
+          // 至少几个以上的按钮才会被折叠
+          // atLeast: 2, //TODO 注意 [atLeast]参数即将废弃，请给button配置dropdown即可放入折叠
           more: {
             text: "更多",
             icon: null
