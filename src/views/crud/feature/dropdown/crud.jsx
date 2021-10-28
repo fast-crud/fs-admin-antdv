@@ -1,5 +1,6 @@
 import * as api from "./api";
 import { dict, compute } from "@fast-crud/fast-crud";
+import { message } from "ant-design-vue";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -37,7 +38,11 @@ export default function ({ expose }) {
             text: "我排前面",
             title: "按钮排序示例",
             type: "link",
-            order: 0 //数字越小，越靠前,默认排序号为1
+            order: 0, //数字越小，越靠前,默认排序号为1
+            click(opts) {
+              console.log("自定义操作列按钮点击", opts);
+              message.success("自定义操作列按钮点击");
+            }
           }
         },
         dropdown: {
