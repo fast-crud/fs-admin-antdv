@@ -14,6 +14,11 @@
           <a-button @click="openFormWrapper">打开表单对话框</a-button>
           <fs-form-wrapper ref="formWrapperRef" v-bind="formWrapperOptions" />
         </a-card>
+
+        <a-card title="打开表单对话框【复用crudBinding】">
+          <a-button @click="openFormWrapper2">打开表单对话框</a-button>
+          <fs-form-wrapper ref="formWrapperRef2" v-bind="formWrapperOptions2" />
+        </a-card>
       </a-col>
     </a-row>
   </fs-page>
@@ -22,11 +27,14 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { message } from "ant-design-vue";
-
+import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import createCrudOptions from "./crud";
+/**
+ * 表单直接独立使用
+ * */
 function useFormDirect() {
   const formRef = ref();
 
-  // 以下代码实际上 == crudBinding.addForm 或者 crudBinding.editForm
   const formOptions = ref({
     col: {
       span: 12
@@ -83,6 +91,11 @@ function useFormDirect() {
     formSubmit
   };
 }
+
+/**
+ * 表单对话框独立使用
+ * @returns {{formWrapperRef, formWrapperOptions, openFormWrapper: openFormWrapper}}
+ */
 function useFormWrapper() {
   const formWrapperRef = ref();
 
@@ -152,12 +165,55 @@ function useFormWrapper() {
     formWrapperOptions
   };
 }
+
+/**
+ * 复用crudBinding的表单配置，可以减少一些手写代码
+ * @returns {{formWrapperRef2, openFormWrapper2: openFormWrapper2, formWrapperOptions2}}
+ */
+function useCrudBindingForm() {
+  const formWrapperRef2 = ref();
+
+  // crud组件的ref
+  const crudRef = ref();
+  // crud 配置的ref
+  const crudBinding = ref();
+  // 暴露的方法
+  const { expose } = useExpose({ crudRef, crudBinding });
+  // 你的crud配置
+  const { crudOptions } = createCrudOptions({ expose });
+  // 初始化crud配置
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
+  const { resetCrudOptions } = useCrud({ expose, crudOptions });
+  // 你可以调用此方法，重新初始化crud配置
+  // resetCrudOptions(options)
+
+  // 以下代码实际上== crudBinding.addForm 或者 crudBinding.editForm
+  const formWrapperOptions2 = ref({
+    ...crudBinding.value.addForm, // 你也可以用editForm
+    doSubmit({ form }) {
+      //覆盖提交方法
+      console.log("form submit:", form);
+      message.info("自定义表单提交:" + JSON.stringify(form));
+      message.warn("抛出异常可以阻止表单关闭");
+      throw new Error("抛出异常可以阻止表单关闭");
+    }
+  });
+  function openFormWrapper2() {
+    formWrapperRef2.value.open(formWrapperOptions2.value);
+  }
+  return {
+    formWrapperRef2,
+    openFormWrapper2,
+    formWrapperOptions2
+  };
+}
 export default defineComponent({
   name: "FormIndependent",
   setup() {
     return {
       ...useFormDirect(),
-      ...useFormWrapper()
+      ...useFormWrapper(),
+      ...useCrudBindingForm()
     };
   }
 });
