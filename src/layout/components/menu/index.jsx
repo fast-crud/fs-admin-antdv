@@ -85,7 +85,7 @@ export default defineComponent({
       open(item.key);
     }
 
-    const FsIconify = resolveComponent("FsIconify");
+    const FsIcon = resolveComponent("FsIcon");
 
     const buildMenus = (children) => {
       const slots = [];
@@ -196,7 +196,7 @@ export default defineComponent({
           theme={"light"}
           v-slots={slots}
           onClick={onSelect}
-          onOpenChange={onOpenChange}
+          // onOpenChange={onOpenChange}
           v-models={[
             [openKeys.value, "openKeys"],
             [selectedKeys.value, "selectedKeys"]

@@ -69,6 +69,7 @@ function install(app, options: any = {}) {
         },
         form: {
           display: "flex"
+          // labelCol: { style: { width: "150px" } }
         }
       };
 
