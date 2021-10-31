@@ -74,8 +74,8 @@ export default function ({ expose }) {
           type: "datetime",
           form: {
             component: {
-              format: "YYYY年MM月DD日 HH:mm",
-              valueFormat: "YYYY年MM月DD日 HH:mm"
+              format: "YYYY年MM月DD日 HH:mm"
+              // valueFormat: "YYYY年MM月DD日 HH:mm" //输入值的格式
             }
           },
           column: {

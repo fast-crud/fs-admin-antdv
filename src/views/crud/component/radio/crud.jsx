@@ -52,7 +52,7 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              radioName: "a-radio-button"
+              optionName: "a-radio-button"
             }
           }
         },
