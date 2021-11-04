@@ -454,6 +454,12 @@ export const crudResources = [
             component: "/crud/advanced/nest/index.vue"
           },
           {
+            title: "修改布局",
+            name: "AdvancedLayout",
+            path: "/crud/advanced/layout",
+            component: "/crud/advanced/layout/index.vue"
+          },
+          {
             title: "自定义布局",
             name: "AdvancedCustomLayout",
             path: "/crud/advanced/custom-layout",
