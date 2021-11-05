@@ -49,7 +49,7 @@ function useBetterScroll(enabled = true) {
       bsDestroy();
     });
     onOpenChange = async () => {
-      await nextTick();
+      console.log("onOpenChange");
       setTimeout(() => {
         bsRef.value?.refresh();
       }, 300);
@@ -196,7 +196,7 @@ export default defineComponent({
           theme={"light"}
           v-slots={slots}
           onClick={onSelect}
-          // onOpenChange={onOpenChange}
+          onOpenChange={onOpenChange}
           v-models={[
             [openKeys.value, "openKeys"],
             [selectedKeys.value, "selectedKeys"]

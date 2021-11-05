@@ -1,6 +1,7 @@
 import * as api from "./api";
 import { ref, shallowRef } from "vue";
 import SubTable from "./sub-table/index.vue";
+import { compute } from "@fast-crud/fast-crud";
 export default function ({ expose, asideTableRef }) {
   const editRequest = async ({ form, row }) => {
     form.id = row.id;
@@ -83,7 +84,10 @@ export default function ({ expose, asideTableRef }) {
             component: {
               //局部引用子表格，要用shallowRef包裹
               name: shallowRef(SubTable),
-              vModel: "modelValue"
+              vModel: "modelValue",
+              gradeId: compute(({ form }) => {
+                return form.id;
+              })
             }
             // antdv 的跨列配置，需要配置如下三个, 可以通过colspan简化
             // col: { span: 24 },
