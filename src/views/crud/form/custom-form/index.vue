@@ -43,23 +43,11 @@ export default defineComponent({
       columns: {
         customField: {
           title: "新表单字段",
-          form: {
-            component: {
-              name: "a-input",
-              vModel: "value",
-              allowClear: true
-            }
-          }
+          type: "text"
         },
         groupField: {
           title: "分组字段",
-          form: {
-            component: {
-              name: "a-input",
-              vModel: "value",
-              allowClear: true
-            }
-          }
+          type: "text"
         }
       },
       form: {
