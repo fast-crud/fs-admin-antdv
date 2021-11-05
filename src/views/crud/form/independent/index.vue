@@ -15,7 +15,7 @@
           <fs-form-wrapper ref="formWrapperRef" v-bind="formWrapperOptions" />
         </a-card>
 
-        <a-card title="打开表单对话框【复用crudBinding】">
+        <a-card class="mt-10" title="打开表单对话框【复用crudBinding】">
           <a-button @click="openFormWrapper2">打开表单对话框</a-button>
           <fs-form-wrapper ref="formWrapperRef2" v-bind="formWrapperOptions2" />
         </a-card>
@@ -60,6 +60,7 @@ function createFormOptions() {
       }
     },
     form: {
+      labelCol: { span: 6 },
       group: {
         groups: {
           testGroupName: {
