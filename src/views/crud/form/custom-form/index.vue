@@ -11,13 +11,13 @@
 
 <script>
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import _ from "lodash-es";
 import { message } from "ant-design-vue";
 export default defineComponent({
   name: "FormCustomForm",
-  setup() {
+  setup(props, ctx) {
     // crud组件的ref
     const crudRef = ref();
     // crud 配置的ref
@@ -37,21 +37,13 @@ export default defineComponent({
       expose.doRefresh();
     });
 
-    const openCustomForm = () => {
-      const baseFormOptions = _.omit(crudBinding.value.form, ["columns"]);
-      const formOptions = _.merge(_.cloneDeep(baseFormOptions), {
-        wrapper: { title: "自定义表单" },
-        columns: {
-          customField: {
-            title: "新表单字段",
-            component: {
-              name: "a-input",
-              vModel: "value",
-              allowClear: true
-            }
-          },
-          groupField: {
-            title: "分组字段",
+    // 自定义表单配置
+    const { buildFormOptions } = useColumns();
+    const customOptions = {
+      columns: {
+        customField: {
+          title: "新表单字段",
+          form: {
             component: {
               name: "a-input",
               vModel: "value",
@@ -59,6 +51,19 @@ export default defineComponent({
             }
           }
         },
+        groupField: {
+          title: "分组字段",
+          form: {
+            component: {
+              name: "a-input",
+              vModel: "value",
+              allowClear: true
+            }
+          }
+        }
+      },
+      form: {
+        wrapper: { title: "自定义表单" },
         group: {
           groups: {
             testGroupName: {
@@ -73,7 +78,13 @@ export default defineComponent({
           message.warn("抛出异常可以阻止表单关闭");
           throw new Error("抛出异常可以阻止表单关闭");
         }
-      });
+      }
+    };
+    //使用crudOptions结构来构建自定义表单配置
+    const formOptions = buildFormOptions(customOptions);
+
+    //打开自定义表单
+    const openCustomForm = () => {
       expose.getFormWrapperRef().open(formOptions);
     };
 

@@ -27,61 +27,62 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { message } from "ant-design-vue";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
+
+function createFormOptions() {
+  // 自定义表单配置
+  const { buildFormOptions } = useColumns();
+  //使用crudOptions结构来构建自定义表单配置
+  return buildFormOptions({
+    columns: {
+      customField: {
+        title: "新表单字段",
+        form: {
+          component: {
+            name: "a-input",
+            vModel: "value",
+            allowClear: true
+          },
+          rules: [{ required: true, message: "此项必填" }]
+        }
+      },
+      groupField: {
+        title: "分组字段",
+        form: {
+          component: {
+            name: "a-input",
+            vModel: "value",
+            allowClear: true
+          },
+          rules: [{ required: true, message: "此项必填" }]
+        }
+      }
+    },
+    form: {
+      group: {
+        groups: {
+          testGroupName: {
+            header: "分组测试",
+            columns: ["groupField"]
+          }
+        }
+      },
+      doSubmit({ form }) {
+        console.log("form submit:", form);
+        message.info("自定义表单提交:" + JSON.stringify(form));
+        message.success("保存成功");
+      }
+    }
+  });
+}
 /**
  * 表单直接独立使用
  * */
 function useFormDirect() {
   const formRef = ref();
-
-  const formOptions = ref({
-    col: {
-      span: 12
-    },
-    labelAlign: "right",
-    labelCol: {
-      span: 8
-    },
-    wrapperCol: {
-      span: 14
-    },
-    display: "flex",
-    columns: {
-      customField: {
-        title: "新表单字段",
-        component: {
-          name: "a-input",
-          vModel: "value",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      },
-      groupField: {
-        title: "分组字段",
-        component: {
-          name: "a-input",
-          vModel: "value",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      }
-    },
-    group: {
-      groups: {
-        testGroupName: {
-          header: "分组测试",
-          columns: ["groupField"]
-        }
-      }
-    },
-    doSubmit({ form }) {
-      console.log("form submit:", form);
-      message.info("自定义表单提交:" + JSON.stringify(form));
-      message.success("保存成功");
-    }
-  });
-
+  const formOptions = ref();
+  formOptions.value = createFormOptions();
   function formSubmit() {
     formRef.value.submit();
   }
@@ -98,64 +99,8 @@ function useFormDirect() {
  */
 function useFormWrapper() {
   const formWrapperRef = ref();
-
-  // 以下代码实际上== crudBinding.addForm 或者 crudBinding.editForm
-  const formWrapperOptions = ref({
-    labelPosition: "right",
-    labelWidth: "80px",
-    col: {
-      span: 12
-    },
-    labelAlign: "right",
-    labelCol: {
-      span: 6
-    },
-    wrapperCol: {
-      span: 16
-    },
-    wrapper: {
-      is: "a-modal",
-      width: "960px",
-      destroyOnClose: true,
-      footer: null,
-      title: "表单独立使用"
-    },
-    display: "flex",
-    columns: {
-      customField: {
-        title: "新表单字段",
-        component: {
-          name: "a-input",
-          vModel: "value",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      },
-      groupField: {
-        title: "分组字段",
-        component: {
-          name: "a-input",
-          vModel: "value",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      }
-    },
-    group: {
-      groups: {
-        testGroupName: {
-          header: "分组测试",
-          columns: ["groupField"]
-        }
-      }
-    },
-    doSubmit({ form }) {
-      console.log("form submit:", form);
-      message.info("自定义表单提交:" + JSON.stringify(form));
-      message.warn("抛出异常可以阻止表单关闭");
-      throw new Error("抛出异常可以阻止表单关闭");
-    }
-  });
+  const formWrapperOptions = ref();
+  formWrapperOptions.value = createFormOptions();
   function openFormWrapper() {
     formWrapperRef.value.open(formWrapperOptions.value);
   }
@@ -167,7 +112,7 @@ function useFormWrapper() {
 }
 
 /**
- * 复用crudBinding的表单配置，可以减少一些手写代码
+ * 直接使用crudBinding的表单配置
  * @returns {{formWrapperRef2, openFormWrapper2: openFormWrapper2, formWrapperOptions2}}
  */
 function useCrudBindingForm() {
