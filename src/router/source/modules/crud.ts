@@ -266,6 +266,21 @@ export const crudResources = [
             component: "/crud/form/inner/index.vue"
           },
           {
+            title: "新页面编辑",
+            name: "FormNewPage",
+            path: "/crud/form/new-page",
+            component: "/crud/form/new-page/index.vue"
+          },
+          {
+            title: "新页面编辑表单",
+            name: "FormNewPageEdit",
+            path: "/crud/form/new-page/edit",
+            component: "/crud/form/new-page/edit.vue",
+            meta: {
+              isMenu: false
+            }
+          },
+          {
             title: "独立使用表单",
             name: "FormIndependent",
             path: "/crud/form/independent",
