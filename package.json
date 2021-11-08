@@ -9,7 +9,7 @@
     "debug": "vite --mode debug",
     "debug:pm": "vite --mode debugpm",
     "debug:force": "vite --force --mode debug",
-    "build": "vite build",
+    "build": "vite build ",
     "serve": "vite preview",
     "pretty-quick": "pretty-quick",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/"
