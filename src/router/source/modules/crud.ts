@@ -269,7 +269,10 @@ export const crudResources = [
             title: "新页面编辑",
             name: "FormNewPage",
             path: "/crud/form/new-page",
-            component: "/crud/form/new-page/index.vue"
+            component: "/crud/form/new-page/index.vue",
+            meta: {
+              cache: false
+            }
           },
           {
             title: "新页面编辑表单",

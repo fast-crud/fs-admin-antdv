@@ -8,7 +8,10 @@ export default function ({ expose }) {
     return await api.GetList(query);
   };
   const editRequest = async ({ form, row }) => {
-    form.id = row.id;
+    if (row.id) {
+      form.id = row.id;
+    }
+
     return await api.UpdateObj(form);
   };
   const delRequest = async ({ row }) => {
@@ -35,7 +38,15 @@ export default function ({ expose }) {
           }
         }
       },
-      rowHandle: {},
+      rowHandle: {
+        buttons: {
+          edit: {
+            click(context) {
+              router.push("/crud/form/new-page/edit?id=" + context.row.id);
+            }
+          }
+        }
+      },
       columns: {
         title: {
           title: "商品标题",
@@ -67,20 +78,15 @@ export default function ({ expose }) {
         },
         content: {
           title: "详情",
-          type: "editor-ueditor",
+          type: ["editor-wang", "colspan"],
           form: {
             itemProps: { labelWidth: "0px" }
           }
         },
-        slotField: {
-          title: "插槽示例",
-          type: "text"
-        },
         product: {
           title: "未分组字段",
-          type: "text",
+          type: ["text", "colspan"],
           form: {
-            col: { span: 24 },
             helper: "未分组的字段会显示在这里，一般来说你应该把所有字段都编入分组内"
           }
         }

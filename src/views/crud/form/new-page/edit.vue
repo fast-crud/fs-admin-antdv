@@ -19,6 +19,8 @@ import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import * as api from "./api";
 import _ from "lodash-es";
+import { message } from "ant-design-vue";
+import { usePageStore } from "/@/store/modules/page";
 export default defineComponent({
   name: "FormNewPageEdit",
   setup(props, ctx) {
@@ -45,8 +47,15 @@ export default defineComponent({
     } else {
       formOptions.value = crudBinding.value.addForm;
     }
-    formOptions.value.doSubmit = (form) => {
-      console.log("submit", form);
+    const doSubmit = formOptions.value.doSubmit;
+    const pageStore = usePageStore();
+
+    formOptions.value.doSubmit = (context) => {
+      console.log("submit", context);
+      doSubmit(context);
+      //提交成功后，关闭本页面
+      message.success("保存成功");
+      pageStore.close({ tagName: route.fullPath });
     };
 
     const getDetail = async (id) => {
@@ -54,8 +63,11 @@ export default defineComponent({
     };
 
     onMounted(async () => {
-      const detail = await getDetail(id);
-      _.merge(formRef.value.form, detail);
+      if (id) {
+        //远程获取记录详情
+        const detail = await getDetail(id);
+        formRef.value.setFormData(detail);
+      }
     });
 
     return {
