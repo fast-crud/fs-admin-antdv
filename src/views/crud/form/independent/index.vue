@@ -6,6 +6,7 @@
           <fs-form ref="formRef" v-bind="formOptions" />
           <div style="margin-top: 10px">
             <a-button @click="formSubmit">提交表单</a-button>
+            <a-button class="ml-10" @click="setFormDataTest">setFormData</a-button>
           </div>
         </a-card>
       </a-col>
@@ -43,6 +44,9 @@ function createFormOptions() {
             name: "a-input",
             vModel: "value",
             allowClear: true
+          },
+          valueBuilder(context) {
+            console.log("value builder :", context);
           },
           rules: [{ required: true, message: "此项必填" }]
         }
@@ -87,10 +91,16 @@ function useFormDirect() {
   function formSubmit() {
     formRef.value.submit();
   }
+  function setFormDataTest() {
+    formRef.value.setFormData({
+      customField: "test"
+    });
+  }
   return {
     formOptions,
     formRef,
-    formSubmit
+    formSubmit,
+    setFormDataTest
   };
 }
 
