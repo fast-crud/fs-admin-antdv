@@ -3,7 +3,6 @@ import { defineStore } from "pinia";
 import { frameworkMenus, headerMenus, filterMenus, findMenus } from "/src/router/resolve";
 import _ from "lodash-es";
 import { mitter } from "/src/utils/util.mitt";
-import commonUtil from "/src/utils/util.common";
 //监听注销事件
 mitter.on("app.logout", () => {
   const resourceStore = useResourceStore();
