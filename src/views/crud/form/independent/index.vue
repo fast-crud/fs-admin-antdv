@@ -6,6 +6,7 @@
           <fs-form ref="formRef" v-bind="formOptions" />
           <div style="margin-top: 10px">
             <a-button @click="formSubmit">提交表单</a-button>
+            <a-button @click="formReset">重置表单</a-button>
             <a-button class="ml-10" @click="setFormDataTest">setFormData</a-button>
           </div>
         </a-card>
@@ -96,10 +97,14 @@ function useFormDirect() {
       customField: "test"
     });
   }
+  function formReset() {
+    formRef.value.reset();
+  }
   return {
     formOptions,
     formRef,
     formSubmit,
+    formReset,
     setFormDataTest
   };
 }
