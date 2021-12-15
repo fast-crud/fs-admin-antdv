@@ -51,7 +51,8 @@ export default function ({ expose }) {
           // atLeast: 2, //TODO 注意 [atLeast]参数即将废弃，请给button配置dropdown即可放入折叠
           more: {
             text: "更多",
-            icon: null
+            icon: null,
+            iconRight: "ion:caret-down-outline"
           }
         }
       },
