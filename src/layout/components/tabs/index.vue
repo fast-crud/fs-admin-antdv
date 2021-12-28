@@ -29,7 +29,7 @@
     </div>
 
     <div class="fs-multiple-page-control-btn">
-      <a-dropdown-button size="default" split-button @click="closeAll">
+      <a-dropdown-button class="control-btn-dropdown" split-button @click="closeAll">
         <span class="iconify" data-icon="ion:close-circle" data-inline="false"></span>
         <template #icon><DownOutlined /></template>
         <template #overlay>
@@ -221,6 +221,12 @@ export default {
     margin: 0;
     border-bottom: 1px solid #f0f0f0;
   }
+  .ant-tabs-top > .ant-tabs-nav,
+  .ant-tabs-bottom > .ant-tabs-nav,
+  .ant-tabs-top > div > .ant-tabs-nav,
+  .ant-tabs-bottom > div > .ant-tabs-nav {
+    margin: 0;
+  }
   .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-nav {
     .ant-tabs-tab {
       margin-right: 0;
@@ -267,6 +273,9 @@ export default {
       height: 100%;
       color: #666;
       border-bottom: 1px solid #f0f0f0;
+    }
+    .control-btn-dropdown {
+      text-align: center;
     }
   }
 

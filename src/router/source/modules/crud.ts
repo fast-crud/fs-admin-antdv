@@ -342,6 +342,12 @@ export const crudResources = [
             component: "/crud/feature/header-group/index.vue"
           },
           {
+            title: "合并单元格",
+            name: "FeatureMerge",
+            path: "/crud/feature/merge",
+            component: "/crud/feature/merge/index.vue"
+          },
+          {
             title: "序号",
             name: "FeatureIndex",
             path: "/crud/feature/index",

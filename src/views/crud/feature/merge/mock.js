@@ -5,13 +5,30 @@ const options = {
 };
 const list = [
   {
-    radio: "1"
+    radio: "1",
+    cellMerge: "test",
+    colMerge1: "111",
+    colMerge2: "222",
+
+    header1: "aaa",
+    header2: "bbb"
   },
   {
-    radio: "2"
+    radio: "2",
+    cellMerge: "test",
+    colMerge1: "111",
+    colMerge2: "222",
+
+    header1: "aaa",
+    header2: "bbb"
   },
   {
-    radio: "0"
+    radio: "0",
+    cellMerge: "test",
+    colMerge1: "111",
+    colMerge2: "222",
+    header1: "aaa",
+    header2: "bbb"
   }
 ];
 options.list = list;
