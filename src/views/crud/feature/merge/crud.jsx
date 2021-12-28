@@ -1,6 +1,5 @@
 import * as api from "./api";
 import { dict } from "@fast-crud/fast-crud";
-import { ref } from "vue";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -16,42 +15,20 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
-  const selectedRowKeys = ref([]);
 
-  const onSelectChange = (changed) => {
-    console.log("selection", changed);
-    selectedRowKeys.value = changed;
-  };
   return {
-    selectedRowKeys, //返回给index.vue去使用
     crudOptions: {
-      table: {
-        rowKey: "id",
-        rowSelection: {
-          selectedRowKeys: selectedRowKeys,
-          onChange: onSelectChange,
-          getCheckboxProps: (record) => ({
-            disabled: record.id === 1 // 此处演示第一行禁用
-          })
-        }
-      },
       request: {
         pageRequest,
         addRequest,
         editRequest,
         delRequest
       },
+      table: {},
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
-          column: {
-            width: 50
-          },
-          form: {
-            show: false
-          }
+          title: "id",
+          type: "text"
         },
         radio: {
           title: "状态",
