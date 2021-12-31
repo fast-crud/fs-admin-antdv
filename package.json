@@ -39,7 +39,6 @@
     "highlight.js": "^11.1.0",
     "lodash-es": "^4.17.15",
     "mitt": "^3.0.0",
-    "moment": "^2.29.1",
     "nprogress": "^0.2.0",
     "object-assign": "^4.1.1",
     "pinia": "2.0.9",
