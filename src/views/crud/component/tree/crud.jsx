@@ -60,7 +60,7 @@ export default function ({ expose }) {
           }
         },
         fieldReplace: {
-          title: "数据value配置",
+          title: "修改options的value字段名",
           search: { show: false },
           type: "dict-tree",
           dict: dict({
@@ -71,7 +71,7 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              replaceFields: { title: "name", key: "code", value: "code" }
+              fieldNames: { label: "name", key: "code", value: "code" }
             }
           }
         }

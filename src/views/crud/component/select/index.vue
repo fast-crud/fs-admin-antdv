@@ -1,6 +1,7 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding" />
+    <fs-crud ref="crudRef" v-bind="crudBinding" >
+    </fs-crud>
   </fs-page>
 </template>
 

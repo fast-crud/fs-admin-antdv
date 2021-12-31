@@ -25,6 +25,8 @@ export default function ({ expose }) {
         delRequest
       },
       table: {
+        //默认展开第一行
+        defaultExpandedRowKeys:[1],
         slots: {
           expandedRowRender: (scope) => {
             return (

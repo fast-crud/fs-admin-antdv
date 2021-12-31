@@ -1,6 +1,9 @@
 <template>
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <span>示例说明：1、勾选记录，然后点击下方pagination左边的删除按钮进行批量删除。2、第一条记录配置为不可选</span>
+      </template>
       <template #pagination-left>
         <a-tooltip title="批量删除">
           <fs-button icon="DeleteOutlined" @click="handleBatchDelete"></fs-button>

@@ -7,7 +7,7 @@
       placement="right"
       width="350px"
       :closable="false"
-      :after-visible-change="afterVisibleChange"
+      @after-visible-change="afterVisibleChange"
     >
       <fs-theme-color-picker
         :primary-color="setting.getTheme.primaryColor"
