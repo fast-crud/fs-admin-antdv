@@ -25,14 +25,7 @@ export default function ({ expose }) {
       },
       form: {
         wrapper: {
-          //设置如下三个参数即可在fast-crud内部弹出表单
-          getContainer() {
-            return expose.crudRef.value.$el;
-          },
-          maskStyle: {
-            position: "absolute"
-          },
-          customClass: "fs-dialog-inner"
+          inner: true
         }
       },
       columns: {
