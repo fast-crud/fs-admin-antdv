@@ -266,6 +266,15 @@ export const crudResources = [
             component: "/crud/form/inner/index.vue"
           },
           {
+            title: "地区字典管理",
+            name: "FormInnerArea",
+            path: "/crud/form/inner/area",
+            component: "/crud/form/inner/area/index.vue",
+            meta: {
+              isMenu: false
+            }
+          },
+          {
             title: "新页面编辑",
             name: "FormNewPage",
             path: "/crud/form/new-page",

@@ -242,6 +242,29 @@ export default {
             data: null
           };
         }
+      },
+      {
+        path: "/mock/" + name + "/delete",
+        method: "post",
+        handle(req) {
+          delById(req, list);
+          return {
+            code: 0,
+            msg: "success",
+            data: null
+          };
+        }
+      },
+      {
+        path: "/mock/" + name + "/all",
+        method: "post",
+        handle(req) {
+          return {
+            code: 0,
+            msg: "success",
+            data: list
+          };
+        }
       }
     ];
   }

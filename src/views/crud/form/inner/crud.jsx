@@ -1,5 +1,7 @@
 import * as api from "./api";
 import { dict, useExpose } from "@fast-crud/fast-crud";
+import { useRouter } from "vue-router";
+import { message } from "ant-design-vue";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -15,6 +17,13 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+
+  const router = useRouter();
+  const areaDict = dict({
+    value: "id",
+    label: "area",
+    url: "/mock/FormInnerArea/all"
+  });
   return {
     crudOptions: {
       request: {
@@ -47,26 +56,25 @@ export default function ({ expose }) {
         area: {
           title: "地区",
           type: "dict-select",
-          dict: dict({
-            value: "id",
-            label: "text",
-            data: [
-              { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: "blue" },
-              { id: "bj", text: "北京" },
-              { id: "wh", text: "武汉" },
-              { id: "sh", text: "上海" }
-            ]
-          }),
+          dict: areaDict,
           form: {
-            component: {
-              props: {
-                slots: {
-                  suffixIcon: () => {
-                    return <SyncOutlined />;
-                  }
-                }
+            suffixRender() {
+              function refresh() {
+                message.info("刷新dict");
+                areaDict.reloadDict();
               }
+              function gotoAddArea() {
+                message.info("调用 router.push 打开地区管理页面");
+                router.push({ path: "/crud/form/inner/area" });
+              }
+              return (
+                <a-button-group style={"padding-left:5px"}>
+                  <a-button onClick={refresh}>
+                    <SyncOutlined />
+                  </a-button>
+                  <a-button onClick={gotoAddArea}>添加地区</a-button>
+                </a-button-group>
+              );
             }
           }
         }
