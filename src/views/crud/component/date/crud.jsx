@@ -50,6 +50,7 @@ export default function ({ expose }) {
             component: {}
           },
           valueBuilder({ value, row, key }) {
+            console.log("value builder:",key,value,row)
             if (value != null) {
               row[key] = dayjs(value);
             }
