@@ -53,7 +53,7 @@ export default function ({ expose }) {
             url: "/mock/dicts/OpenStatusEnum?single"
           }),
           column: {
-            sortable: "custom"
+            sorter: true
           }
         }
       }
