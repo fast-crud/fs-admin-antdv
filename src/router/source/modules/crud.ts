@@ -415,6 +415,12 @@ export const crudResources = [
             name: "FeatureValueBuilder",
             path: "/crud/feature/value-builder",
             component: "/crud/feature/value-builder/index.vue"
+          },
+          {
+            title: "列设置",
+            name: "FeatureColumnsSet",
+            path: "/crud/feature/columns-set",
+            component: "/crud/feature/columns-set/index.vue"
           }
         ]
       },
