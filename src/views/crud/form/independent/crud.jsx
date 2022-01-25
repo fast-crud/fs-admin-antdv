@@ -2,6 +2,14 @@ export default function ({ expose }) {
   return {
     crudOptions: {
       form: {
+        wrapper:{
+          onClosed(e){
+            console.log("onClosed",e)
+          },
+          onOpened(e){
+            console.log("onOpened",e)
+          }
+        },
         labelCol: { span: 6 },
         wrapperCol: { span: 16 },
         helper: {
