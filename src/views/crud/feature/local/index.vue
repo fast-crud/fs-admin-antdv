@@ -1,11 +1,8 @@
 <template>
   <fs-page>
-    <fs-crud  ref="crudRef" v-bind="crudBinding">
+    <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <a-alert class="ml-1" type="warning" message="编辑本地数据(v-model)" />
-
-        <a-button @click="showData">打印data</a-button>
-
+        <a-button @click="showData">获取表格数据，打印data</a-button>
         <a-button @click="disabledEdit">退出编辑模式</a-button>
         <a-button @click="enabledFreeEdit">自由编辑模式</a-button>
         <a-button @click="enabledRowEdit">行编辑模式</a-button>
@@ -21,6 +18,9 @@ import {useExpose, useCrud} from '@fast-crud/fast-crud';
 
 export default defineComponent({
   name: 'FeatureLocal',
+  props: {
+    modelValue: {}
+  },
   setup() {
     // crud组件的ref
     const crudRef = ref();
@@ -41,29 +41,42 @@ export default defineComponent({
     //   expose.doRefresh();
     // });
 
+
+    // 通过crudBinding.value.data 可以获取表格实时数据
     function showData() {
       console.log('data:', crudBinding.value.data)
     }
-    crudBinding.value.data = [{name:'test'}]
+
+    //初始化本地数据示例
+    crudBinding.value.data = [{name: 'test'}]
 
 
-    function enabledRowEdit(){
+    //启用行编辑
+    function enabledRowEdit() {
       expose.editable.enable({
         mode: "row",
       });
+      crudBinding.value.actionbar.buttons.add.show = false
+      crudBinding.value.actionbar.buttons.addRow.show = true
+
     }
 
-    function enabledFreeEdit(){
+    //启用自由编辑
+    function enabledFreeEdit() {
       expose.editable.enable({
         mode: "free",
       });
+      crudBinding.value.actionbar.buttons.add.show = false
+      crudBinding.value.actionbar.buttons.addRow.show = true
     }
 
-    function disabledEdit(){
+    //启用关闭编辑模式
+    function disabledEdit() {
       expose.editable.enable({
         enabled: false
       });
-
+      crudBinding.value.actionbar.buttons.add.show = true
+      crudBinding.value.actionbar.buttons.addRow.show = false
     }
 
     return {
