@@ -28,6 +28,13 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
+      rowHandle: {
+        buttons: {
+          edit: { dropdown: true },
+          remove: { dropdown: true }
+        },
+        width: 630
+      },
       columns: {
         id: {
           title: "ID",
