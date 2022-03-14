@@ -115,16 +115,8 @@ export default defineComponent({
       console.log("chedcked", a, b, c);
     }
     function getChecked() {
-      const nodes = treeRef.value.tree.domTreeNodes;
-      const checked = [];
-      const halfChecked = [];
-      _.forEach(nodes, (item, id) => {
-        if (item.checked) {
-          checked.push(id);
-        } else if (item.halfChecked) {
-          halfChecked.push(id);
-        }
-      });
+      const checked = treeRef.value.checkedKeys;
+      const halfChecked = treeRef.value.halfCheckedKeys;
       return {
         checked,
         halfChecked
