@@ -25,7 +25,7 @@
     "@iconify/iconify": "^2.1.0",
     "@iconify/json": "^1.1.449",
     "@purge-icons/generated": "^0.7.0",
-    "ant-design-vue": "^3.0.0-beta.10",
+    "ant-design-vue": "^3.1.0-rc.2",
     "axios": "^0.24.0",
     "axios-mock-adapter": "^1.20.0",
     "base64-js": "^1.5.1",
@@ -85,7 +85,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.62.0",
     "rollup-plugin-visualizer": "^5.5.2",
-    "stylelint": "^14.1.0",
+    "stylelint": "^14.6.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-order": "^5.0.0",
     "tailwindcss": "^3.0.8",
@@ -93,6 +93,8 @@
     "typescript": "4.5.4",
     "vite": "^2.6.9",
     "vite-plugin-compression": "^0.4.0",
+    "vite-plugin-optimize-persist": "^0.1.2",
+    "vite-plugin-package-config": "^0.1.1",
     "vite-plugin-purge-icons": "^0.7.0",
     "vite-plugin-theme": "^0.8.1",
     "vite-plugin-windicss": "^1.6.1",
@@ -104,5 +106,12 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "gitHead": "9c2162697f3affea22c9a8cbc0ca74f4034ab27e"
+  "gitHead": "9c2162697f3affea22c9a8cbc0ca74f4034ab27e",
+  "vite": {
+    "optimizeDeps": {
+      "include": [
+        "@iconify/iconify"
+      ]
+    }
+  }
 }

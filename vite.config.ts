@@ -7,7 +7,8 @@ import * as path from "path";
 import WindiCSS from "vite-plugin-windicss";
 import { generateModifyVars } from "./build/modify-vars";
 import { configThemePlugin } from "./build/theme-plugin";
-
+import OptimizationPersist from "vite-plugin-optimize-persist";
+import PkgConfig from "vite-plugin-package-config";
 // https://vitejs.dev/config/
 // 增加环境变量 _
 process.env.VITE_APP_VERSION = require("./package.json").version;
@@ -54,6 +55,10 @@ export default ({ command, mode }) => {
       // }),
       // windicss tailwindcss
       WindiCSS()
+
+      // 优化首次打开速度
+      // PkgConfig(),
+      // OptimizationPersist()
     ],
     // optimizeDeps: {
     //   exclude: ["@fast-crud/fast-crud-extends"],
