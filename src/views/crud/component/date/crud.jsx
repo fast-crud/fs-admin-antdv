@@ -1,6 +1,7 @@
 import * as api from "./api";
 import { utils } from "@fast-crud/fast-crud";
-import dayjs from "dayjs";
+import * as dayjs from "dayjs";
+
 console.log("utils", utils);
 export default function ({ expose }) {
   const pageRequest = async (query) => {
@@ -50,7 +51,7 @@ export default function ({ expose }) {
             component: {}
           },
           valueBuilder({ value, row, key }) {
-            console.log("value builder:",key,value,row)
+            console.log("value builder:", key, value, row);
             if (value != null) {
               row[key] = dayjs(value);
             }
@@ -64,9 +65,9 @@ export default function ({ expose }) {
         datetime: {
           title: "日期时间",
           type: "datetime",
-          form:{
-            component:{
-              valueFormat: "YYYY-MM-DD HH:mm:ss", //输入值的格式
+          form: {
+            component: {
+              valueFormat: "YYYY-MM-DD HH:mm:ss" //输入值的格式
             }
           }
         },
@@ -99,16 +100,16 @@ export default function ({ expose }) {
                 }
               }
             }
-          },
+          }
         },
         time: {
           title: "仅时间",
           type: "time",
           form: {
             component: {
-              valueFormat: "YYYY-MM-DD HH:mm:ss", //输入值的格式
+              valueFormat: "YYYY-MM-DD HH:mm:ss" //输入值的格式
             }
-          },
+          }
         },
         disabledDate: {
           title: "禁用日期",

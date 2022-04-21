@@ -157,7 +157,7 @@ export default {
     & > .btn {
       &:hover {
         // background-color: #fff;
-        color: @primary-color;
+        // color: @primary-color;
       }
     }
   }
