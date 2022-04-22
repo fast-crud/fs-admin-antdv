@@ -119,6 +119,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import "../../../style/theme/index.less";
 .user-layout-login {
   label {
     font-size: 14px;

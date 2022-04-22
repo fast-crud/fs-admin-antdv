@@ -114,6 +114,7 @@ export default {
 };
 </script>
 <style lang="less">
+@import "../style/theme/index.less";
 .fs-framework {
   height: 100%;
   overflow-x: hidden;
@@ -156,8 +157,8 @@ export default {
 
     & > .btn {
       &:hover {
-        // background-color: #fff;
-        // color: @primary-color;
+        background-color: #fff;
+        color: @primary-color;
       }
     }
   }

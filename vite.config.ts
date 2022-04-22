@@ -55,14 +55,7 @@ export default ({ command, mode }) => {
       // }),
       // windicss tailwindcss
       WindiCSS()
-
-      // 优化首次打开速度
-      // PkgConfig(),
-      // OptimizationPersist()
     ],
-    // optimizeDeps: {
-    //   exclude: ["@fast-crud/fast-crud-extends"],
-    // },
     esbuild: {
       jsxFactory: "h",
       jsxFragment: "Fragment"

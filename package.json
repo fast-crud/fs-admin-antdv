@@ -11,6 +11,7 @@
     "debug:force": "vite --force --mode debug",
     "build": "vite build ",
     "serve": "vite preview",
+    "preview": "vite preview",
     "pretty-quick": "pretty-quick",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
     "upgrade": "yarn upgrade-interactive --latest"
