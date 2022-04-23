@@ -1,6 +1,6 @@
 import * as api from "./api";
 import { dict } from "@fast-crud/fast-crud";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);

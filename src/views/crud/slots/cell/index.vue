@@ -33,7 +33,7 @@
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 export default defineComponent({
   name: "SlotsCell",
   setup() {
