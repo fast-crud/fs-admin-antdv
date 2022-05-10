@@ -52,24 +52,27 @@ export default function ({ expose }) {
           type: "dict-switch",
           form: {
             component: {
-              onChange: compute((context) => {
-                //动态onChange方法测试
-                return () => {
-                  console.log("onChange", context.form.switch);
-                };
-              })
+              // onChange: compute((context) => {
+              //   //动态onChange方法测试
+              //   return () => {
+              //     console.log("onChange", context.form.cellSwitch);
+              //   };
+              // })
             }
           },
           column: {
             component: {
               name: "fs-dict-switch",
               vModel: "checked",
-              onChange: compute((context) => {
-                //动态onChange方法测试
-                return () => {
-                  console.log("onChange", context.row.switch);
-                };
-              })
+              onChange: (value) => {
+                console.log("onChange", value);
+              }
+              // onChange: compute((context) => {
+              //   //动态onChange方法测试
+              //   return () => {
+              //     console.log("onChange", context.row.cellSwitch);
+              //   };
+              // })
             }
           },
           dict: dict({
