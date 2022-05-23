@@ -297,6 +297,12 @@ export const crudResources = [
             name: "FormIndependent",
             path: "/crud/form/independent",
             component: "/crud/form/independent/index.vue"
+          },
+          {
+            title: "重置表单",
+            name: "FormReset",
+            path: "/crud/form/reset",
+            component: "/crud/form/reset/index.vue"
           }
         ]
       },
@@ -421,12 +427,14 @@ export const crudResources = [
             name: "FeatureColumnsSet",
             path: "/crud/feature/columns-set",
             component: "/crud/feature/columns-set/index.vue"
-          },{
+          },
+          {
             title: "本地化编辑",
             name: "FeatureLocal",
             path: "/crud/feature/local",
             component: "/crud/feature/local/index.vue"
-          },{
+          },
+          {
             title: "v-model",
             name: "FeatureVModel",
             path: "/crud/feature/v-model",
