@@ -26,6 +26,7 @@ export default function ({ expose }) {
       },
       search: {
         layout: "multi-line",
+        buttonsPosition: "bottom",
         col: {
           span: 4
         },
@@ -33,6 +34,34 @@ export default function ({ expose }) {
           labelCol: {
             style: {
               width: "100px"
+            }
+          }
+        }
+      },
+      actionbar: {
+        buttons: {
+          change: {
+            text: "切换模式",
+            click() {
+              if (expose.crudBinding.value.search.layout === "multi-line") {
+                expose.crudBinding.value.search.layout = "";
+                expose.crudBinding.value.search.buttonsPosition = "default";
+              } else {
+                expose.crudBinding.value.search.layout = "multi-line";
+                expose.crudBinding.value.search.buttonsPosition = "bottom";
+              }
+            }
+          },
+          search: {
+            text: "查询",
+            click() {
+              expose.getSearchRef().doSearch();
+            }
+          },
+          reset: {
+            text: "重置查询",
+            click() {
+              expose.getSearchRef().doReset();
             }
           }
         }
