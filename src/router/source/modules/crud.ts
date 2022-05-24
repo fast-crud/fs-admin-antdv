@@ -263,7 +263,10 @@ export const crudResources = [
             title: "页面内部弹出表单",
             name: "FormInner",
             path: "/crud/form/inner",
-            component: "/crud/form/inner/index.vue"
+            component: "/crud/form/inner/index.vue",
+            meta: {
+              cache: true
+            }
           },
           {
             title: "地区字典管理",

@@ -117,10 +117,8 @@ export default function ({ expose }) {
           form: {
             component: {
               valueFormat: "YYYY-MM-DD HH:mm:ss", //输入值的格式
-              "picker-options": {
-                disabledDate(time) {
-                  return time.getTime() < Date.now();
-                }
+              disabledDate(current) {
+                return current && current < dayjs().endOf("day");
               }
             }
           }
