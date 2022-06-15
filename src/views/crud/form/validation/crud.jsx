@@ -79,7 +79,7 @@ export default function ({ expose }) {
           type: "password",
           column: {
             component: {
-              render() {
+              cellRender() {
                 return <span>******</span>;
               }
             }
