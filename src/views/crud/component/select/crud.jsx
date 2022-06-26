@@ -13,9 +13,13 @@ function useSearchRemote() {
   const fetchUser = _.debounce((value) => {
     console.log("fetching user", value);
     lastFetchId += 1;
+
     const fetchId = lastFetchId;
+
     state.data.value = [];
+
     state.fetching.value = true;
+
     fetch("https://randomuser.me/api/?results=5")
       .then((response) => response.json())
       .then((body) => {
