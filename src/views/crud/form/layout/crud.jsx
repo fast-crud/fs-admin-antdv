@@ -67,6 +67,13 @@ export default function ({ expose }) {
           title: "邮编",
           type: "text"
         },
+        blank: {
+          title: "表单占位栏",
+          type: "text",
+          form: {
+            blank: true
+          }
+        },
         gridSpan: {
           title: "grid跨列",
           type: "textarea",
