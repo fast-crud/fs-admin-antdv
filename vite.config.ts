@@ -57,6 +57,7 @@ export default ({ command, mode }) => {
       WindiCSS()
     ],
     esbuild: {
+      // pure: ["console.log", "debugger"],
       jsxFactory: "h",
       jsxFragment: "Fragment"
     },
