@@ -62,7 +62,14 @@ export default function ({ expose }) {
           title: "远程字典",
           search: { show: true },
           dict: remoteDict,
-          type: "dict-select"
+          type: "dict-select",
+          column: {
+            component: {
+              onDictChange(opts) {
+                console.log("字典变化：", opts);
+              }
+            }
+          }
         },
         modifyDict: {
           title: "动态修改字典",
