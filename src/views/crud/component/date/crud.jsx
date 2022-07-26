@@ -27,7 +27,7 @@ export default function ({ expose }) {
         delRequest
       },
       table: {
-        scroll: { x: 1700 }
+        scroll: { x: 2000 }
       },
       rowHandle: { fixed: "right" },
       columns: {
@@ -151,6 +151,10 @@ export default function ({ expose }) {
               row.datetimerangeEnd = null;
             }
           }
+        },
+        customType: {
+          title: "自定义字段类型",
+          type: "time2"
         }
       }
     }

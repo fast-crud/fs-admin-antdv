@@ -81,6 +81,18 @@ export default function ({ expose }) {
             helper: "最大可上传1个文件"
           }
         },
+        avatar: {
+          title: "头像上传",
+          type: "avatar-uploader",
+          form: {
+            component: {
+              uploader: {
+                type: "form"
+              }
+            },
+            helper: "就是照片墙limit=1的效果"
+          }
+        },
         cropper: {
           title: "裁剪",
           type: "cropper-uploader",

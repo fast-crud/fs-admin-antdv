@@ -1,6 +1,6 @@
 import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
-import { FastCrud } from "@fast-crud/fast-crud";
+import { FastCrud, useTypes } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import { FsExtendsUploader, FsExtendsEditor, FsExtendsJson } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
@@ -179,6 +179,18 @@ function install(app, options: any = {}) {
       successHandle(ret) {
         // 上传完成后的结果处理， 此处应返回格式为{url:xxx}
         return { url: "http://www.docmirror.cn:7070" + ret };
+      }
+    }
+  });
+
+  const { addTypes } = useTypes();
+  addTypes({
+    time2: {
+      //如果与官方字段类型同名，将会覆盖官方的字段类型
+      form: { component: { name: "a-date-picker" } },
+      column: { component: { name: "fs-date-format", format: "YYYY-MM-DD" } },
+      valueBuilder(context) {
+        console.log("time2,valueBuilder", context);
       }
     }
   });
