@@ -14,6 +14,7 @@
         <a-tooltip title="我能控制表格显隐">
           <span class="ml-1">表格显隐:<a-switch v-model:checked="showTableRef"></a-switch></span>
         </a-tooltip>
+        <span class="ml-1">列显隐:<a-switch v-model:checked="columnComponentShowRef"></a-switch></span>
         <a-alert class="ml-1" type="info" message="点击下方右边的编辑按钮查看示例效果-----------> ↓↓↓↓↓" />
       </template>
       <template #form_refSwitch>
