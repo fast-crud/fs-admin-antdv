@@ -39,12 +39,12 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
-      form:{
-        beforeSubmit(context){
-          console.log("beforeSubmit",context)
+      form: {
+        beforeSubmit(context) {
+          console.log("beforeSubmit", context);
         },
-        afterSubmit(context){
-          console.log("afterSubmit",context)
+        afterSubmit(context) {
+          console.log("afterSubmit", context);
         }
       },
       columns: {
