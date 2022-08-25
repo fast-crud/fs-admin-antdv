@@ -55,7 +55,7 @@ export default function ({ expose }) {
           title: "详情",
           type: "editor-ueditor",
           form: {
-             labelWidth: "0px"
+            labelWidth: "0px"
           }
         },
         slotField: {
@@ -88,7 +88,7 @@ export default function ({ expose }) {
                   );
                 }
               },
-              columns: ["code", "title", "images"]
+              columns: ["code", "title", "images", "invalidKey"]
             },
             price: {
               header: "库存价格",
