@@ -46,6 +46,23 @@ export default function ({ expose }) {
             ]
           })
         },
+        notBool: {
+          title: "自定义value",
+          search: { show: true },
+          type: "dict-switch",
+          dict: dict({
+            data: [
+              { value: "1", label: "开启" },
+              { value: "2", label: "关闭" }
+            ]
+          }),
+          form: {
+            component: {
+              checkedValue: "1",
+              unCheckedValue: "2"
+            }
+          }
+        },
         cellSwitch: {
           title: "cell显示",
           search: { show: true },
