@@ -3,7 +3,7 @@
     <a-row :gutter="10">
       <a-col :span="12">
         <a-card title="直接显示表单">
-          <fs-form ref="formRef" v-bind="formOptions" />
+          <fs-form ref="formRef" v-bind="formOptions"> </fs-form>
           <div style="margin-top: 10px">
             <a-button @click="formSubmit">提交表单</a-button>
             <a-button @click="formReset">重置表单</a-button>
