@@ -520,6 +520,12 @@ export const crudResources = [
             component: "/crud/advanced/nest/index.vue"
           },
           {
+            title: "对话框中显示crud",
+            name: "AdvancedInDialog",
+            path: "/crud/advanced/in-dialog",
+            component: "/crud/advanced/in-dialog/index.vue"
+          },
+          {
             title: "修改布局",
             name: "AdvancedLayout",
             path: "/crud/advanced/layout",
