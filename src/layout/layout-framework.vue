@@ -44,7 +44,7 @@
             :menus="headerMenus"
           />
           <fs-locale class="btn" />
-          <fs-theme-set class="btn" />
+<!--          <fs-theme-set class="btn" />-->
           <fs-user-info class="btn" />
         </div>
       </a-layout-header>

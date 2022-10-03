@@ -5,8 +5,8 @@ import viteCompression from "vite-plugin-compression";
 import PurgeIcons from "vite-plugin-purge-icons";
 import * as path from "path";
 import WindiCSS from "vite-plugin-windicss";
-import { generateModifyVars } from "./build/modify-vars";
-import { configThemePlugin } from "./build/theme-plugin";
+// import { generateModifyVars } from "./build/modify-vars";
+// import { configThemePlugin } from "./build/theme-plugin";
 // import OptimizationPersist from "vite-plugin-optimize-persist";
 // import PkgConfig from "vite-plugin-package-config";
 // https://vitejs.dev/config/
@@ -48,7 +48,7 @@ export default ({ command, mode }) => {
         // includedCollections: ["ion"]
       }),
       //主题色替换
-      ...configThemePlugin(true),
+      //...configThemePlugin(true),
       // viteThemePlugin({
       //   // Match the color to be modified
       //   colorVariables: ["#1890ff", "#40a9ff"]
@@ -78,7 +78,7 @@ export default ({ command, mode }) => {
       preprocessorOptions: {
         less: {
           // 修改默认主题颜色，配置less变量
-          modifyVars: generateModifyVars(),
+          // modifyVars: generateModifyVars(),
           javascriptEnabled: true
         }
       }
