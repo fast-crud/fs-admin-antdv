@@ -64,7 +64,10 @@ export default function ({ expose }) {
           type: "text",
           column: {
             editable: {
-              disabled: true
+              disabled: true //也可以配置为方法，根据条件禁用或启用编辑
+              // disabled: ({ column, index, row }) => {
+              //   return index % 2 === 0;
+              // }
             }
           }
         },
