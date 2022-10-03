@@ -59,6 +59,15 @@ export default function ({ expose }) {
           },
           column: { width: 80, align: "center" }
         },
+        disable: {
+          title: "禁止编辑",
+          type: "text",
+          column: {
+            editable: {
+              disabled: true
+            }
+          }
+        },
         radio: {
           title: "状态",
           search: { show: true },
