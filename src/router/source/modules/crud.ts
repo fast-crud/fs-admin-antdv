@@ -42,9 +42,10 @@ export const crudResources = [
             component: "/crud/basis/value-change/index.vue"
           },
           {
-            title: "test",
-            path: "/crud/basis/test",
-            component: "/crud/basis/test/index.vue"
+            title: "HelloWorld",
+            name: "FsCrudFirst",
+            path: "/crud/basis/first",
+            component: "/crud/basis/first/index.vue",
           }
         ]
       },
