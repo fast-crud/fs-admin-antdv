@@ -6,6 +6,7 @@
 
 <script>
 import zhCN from "ant-design-vue/es/locale/zh_CN";
+import enUS from "ant-design-vue/es/locale/en_US";
 import { provide, ref, nextTick } from "vue";
 import { usePageStore } from "/src/store/modules/page";
 import { useResourceStore } from "/src/store/modules/resource";
@@ -15,12 +16,22 @@ export default {
   setup() {
     //刷新页面方法
     const routerEnabled = ref(true);
+    const locale = ref(zhCN)
     async function reload() {
       routerEnabled.value = false;
       await nextTick();
       routerEnabled.value = true;
     }
+    function localeChanged(value){
+      console.log('locale changed:',value)
+      if(value === 'zh-cn'){
+        locale.value = zhCN
+      }else if(value === 'en'){
+        locale.value = enUS
+      }
+    }
     provide("fn:router.reload", reload);
+    provide("fn:locale.changed", localeChanged);
 
     //其他初始化
     const resourceStore = useResourceStore();
@@ -31,13 +42,9 @@ export default {
     settingStore.init();
 
     return {
-      routerEnabled
+      routerEnabled,
+      locale
     };
   },
-  data() {
-    return {
-      locale: zhCN
-    };
-  }
 };
 </script>
