@@ -1,6 +1,7 @@
 import LayoutFramework from "/src/layout/layout-framework.vue";
-import { crudResources } from "/@/router/source/modules/crud";
+//import { crudResources } from "/@/router/source/modules/crud";
 import { sysResources } from "/@/router/source/modules/sys";
+import { certdResources } from "/@/router/source/modules/certd";
 export const frameworkResource = [
   {
     title: "框架",
@@ -23,7 +24,8 @@ export const frameworkResource = [
           icon: "ion:home-outline"
         }
       },
-      ...crudResources,
+      //...crudResources,
+      ...certdResources,
       ...sysResources
     ]
   }
