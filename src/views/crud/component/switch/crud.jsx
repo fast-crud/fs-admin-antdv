@@ -63,19 +63,38 @@ export default function ({ expose }) {
             }
           }
         },
+        switchLabel: {
+          title: "切换字段label",
+          search: { show: true },
+          type: "dict-switch",
+          dict: dict({
+            data: [
+              { value: true, label: "开启" },
+              { value: false, label: "关闭" }
+            ]
+          }),
+          column: {
+            show: false
+          }
+        },
+        labelTarget: {
+          title: "我将被切换",
+          type: "text",
+          column: {
+            show: false
+          },
+          form: {
+            label: compute(({ form }) => {
+              return form.switchLabel ? "我将被切换" : "再切换一下";
+            })
+          }
+        },
         cellSwitch: {
           title: "cell显示",
           search: { show: true },
           type: "dict-switch",
           form: {
-            component: {
-              // onChange: compute((context) => {
-              //   //动态onChange方法测试
-              //   return () => {
-              //     console.log("onChange", context.form.cellSwitch);
-              //   };
-              // })
-            }
+            component: {}
           },
           column: {
             component: {
