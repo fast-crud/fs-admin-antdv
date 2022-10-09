@@ -1,27 +1,27 @@
 import { defineStore } from "pinia";
 // @ts-ignore
 import { LocalStorage } from "/src/utils/util.storage";
-import { replaceStyleVariables } from "vite-plugin-theme/es/client";
+// import { replaceStyleVariables } from "vite-plugin-theme/es/client";
 
-import { getThemeColors, generateColors } from "/src/../build/theme-colors";
+// import { getThemeColors, generateColors } from "/src/../build/theme-colors";
+//
+// import { mixLighten, mixDarken, tinycolor } from "vite-plugin-theme/es/colorUtils";
 
-import { mixLighten, mixDarken, tinycolor } from "vite-plugin-theme/es/colorUtils";
-
-export async function changeTheme(color?: string) {
-  if (color == null) {
-    return;
-  }
-  const colors = generateColors({
-    mixDarken,
-    mixLighten,
-    tinycolor,
-    color
-  });
-
-  return await replaceStyleVariables({
-    colorVariables: [...getThemeColors(color), ...colors]
-  });
-}
+// export async function changeTheme(color?: string) {
+//   if (color == null) {
+//     return;
+//   }
+//   const colors = generateColors({
+//     mixDarken,
+//     mixLighten,
+//     tinycolor,
+//     color
+//   });
+//
+//   return await replaceStyleVariables({
+//     colorVariables: [...getThemeColors(color), ...colors]
+//   });
+// }
 
 interface SettingState {
   theme: any;
@@ -49,7 +49,7 @@ export const useSettingStore = defineStore({
       }
       this.theme = theme;
       this.persistTheme();
-      await changeTheme(this.theme.primaryColor);
+     // await changeTheme(this.theme.primaryColor);
     },
     async setPrimaryColor(color) {
       const theme = this.theme;

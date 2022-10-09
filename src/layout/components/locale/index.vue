@@ -42,9 +42,11 @@ export default {
     });
 
     const routerReload = inject("fn:router.reload");
+    const localeChanged = inject("fn:locale.changed");
     const changeLocale = (change) => {
       i18n.global.locale.value = change.key;
       routerReload();
+      localeChanged(change.key)
     };
     return {
       languages,

@@ -45,9 +45,11 @@ export const usePermissionStore = defineStore({
   }),
   getters: {
     getPermissions() {
+      // @ts-ignore
       return this.permissions;
     },
     isInited() {
+      // @ts-ignore
       return this.inited;
     }
   },

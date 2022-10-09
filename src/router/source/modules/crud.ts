@@ -40,12 +40,13 @@ export const crudResources = [
             name: "BasisValueChange",
             path: "/crud/basis/value-change",
             component: "/crud/basis/value-change/index.vue"
+          },
+          {
+            title: "HelloWorld",
+            name: "FsCrudFirst",
+            path: "/crud/basis/first",
+            component: "/crud/basis/first/index.vue",
           }
-          // {
-          //   title: "debug",
-          //   path: "/crud/debug/select",
-          //   component: "/crud/debug/select/index.vue"
-          // }
         ]
       },
       {
@@ -518,6 +519,12 @@ export const crudResources = [
             name: "AdvancedNest",
             path: "/crud/advanced/nest",
             component: "/crud/advanced/nest/index.vue"
+          },
+          {
+            title: "对话框中显示crud",
+            name: "AdvancedInDialog",
+            path: "/crud/advanced/in-dialog",
+            component: "/crud/advanced/in-dialog/index.vue"
           },
           {
             title: "修改布局",
