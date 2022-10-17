@@ -8,31 +8,42 @@
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud } from "@fast-crud/fast-crud";
 import { useExpose } from "@fast-crud/fast-crud";
-import _ from 'lodash-es'
+import _ from "lodash-es";
 
 //此处为crudOptions配置
 const createCrudOptions = function ({ expose }) {
-  const records = [{id:1,name:'Hello World'}]
+  //本地模拟后台crud接口方法 ----开始
+  const records = [{ id: 1, name: "Hello World" }];
   const pageRequest = async (query) => {
     return {
-      records, currentPage:1,pageSize:20,total:records.length
-    }
+      records,
+      currentPage: 1,
+      pageSize: 20,
+      total: records.length
+    };
   };
   const editRequest = async ({ form, row }) => {
-    const target = _.find(records,item=>{return row.id === item.id})
-    _.merge(target,form)
+    const target = _.find(records, (item) => {
+      return row.id === item.id;
+    });
+    _.merge(target, form);
     return target;
   };
   const delRequest = async ({ row }) => {
-    _.remove(records,item=>{return item.id === row.id})
+    _.remove(records, (item) => {
+      return item.id === row.id;
+    });
   };
-
   const addRequest = async ({ form }) => {
-    const maxRecord = _.maxBy(records,item=>{return item.id})
-    form.id = (maxRecord?.id||0)+1
-    records.push(form)
-    return form
+    const maxRecord = _.maxBy(records, (item) => {
+      return item.id;
+    });
+    form.id = (maxRecord?.id || 0) + 1;
+    records.push(form);
+    return form;
   };
+  //本地模拟后台crud接口方法 -----结束
+
   return {
     crudOptions: {
       request: {
@@ -45,17 +56,17 @@ const createCrudOptions = function ({ expose }) {
         name: {
           title: "姓名",
           type: "text",
-          search: {show: true},
+          search: { show: true },
           form: {
             component: {
               maxlength: 20
             }
           }
-        },
+        }
       }
     }
   };
-}
+};
 
 //此处为组件定义
 export default defineComponent({

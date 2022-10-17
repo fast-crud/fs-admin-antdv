@@ -57,6 +57,22 @@ export default function ({ expose }) {
     return await api.AddObj(form);
   };
 
+  const dictRef = dict({
+    value: "id",
+    label: "text",
+    data: [
+      { id: "sz", text: "深圳", color: "success" },
+      { id: "gz", text: "广州", color: "blue" },
+      { id: "bj", text: "北京" },
+      { id: "wh", text: "武汉" },
+      { id: "sh", text: "上海" }
+    ]
+  });
+
+  function dynamicUpdateDictOptions(){
+
+  }
+
   const { fetchUser, searchState } = useSearchRemote();
   return {
     crudOptions: {
@@ -97,17 +113,7 @@ export default function ({ expose }) {
         statusLocal: {
           title: "单选本地",
           type: "dict-select",
-          dict: dict({
-            value: "id",
-            label: "text",
-            data: [
-              { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: "blue" },
-              { id: "bj", text: "北京" },
-              { id: "wh", text: "武汉" },
-              { id: "sh", text: "上海" }
-            ]
-          })
+          dict: dictRef
         },
         statusRemote: {
           title: "单选远程",

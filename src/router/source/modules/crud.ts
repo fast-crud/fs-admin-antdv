@@ -18,6 +18,12 @@ export const crudResources = [
         },
         children: [
           {
+            title: "HelloWorld",
+            name: "FsCrudFirst",
+            path: "/crud/basis/first",
+            component: "/crud/basis/first/index.vue"
+          },
+          {
             title: "动态计算",
             name: "BasisCompute",
             path: "/crud/basis/compute",
@@ -40,12 +46,6 @@ export const crudResources = [
             name: "BasisValueChange",
             path: "/crud/basis/value-change",
             component: "/crud/basis/value-change/index.vue"
-          },
-          {
-            title: "HelloWorld",
-            name: "FsCrudFirst",
-            path: "/crud/basis/first",
-            component: "/crud/basis/first/index.vue",
           }
         ]
       },

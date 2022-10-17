@@ -13,6 +13,7 @@ import plugin from "./plugin/";
 
 // @ts-ignore
 const app = createApp(App);
+// 尽量
 app.use(Antd);
 app.use(router);
 app.use(i18n);
