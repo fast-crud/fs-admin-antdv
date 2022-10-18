@@ -17,6 +17,11 @@
           <fs-form-wrapper ref="formWrapperRef" v-bind="formWrapperOptions" />
         </a-card>
 
+        <a-card title="打开表单对话框（复用crudOptions）">
+          <a-button @click="openFormWrapper2">打开表单对话框</a-button>
+          <fs-form-wrapper ref="formWrapper2Ref" v-bind="formWrapper2Options" />
+        </a-card>
+
         <a-card class="mt-10" title="打开表单对话框【复用crudBinding】">
           <a-button @click="openFormWrapper2">打开表单对话框</a-button>
           <fs-form-wrapper ref="formWrapperRef2" v-bind="formWrapperOptions2" />
@@ -32,6 +37,11 @@ import { message } from "ant-design-vue";
 import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 
+function createFormOptionsFromCrudOptions() {
+  const { buildFormOptions } = useColumns();
+  const { crudOptions } = createCrudOptions({});
+  return buildFormOptions(crudOptions);
+}
 function createFormOptions() {
   // 自定义表单配置
   const { buildFormOptions } = useColumns();
@@ -168,13 +178,32 @@ function useCrudBindingForm() {
     formWrapperOptions2
   };
 }
+
+/**
+ * 复用crudOptions 创建表单
+ */
+function useCrudOptions() {
+  const formWrapper2Ref = ref();
+  const formWrapper2Options = ref();
+  formWrapper2Options.value = createFormOptionsFromCrudOptions();
+  function openFormWrapper2() {
+    formWrapper2Ref.value.open(formWrapper2Options.value);
+  }
+  return {
+    formWrapper2Ref,
+    openFormWrapper2,
+    formWrapper2Options
+  };
+}
+
 export default defineComponent({
   name: "FormIndependent",
   setup() {
     return {
       ...useFormDirect(),
       ...useFormWrapper(),
-      ...useCrudBindingForm()
+      ...useCrudBindingForm(),
+      ...useCrudOptions()
     };
   }
 });

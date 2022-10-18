@@ -69,12 +69,13 @@ export default function ({ expose }) {
     ]
   });
 
-  function dynamicUpdateDictOptions(){
-
+  function dynamicUpdateDictOptions() {
+    dictRef.data.push({ id: "xg", text: "香港" });
   }
 
   const { fetchUser, searchState } = useSearchRemote();
   return {
+    dynamicUpdateDictOptions,
     crudOptions: {
       request: {
         pageRequest,
