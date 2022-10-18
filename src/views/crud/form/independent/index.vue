@@ -39,9 +39,11 @@ import createCrudOptions from "./crud";
 
 function createFormOptionsFromCrudOptions() {
   const { buildFormOptions } = useColumns();
+  //可以直接复用crud.js
   const { crudOptions } = createCrudOptions({});
   return buildFormOptions(crudOptions);
 }
+
 function createFormOptions() {
   // 自定义表单配置
   const { buildFormOptions } = useColumns();
