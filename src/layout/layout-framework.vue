@@ -44,7 +44,7 @@
             :menus="headerMenus"
           />
           <fs-locale class="btn" />
-<!--          <fs-theme-set class="btn" />-->
+          <!--          <fs-theme-set class="btn" />-->
           <fs-user-info class="btn" />
         </div>
       </a-layout-header>
@@ -54,7 +54,9 @@
           <template #default="{ Component, route }">
             <transition name="fade-transverse">
               <keep-alive :include="keepAlive">
-                <component :is="Component" :key="route.fullPath" />
+                <Suspense>
+                  <component :is="Component" :key="route.fullPath" />
+                </Suspense>
               </keep-alive>
             </transition>
           </template>
@@ -69,7 +71,7 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { computed, onErrorCaptured, ref } from "vue";
 import FsMenu from "./components/menu/index.jsx";
 import FsLocale from "./components/locale/index.vue";
 import FsSourceLink from "./components/source-link/index.vue";
@@ -79,6 +81,7 @@ import { useResourceStore } from "../store/modules/resource";
 import { usePageStore } from "/@/store/modules/page";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons-vue";
 import FsThemeSet from "/@/layout/components/theme/index.vue";
+import { notification } from "ant-design-vue";
 export default {
   name: "LayoutFramework",
   // eslint-disable-next-line vue/no-unused-components
@@ -102,6 +105,12 @@ export default {
     function asideCollapsedToggle() {
       asideCollapsed.value = !asideCollapsed.value;
     }
+    onErrorCaptured((e) => {
+      console.log("ErrorCaptured:", e);
+      notification.error({ message: e.message });
+      //阻止错误向上传递
+      return false;
+    });
     return {
       frameworkMenus,
       headerMenus,

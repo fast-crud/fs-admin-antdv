@@ -84,6 +84,7 @@ export default ({ command, mode }) => {
       }
     },
     server: {
+      port: 3002,
       fs: devServerFs,
       proxy: {
         // with options

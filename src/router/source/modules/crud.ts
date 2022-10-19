@@ -337,6 +337,12 @@ export const crudResources = [
             component: "/crud/feature/selection/index.vue"
           },
           {
+            title: "单选",
+            name: "FeatureSelectionRadio",
+            path: "/crud/feature/selection-radio",
+            component: "/crud/feature/selection-radio/index.vue"
+          },
+          {
             title: "表头过滤",
             name: "FeatureFilter",
             path: "/crud/feature/filter",

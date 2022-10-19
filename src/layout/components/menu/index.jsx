@@ -71,7 +71,7 @@ export default defineComponent({
     scroll: {}
   },
   setup(props, ctx) {
-    function open(path) {
+    async function open(path) {
       if (path == null) {
         return;
       }
@@ -79,7 +79,17 @@ export default defineComponent({
         window.open(path);
         return;
       }
-      router.push(path);
+      try {
+        const navigationResult = await router.push(path);
+        console.error("navigationResult", navigationResult);
+        if (navigationResult) {
+          // 导航被阻止
+        } else {
+          // 导航成功 (包括重新导航的情况)
+        }
+      } catch (e) {
+        console.error("导航失败", e);
+      }
     }
     function onSelect(item) {
       open(item.key);
