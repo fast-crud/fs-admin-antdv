@@ -49,6 +49,7 @@ export const usePageStore = defineStore({
   }),
   getters: {
     getOpened() {
+      // @ts-ignore
       return this.opened;
     },
     getCurrent(): string {
