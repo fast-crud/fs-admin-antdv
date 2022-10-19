@@ -17,7 +17,6 @@ export default function ({ expose }) {
     return await api.AddObj(form);
   };
   const selectedRowKey = ref();
-
   const onSelectChange = (changed) => {
     console.log("selection", changed);
     selectedRowKey.value = changed;
