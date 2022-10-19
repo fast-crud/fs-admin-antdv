@@ -449,6 +449,12 @@ export const crudResources = [
             name: "FeatureVModel",
             path: "/crud/feature/v-model",
             component: "/crud/feature/local-v-model/index.vue"
+          },
+          {
+            title: "自定义删除",
+            name: "FeatureRemove",
+            path: "/crud/feature/remove",
+            component: "/crud/feature/remove/index.vue"
           }
         ]
       },
