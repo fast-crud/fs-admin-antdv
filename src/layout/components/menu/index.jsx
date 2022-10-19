@@ -81,7 +81,6 @@ export default defineComponent({
       }
       try {
         const navigationResult = await router.push(path);
-        console.error("navigationResult", navigationResult);
         if (navigationResult) {
           // 导航被阻止
         } else {
