@@ -1,6 +1,6 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
+    <fs-crud ref="crudRef" style="position: relative" v-bind="crudBinding">
       <template #actionbar-right> 列头可以调整宽度 </template>
     </fs-crud>
   </fs-page>
