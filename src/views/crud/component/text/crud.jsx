@@ -1,4 +1,5 @@
 import * as api from "./api";
+import { compute } from "@fast-crud/fast-crud";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -63,7 +64,8 @@ export default function ({ expose }) {
             component: { showWordLimit: true, maxlength: 200 }
           },
           column: {
-            ellipsis: true
+            ellipsis: true,
+            showTitle: true
           }
         },
         render: {
