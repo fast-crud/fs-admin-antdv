@@ -77,7 +77,8 @@ export default function ({ expose }) {
           key: "id",
           type: "number",
           column: {
-            width: 50
+            width: 50,
+            resizable: true
           },
           form: {
             show: false
@@ -133,7 +134,8 @@ export default function ({ expose }) {
             }
           },
           column: {
-            width: 250
+            width: 250,
+            resizable: true
           }
         },
         remote: {

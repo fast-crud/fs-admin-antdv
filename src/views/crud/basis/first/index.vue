@@ -6,14 +6,14 @@
 
 <script>
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud } from "@fast-crud/fast-crud";
+import { dict, useCrud } from "@fast-crud/fast-crud";
 import { useExpose } from "@fast-crud/fast-crud";
 import _ from "lodash-es";
 
 //此处为crudOptions配置
 const createCrudOptions = function ({ expose }) {
   //本地模拟后台crud接口方法 ----开始
-  const records = [{ id: 1, name: "Hello World" }];
+  const records = [{ id: 1, name: "Hello World", type: 1 }];
   const pageRequest = async (query) => {
     return {
       records,
@@ -57,11 +57,20 @@ const createCrudOptions = function ({ expose }) {
           title: "姓名",
           type: "text",
           search: { show: true },
-          form: {
-            component: {
-              maxlength: 20
-            }
+          column: {
+            resizable: true,
+            width: 200
           }
+        },
+        type: {
+          title: "类型",
+          type: "dict-select",
+          dict: dict({
+            data: [
+              { value: 1, label: "开始" },
+              { value: 0, label: "停止" }
+            ]
+          })
         }
       }
     }

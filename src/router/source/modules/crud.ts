@@ -455,6 +455,12 @@ export const crudResources = [
             name: "FeatureRemove",
             path: "/crud/feature/remove",
             component: "/crud/feature/remove/index.vue"
+          },
+          {
+            title: "调整列宽",
+            name: "FeatureColumnResize",
+            path: "/crud/feature/column-resize",
+            component: "/crud/feature/column-resize/index.vue"
           }
         ]
       },

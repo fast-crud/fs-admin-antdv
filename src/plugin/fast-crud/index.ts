@@ -1,6 +1,6 @@
 import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
-import { FastCrud, useTypes } from "@fast-crud/fast-crud";
+import { FastCrud, UseCrudProps, useTypes } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import { FsExtendsUploader, FsExtendsEditor, FsExtendsJson } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
@@ -23,11 +23,15 @@ function install(app, options: any = {}) {
      * useCrud时会被执行
      * @param context，useCrud的参数
      */
-    commonOptions(context: any = {}) {
+    commonOptions(context: UseCrudProps) {
+      const crudBinding = context.expose?.crudBinding;
       const opts = {
         table: {
           size: "small",
-          pagination: false
+          pagination: false,
+          onResizeColumn: (w, col) => {
+            crudBinding.value.table.columnsMap[col.key].width = w;
+          }
         },
         rowHandle: {
           buttons: {
