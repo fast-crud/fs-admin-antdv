@@ -2,7 +2,7 @@ import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
 import { FastCrud, UseCrudProps, useTypes, setLogger } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
-import { FsExtendsUploader, FsExtendsEditor, FsExtendsJson } from "@fast-crud/fast-extends";
+import { FsExtendsUploader, FsExtendsEditor, FsExtendsJson, FsExtendsCopyable } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiAntdv from "@fast-crud/ui-antdv";
 
@@ -80,7 +80,7 @@ function install(app, options: any = {}) {
       };
 
       // 从 useCrud({permission}) 里获取permission参数，去设置各个按钮的权限
-      const crudPermission = useCrudPermission(context);
+      const crudPermission = useCrudPermission({ permission: context.permission });
       return crudPermission.merge(opts);
     }
   });
@@ -93,6 +93,9 @@ function install(app, options: any = {}) {
     quillEditor: {}
   });
   app.use(FsExtendsJson);
+
+  app.use(FsExtendsCopyable);
+
   //安装uploader 公共参数
   app.use(FsExtendsUploader, {
     defaultType: "cos",

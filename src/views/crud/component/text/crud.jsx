@@ -1,5 +1,7 @@
 import * as api from "./api";
 import { compute } from "@fast-crud/fast-crud";
+import { resolveDirective, withDirectives } from "vue";
+
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -56,6 +58,26 @@ export default function ({ expose }) {
             //一般密码不显示在列里面
             show: false
           }
+        },
+        // copy: {
+        //   title: "剪贴板",
+        //   type: "text",
+        //   column: {
+        //     cellRender({ value, row }) {
+        //       const content = (
+        //         <div>
+        //           {value}
+        //           <a-tag style={{ cursor: "pointer" }}>复制</a-tag>
+        //         </div>
+        //       );
+        //       const clipboard = resolveDirective("clipboard");
+        //       return withDirectives(content, [[clipboard, value]]);
+        //     }
+        //   }
+        // },
+        copy: {
+          title: "剪贴板",
+          type: ["text", "copyable"]
         },
         intro: {
           title: "简介",

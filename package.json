@@ -27,6 +27,7 @@
     "@iconify/iconify": "^3.0.0",
     "@iconify/json": "^2.1.117",
     "@purge-icons/generated": "^0.9.0",
+    "@soerenmartius/vue3-clipboard": "^0.1.2",
     "ant-design-vue": "^3.2.12",
     "axios": "^0.27.2",
     "axios-mock-adapter": "^1.21.2",
