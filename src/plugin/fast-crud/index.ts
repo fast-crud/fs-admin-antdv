@@ -10,6 +10,7 @@ import { useCrudPermission } from "../permission";
 
 function install(app, options: any = {}) {
   app.use(UiAntdv);
+  //设置日志级别
   setLogger({ level: "debug" });
   app.use(FastCrud, {
     i18n: options.i18n,
