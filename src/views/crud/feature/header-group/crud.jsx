@@ -46,6 +46,25 @@ export default function ({ expose }) {
             age: {
               title: "年龄",
               type: "number"
+            },
+            switch: {
+              title: "开关",
+              type: "dict-switch",
+              dict: dict({
+                data: [
+                  { value: true, label: "开启" },
+                  { value: false, label: "关闭" }
+                ]
+              }),
+              column: {
+                component: {
+                  name: "fs-dict-switch",
+                  vModel: "checked"
+                },
+                valueChange(context) {
+                  console.log("column value changed:", context);
+                }
+              }
             }
           }
         },

@@ -1,5 +1,6 @@
 import * as api from "./api";
 import { message } from "ant-design-vue";
+import { dict } from "@fast-crud/fast-crud";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -35,6 +36,31 @@ export default function ({ expose }) {
           },
           form: {
             show: false
+          }
+        },
+        switch: {
+          title: "开关",
+          type: "dict-switch",
+          dict: dict({
+            data: [
+              { value: true, label: "开启" },
+              { value: false, label: "关闭" }
+            ]
+          }),
+          column: {
+            component: {
+              name: "fs-dict-switch",
+              vModel: "checked"
+            },
+            valueChange(context) {
+              console.log("column value changed:", context);
+            }
+          },
+          form: {
+            valueChange({ value, key, form }) {
+              console.log("valueChanged,", key, value, form);
+              message.info(`valueChanged:${key}=${value}`);
+            }
           }
         },
         normal: {
