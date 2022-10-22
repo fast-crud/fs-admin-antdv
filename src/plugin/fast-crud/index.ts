@@ -1,6 +1,6 @@
 import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
-import { FastCrud, UseCrudProps, useTypes } from "@fast-crud/fast-crud";
+import { FastCrud, UseCrudProps, useTypes, setLogger } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import { FsExtendsUploader, FsExtendsEditor, FsExtendsJson } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
@@ -10,6 +10,7 @@ import { useCrudPermission } from "../permission";
 
 function install(app, options: any = {}) {
   app.use(UiAntdv);
+  setLogger({ level: "debug" });
   app.use(FastCrud, {
     i18n: options.i18n,
     async dictRequest({ url }) {

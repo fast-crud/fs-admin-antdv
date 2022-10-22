@@ -50,7 +50,8 @@ export default function ({ expose }) {
           title: "简介",
           type: "textarea",
           column: {
-            ellipsis: true
+            ellipsis: true,
+            showTitle: true
           }
         },
         content: {
