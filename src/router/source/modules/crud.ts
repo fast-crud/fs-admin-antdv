@@ -307,6 +307,12 @@ export const crudResources = [
             name: "FormReset",
             path: "/crud/form/reset",
             component: "/crud/form/reset/index.vue"
+          },
+          {
+            title: "嵌套数据结构",
+            name: "FormNest",
+            path: "/crud/form/nest",
+            component: "/crud/form/nest/index.vue"
           }
         ]
       },
