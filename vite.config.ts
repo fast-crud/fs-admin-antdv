@@ -69,6 +69,9 @@ export default ({ command, mode }) => {
       ],
       dedupe: ["vue"]
     },
+    optimizeDeps: {
+      include: ["ant-design-vue"]
+    },
     build: {
       rollupOptions: {
         plugins: [visualizer()]
