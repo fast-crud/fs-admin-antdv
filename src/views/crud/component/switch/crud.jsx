@@ -41,8 +41,8 @@ export default function ({ expose }) {
           type: "dict-switch",
           dict: dict({
             data: [
-              { value: true, label: "开启" },
-              { value: false, label: "关闭" }
+              { value: false, label: "开启" },
+              { value: true, label: "关闭" }
             ]
           })
         },
@@ -55,13 +55,7 @@ export default function ({ expose }) {
               { value: "1", label: "开启" },
               { value: "2", label: "关闭" }
             ]
-          }),
-          form: {
-            component: {
-              checkedValue: "1",
-              unCheckedValue: "2"
-            }
-          }
+          })
         },
         switchLabel: {
           title: "切换字段label",
