@@ -45,11 +45,8 @@ export default function ({ expose }) {
           search: { show: true }
         },
         order: {
-          title: "字段排序",
-          type: "text",
-          form: {
-            order: 0
-          }
+          title: "占位演示",
+          type: "text"
         },
         place: {
           title: "占位演示",
