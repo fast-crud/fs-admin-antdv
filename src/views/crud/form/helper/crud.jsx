@@ -35,7 +35,7 @@ export default function ({ expose }) {
           title: "最简单",
           type: "text",
           form: {
-            helper: "最简单的helper"
+            helper: "最简单的helper\n换行测试"
           }
         },
         age: {
@@ -59,7 +59,7 @@ export default function ({ expose }) {
               tooltip: {
                 placement: "topLeft"
               },
-              text: "在label通过tooltip方式显示的helper"
+              text: "在label通过tooltip方式显示的helper\n换行测试"
               // render() {
               //   return <div style={"color:red"}>在label通过tooltip方式显示的helper</div>;
               // }

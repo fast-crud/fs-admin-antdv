@@ -25,13 +25,20 @@ export default function ({ expose }) {
       },
       form: {
         // 具体可配置请参考 grid 布局： http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html
-        display: "grid",
-        wrapper: {
-          //grid模式下，labelWidth需要靠样式控制
-          customClass: "page-layout"
-        }
+        display: "grid"
       },
       columns: {
+        avatar: {
+          title: "头像上传",
+          type: "avatar-uploader",
+          form: {
+            order: 0,
+            col: {
+              style: { gridRow: "span 3" }
+            },
+            helper: "通过grid布局，可以实现比flex更加规整的排列"
+          }
+        },
         name: {
           title: "姓名",
           type: "text",
@@ -43,6 +50,10 @@ export default function ({ expose }) {
           form: {
             order: 0
           }
+        },
+        place: {
+          title: "占位演示",
+          type: "text"
         },
         intro: {
           title: "跨列",

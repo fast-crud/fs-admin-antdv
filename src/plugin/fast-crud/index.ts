@@ -80,8 +80,17 @@ function install(app, options: any = {}) {
           }
         },
         form: {
-          display: "flex"
-          // labelCol: { style: { width: "150px" } }
+          display: "flex",
+          labelCol: {
+            //固定label宽度
+            span: null,
+            style: {
+              width: "120px"
+            }
+          },
+          wrapperCol: {
+            span: null
+          }
         }
       };
 
