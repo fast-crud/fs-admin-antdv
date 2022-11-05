@@ -32,7 +32,10 @@ export default function ({ expose }) {
         code: {
           title: "商品代码",
           search: { show: true },
-          type: "text"
+          type: "text",
+          form: {
+            rules: [{ required: true, message: "此项必填" }]
+          }
         },
         images: {
           title: "图片",
@@ -69,10 +72,10 @@ export default function ({ expose }) {
           groups: {
             base: {
               slots: {
-                tab: () => {
+                tab: (scope) => {
                   return (
-                    <span style={"color:green"}>
-                      <CheckOutlined />
+                    <span style={{ color: scope.hasError ? "red" : "green" }}>
+                      <fs-icon icon={"ion:eye"}></fs-icon>
                       商品基础
                     </span>
                   );
