@@ -71,6 +71,7 @@ export default function ({ expose }) {
 
   function dynamicUpdateDictOptions() {
     dictRef.data.push({ id: "xg", text: "香港" });
+    //dictRef.toMap();
   }
 
   const { fetchUser, searchState } = useSearchRemote();
