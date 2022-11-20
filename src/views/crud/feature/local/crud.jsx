@@ -3,10 +3,10 @@ import { uiContext } from "@fast-crud/fast-crud";
 export default function ({ expose }) {
   return {
     crudOptions: {
-      mode:{
-        name:'local',
-        isMergeWhenUpdate:true,
-        isAppendWhenAdd:true
+      mode: {
+        name: "local",
+        isMergeWhenUpdate: true,
+        isAppendWhenAdd: true
       },
       actionbar: { buttons: { add: { show: true }, addRow: { show: false } } },
       editable: {
@@ -17,8 +17,8 @@ export default function ({ expose }) {
       search: {
         show: false
       },
-      pagination:{
-        show:false
+      pagination: {
+        show: false
       },
       columns: {
         name: {
