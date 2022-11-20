@@ -40,6 +40,9 @@ export default function ({ expose }) {
         delRequest
       },
       form: {
+        row:{
+          gutter:20
+        },
         beforeSubmit(context) {
           console.log("beforeSubmit", context);
         },
