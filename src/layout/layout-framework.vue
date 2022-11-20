@@ -104,7 +104,7 @@ export default {
       asideCollapsed.value = !asideCollapsed.value;
     }
     onErrorCaptured((e) => {
-      console.log("ErrorCaptured:", e);
+      console.error("ErrorCaptured:", e);
       notification.error({ message: e.message });
       //阻止错误向上传递
       return false;
