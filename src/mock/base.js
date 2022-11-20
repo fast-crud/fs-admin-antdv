@@ -1,3 +1,4 @@
+import _ from "lodash-es";
 function copyList(originList, newList, options, parentId) {
   for (const item of originList) {
     const newItem = { ...item, parentId };
@@ -204,7 +205,7 @@ export default {
         handle(req) {
           const item = findById(req.body.id, list);
           if (item) {
-            Object.assign(item, req.body);
+            _.merge(item, req.body);
           }
           return {
             code: 0,

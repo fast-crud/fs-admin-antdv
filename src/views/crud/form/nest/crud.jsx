@@ -60,6 +60,14 @@ export default function ({ expose }) {
           form: {
             key: ["profile", "status"]
           }
+        },
+        "profile.count": {
+          title: "不提交的字段",
+          type: "text",
+          form: {
+            submit: false,
+            key: ["profile", "count"]
+          }
         }
       }
     }

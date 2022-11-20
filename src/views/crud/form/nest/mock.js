@@ -10,7 +10,8 @@ const list = [
     profile: {
       name: "王小虎",
       age: 15,
-      status: "1"
+      status: "1",
+      count: "配置submit=false将不会提交给后台"
     }
   },
   {
