@@ -76,6 +76,9 @@ export default function ({ expose }) {
         immediate: {
           title: "immediate",
           type: "text",
+          search: {
+            show: true
+          },
           form: {
             valueChange: {
               handle({ value, key, form, immediate }) {
