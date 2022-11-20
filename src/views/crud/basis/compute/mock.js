@@ -15,6 +15,7 @@ const list = [
   },
   {
     compute: false,
+    shower: "---> 点右边编辑查看示例效果",
     status: "2",
     remote: "0",
     remote2: "2",
@@ -22,6 +23,7 @@ const list = [
   },
   {
     compute: true,
+    shower: "---> 点右边编辑查看示例效果",
     status: "0",
     remote2: "2",
     editable: true

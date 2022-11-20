@@ -125,7 +125,7 @@ export default function ({ expose }) {
         shower: {
           title: "根据compute显示",
           search: { show: false },
-          type: "text",
+          type: "button",
           form: {
             component: {
               show: compute(({ form }) => {
@@ -135,7 +135,12 @@ export default function ({ expose }) {
           },
           column: {
             width: 250,
-            resizable: true
+            resizable: true,
+            component: {
+              show: compute(({ row }) => {
+                return row.compute;
+              })
+            }
           }
         },
         remote: {

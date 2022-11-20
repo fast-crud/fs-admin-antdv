@@ -16,18 +16,18 @@ export default {
   setup() {
     //刷新页面方法
     const routerEnabled = ref(true);
-    const locale = ref(zhCN)
+    const locale = ref(zhCN);
     async function reload() {
       routerEnabled.value = false;
       await nextTick();
       routerEnabled.value = true;
     }
-    function localeChanged(value){
-      console.log('locale changed:',value)
-      if(value === 'zh-cn'){
-        locale.value = zhCN
-      }else if(value === 'en'){
-        locale.value = enUS
+    function localeChanged(value) {
+      console.log("locale changed:", value);
+      if (value === "zh-cn") {
+        locale.value = zhCN;
+      } else if (value === "en") {
+        locale.value = enUS;
       }
     }
     provide("fn:router.reload", reload);
@@ -45,6 +45,6 @@ export default {
       routerEnabled,
       locale
     };
-  },
+  }
 };
 </script>
