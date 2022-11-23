@@ -147,6 +147,7 @@ export default function ({ expose }) {
         datetimerange: {
           title: "日期时间范围",
           type: "datetimerange",
+          search: { show: true, width: 300 },
           valueBuilder({ row, key }) {
             if (!utils.strings.hasEmpty(row.datetimerangeStart, row.datetimerangeEnd)) {
               row[key] = [dayjs(row.datetimerangeStart), dayjs(row.datetimerangeEnd)];
