@@ -37,7 +37,6 @@
     "core-js": "^3.25.4",
     "cos-js-sdk-v5": "^1.4.6",
     "cropperjs": "^1.5.12",
-    "dayjs": "^1.11.5",
     "deepdash-es": "5.3.5",
     "highlight.js": "^11.6.0",
     "lodash-es": "^4.17.15",
