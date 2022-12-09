@@ -190,7 +190,7 @@ function install(app, options: any = {}) {
           timeout: 60000,
           data,
           onUploadProgress: (p) => {
-            onProgress({ percent: (p.loaded / p.total) * 100 });
+            onProgress({ percent: Math.round((p.loaded / p.total) * 100) });
           }
         });
       },
