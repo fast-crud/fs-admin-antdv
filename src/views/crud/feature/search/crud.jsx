@@ -30,6 +30,19 @@ export default function ({ expose }) {
           console.log("onFilterChange", e);
         }
       },
+      search:{
+        buttons:{
+          custom:{
+            text:"自定义",
+            show:true,
+            order:3,
+            icon:"ant-design:search",
+            click(){
+              console.log("点击了自定义按钮")
+            }
+          }
+        }
+      },
       columns: {
         id: {
           title: "ID",
