@@ -37,14 +37,20 @@ export default function ({ expose }) {
         },
         title: {
           title: "标题",
-          type: ["text", "colspan"],
+          type: "text",
           column: {
             width: 400
-          }
+          },
+          form:{
+            col: { span: 24 },
+          },
         },
         text: {
           title: "摘要",
-          type: ["textarea", "colspan"],
+          type: "textarea",
+          form:{
+            col: { span: 24 },
+          },
           viewForm: {
             component: {
               name: null,
@@ -57,7 +63,7 @@ export default function ({ expose }) {
         disabled: {
           title: "禁用启用",
           search: { show: false },
-          type: ["dict-switch", "colspan"],
+          type: "dict-switch",
           dict: dict({
             data: [
               { value: true, label: "禁用" },
@@ -65,54 +71,16 @@ export default function ({ expose }) {
             ]
           })
         },
-        // 放弃支持quill，两年没有更新了，关键是bug修复不了
-        // change: {
-        //   title: "切换编辑器",
-        //   type: "dict-radio",
-        //   disabled: true,
-        //   dict: dict({
-        //     data: [
-        //       { value: "quill", label: "Quill" },
-        //       { value: "wang", label: "WangEditor" }
-        //     ]
-        //   })
-        // },
-        // content_quill: {
-        //   title: "内容",
-        //   column: {
-        //     show: false
-        //   },
-        //   type: ["editor-quill", "colspan"],
-        //   form: {
-        //     show: compute(({ form }) => {
-        //       return form.change === "quill";
-        //     }),
-        //     component: {
-        //       disabled: compute(({ form }) => {
-        //         return form.disabled;
-        //       }),
-        //       uploader: {
-        //         type: "form", // 上传后端类型【cos,aliyun,oss,form】
-        //         buildUrl(res) {
-        //           return "http://www.docmirror.cn:7070" + res.url;
-        //         }
-        //       },
-        //       on: {
-        //         "text-change": (event) => {
-        //           console.log("text-change:", event);
-        //         }
-        //       }
-        //     }
-        //   }
-        // },
         content_wang: {
           title: "内容",
           column: {
             width: 300,
             show: false
           },
-          type: ["editor-wang", "colspan"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
+          type: ["editor-wang5"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
           form: {
+            helper:"示例已升级到wangEditor5版本，原来的editor-wang目前仍然可以使用，后续fs升级可能会将其删除，请尽快升级到editor-wang5版本",
+            col: { span: 24 },
             // 动态显隐字段
             // show: compute(({ form }) => {
             //   return form.change === "wang";

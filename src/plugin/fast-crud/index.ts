@@ -177,7 +177,7 @@ function install(app, options: any = {}) {
       action: "http://www.docmirror.cn:7070/api/upload/form/upload",
       name: "file",
       withCredentials: false,
-      uploadRequest: async ({ action, file }) => {
+      uploadRequest: async ({ action, file, onProgress }) => {
         // @ts-ignore
         const data = new FormData();
         data.append("file", file);
@@ -187,7 +187,11 @@ function install(app, options: any = {}) {
           headers: {
             "Content-Type": "multipart/form-data"
           },
-          data
+          timeout: 60000,
+          data,
+          onUploadProgress: (p) => {
+            onProgress({ percent: (p.loaded / p.total) * 100 });
+          }
         });
       },
       successHandle(ret) {

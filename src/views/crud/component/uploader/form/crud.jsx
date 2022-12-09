@@ -151,9 +151,11 @@ export default function ({ expose }) {
                 message: "还有文件正在上传，请稍候"
               }
             ],
+            helper: "大小不能超过50M，文件未上传完成之前，阻止提交",
             component: {
               uploader: {
-                type: "form"
+                type: "form",
+                sizeLimit: 1024 * 1024 *50,
               }
             }
           }
