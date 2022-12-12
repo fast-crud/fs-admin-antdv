@@ -36,7 +36,12 @@ export default function ({ expose }) {
             text:"自定义",
             show:true,
             order:3,
-            icon:"ant-design:search",
+            icon:{
+              icon:"ant-design:search",
+              style:{
+                "font-size":'16px'
+              }
+            },
             click(){
               console.log("点击了自定义按钮")
             }

@@ -47,7 +47,8 @@ export default function ({ expose }) {
         wrapperCol: { span: 14 }
       },
       rowHandle: {
-        fixed: "right"
+        fixed: "right",
+        align:'center',
       },
       columns: {
         id: {
