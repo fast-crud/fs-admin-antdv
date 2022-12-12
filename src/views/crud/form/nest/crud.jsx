@@ -39,6 +39,7 @@ export default function ({ expose }) {
         "profile.name": {
           title: "profile.name",
           type: "text",
+          search:{show:true},
           form: {
             key: ["profile", "name"],
             rules: [{ required: true, message: "姓名必填" }]
