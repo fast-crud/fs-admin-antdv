@@ -64,6 +64,12 @@ export const crudResources = [
             name: "BasisColumnsSet",
             path: "/crud/basis/columns-set",
             component: "/crud/basis/columns-set/index.vue"
+          },
+          {
+            title: "操作列",
+            name: "BasisRowHandle",
+            path: "/crud/basis/row-handle",
+            component: "/crud/basis/row-handle/index.vue"
           }
         ]
       },
