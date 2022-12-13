@@ -20,7 +20,7 @@ export default defineComponent({
     // crud组件的ref
     const crudRef = ref();
     // crud 配置的ref
-    const crudBinding: Ref<CrudBinding | undefined> = ref();
+    const crudBinding: Ref<CrudBinding> = ref({});
     // 暴露的方法
     const { expose } = useExpose({ crudRef, crudBinding });
     // 你的crud配置
