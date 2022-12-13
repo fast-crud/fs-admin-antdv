@@ -2,32 +2,25 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <a-alert
-            class="ml-1"
-            type="warning"
-            message="列设置可以禁用或者隐藏某字段勾选"
-        />
-        <a-button @click="columnsSetToggleMode()">
-          切换简单模式
-        </a-button>
+        <a-alert class="ml-1" type="warning" message="列设置可以禁用或者隐藏某字段勾选" />
+        <a-button @click="columnsSetToggleMode()"> 切换简单模式 </a-button>
       </template>
     </fs-crud>
   </fs-page>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted,Ref } from "vue";
-import createCrudOptions from "./crud";
-import { useExpose, useCrud ,CrudBinding} from "@fast-crud/fast-crud";
-import {message, Modal, notification} from "ant-design-vue";
-import { BatchDelete } from "./api";
+import { defineComponent, ref, onMounted, Ref } from "vue";
+import createCrudOptions from "./crud.jsx";
+import { useExpose, useCrud, CrudBinding } from "@fast-crud/fast-crud";
+import { message, Modal, notification } from "ant-design-vue";
 export default defineComponent({
   name: "BasisColumnsSet",
   setup() {
     // crud组件的ref
     const crudRef = ref();
     // crud 配置的ref
-    const crudBinding:Ref<CrudBinding | undefined> = ref();
+    const crudBinding: Ref<CrudBinding | undefined> = ref();
     // 暴露的方法
     const { expose } = useExpose({ crudRef, crudBinding });
     // 你的crud配置
@@ -43,10 +36,10 @@ export default defineComponent({
       expose.doRefresh();
     });
 
-
-    function columnsSetToggleMode(){
-      crudBinding.value.toolbar.columnsFilter.mode = crudBinding.value?.toolbar?.columnsFilter.mode === 'simple'?'default':'simple'
-      message.info("当前列设置组件的模式为："+crudBinding.value.toolbar.columnsFilter.mode)
+    function columnsSetToggleMode() {
+      crudBinding.value.toolbar.columnsFilter.mode =
+        crudBinding.value.toolbar.columnsFilter.mode === "simple" ? "default" : "simple";
+      message.info("当前列设置组件的模式为：" + crudBinding.value.toolbar.columnsFilter.mode);
     }
 
     return {

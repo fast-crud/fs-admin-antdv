@@ -25,8 +25,8 @@ export default function ({ expose }) {
         delRequest
       },
       toolbar: {
-        columnsFilter:{
-          mode:"default"
+        columnsFilter: {
+          mode: "default"
         }
       },
       columns: {
@@ -35,7 +35,7 @@ export default function ({ expose }) {
           key: "id",
           type: "number",
           column: {
-            width: 50,
+            width: 50
           },
           form: {
             show: false
@@ -51,16 +51,16 @@ export default function ({ expose }) {
         },
         disabled: {
           title: "列设置禁用",
-          type:"text",
-          column:{
-            columnSetDisabled:true
+          type: "text",
+          column: {
+            columnSetDisabled: true
           }
         },
         hidden: {
           title: "列设置隐藏",
-          type:"text",
-          column:{
-            columnSetShow:false
+          type: "text",
+          column: {
+            columnSetShow: false
           }
         }
       }
