@@ -19,7 +19,7 @@
 import { defineComponent, ref, onMounted,Ref } from "vue";
 import createCrudOptions from "./crud";
 import { useExpose, useCrud ,CrudBinding} from "@fast-crud/fast-crud";
-import { message, Modal } from "ant-design-vue";
+import {message, Modal, notification} from "ant-design-vue";
 import { BatchDelete } from "./api";
 export default defineComponent({
   name: "BasisColumnsSet",
@@ -46,6 +46,7 @@ export default defineComponent({
 
     function columnsSetToggleMode(){
       crudBinding.value.toolbar.columnsFilter.mode = crudBinding.value?.toolbar?.columnsFilter.mode === 'simple'?'default':'simple'
+      message.info("当前列设置组件的模式为："+crudBinding.value.toolbar.columnsFilter.mode)
     }
 
     return {

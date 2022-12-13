@@ -25,6 +25,9 @@ export default function ({ expose }) {
         delRequest
       },
       toolbar: {
+        columnsFilter:{
+          mode:"default"
+        }
       },
       columns: {
         id: {
@@ -33,7 +36,6 @@ export default function ({ expose }) {
           type: "number",
           column: {
             width: 50,
-
           },
           form: {
             show: false
