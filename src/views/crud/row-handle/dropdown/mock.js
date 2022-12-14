@@ -1,6 +1,6 @@
 import mockUtil from "/src/mock/base";
 const options = {
-  name: "BasisRowHandle",
+  name: "RowHandleDropdown",
   idGenerator: 0
 };
 const list = [

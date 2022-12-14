@@ -64,12 +64,6 @@ export const crudResources = [
             name: "BasisColumnsSet",
             path: "/crud/basis/columns-set",
             component: "/crud/basis/columns-set/index.vue"
-          },
-          {
-            title: "操作列",
-            name: "BasisRowHandle",
-            path: "/crud/basis/row-handle",
-            component: "/crud/basis/row-handle/index.vue"
           }
         ]
       },
@@ -99,6 +93,29 @@ export const crudResources = [
             name: "DictPrototype",
             path: "/crud/dict/prototype",
             component: "/crud/dict/prototype/index.vue"
+          }
+        ]
+      },
+      {
+        title: "操作列",
+        name: "row-handle",
+        path: "/crud/row-handle",
+        redirect: "/crud/row-handle/tooltip",
+        meta: {
+          icon: "ion:build-outline"
+        },
+        children: [
+          {
+            title: "Tooltip",
+            name: "RowHandleTooltip",
+            path: "/crud/row-handle/tooltip",
+            component: "/crud/row-handle/tooltip/index.vue"
+          },
+          {
+            title: "按钮折叠",
+            name: "RowHandleDropdown",
+            path: "/crud/row-handle/dropdown",
+            component: "/crud/row-handle/dropdown/index.vue"
           }
         ]
       },
@@ -348,12 +365,6 @@ export const crudResources = [
         },
         redirect: "/crud/feature/dropdown",
         children: [
-          {
-            title: "操作列按钮折叠",
-            name: "FeatureDropdown",
-            path: "/crud/feature/dropdown",
-            component: "/crud/feature/dropdown/index.vue"
-          },
           {
             title: "部件显隐",
             name: "FeatureHide",

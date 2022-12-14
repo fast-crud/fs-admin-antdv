@@ -2,8 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <a-alert class="ml-1" type="warning" message="列设置可以禁用或者隐藏某字段勾选" />
-        <a-button @click="columnsSetToggleMode()"> 切换简单模式 </a-button>
+        <a-alert class="ml-1" type="warning" message="操作列按钮支持tooltip（实际上所有buttons配置都支持tooltip）" />
       </template>
     </fs-crud>
   </fs-page>
