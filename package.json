@@ -22,7 +22,7 @@
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons-vue": "^6.0.1",
     "@fast-crud/fast-crud": "^1.7.1",
-    "@fast-crud/fast-extends": "^1.7.1",
+    "@fast-crud/fast-extends": "^1.7.2",
     "@fast-crud/ui-antdv": "^1.7.1",
     "@iconify/iconify": "^3.0.1",
     "@iconify/json": "^2.1.151",
