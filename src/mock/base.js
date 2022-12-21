@@ -205,7 +205,15 @@ export default {
         handle(req) {
           const item = findById(req.body.id, list);
           if (item) {
-            _.merge(item, req.body);
+            _.mergeWith(item, req.body, (objValue, srcValue) => {
+              if (srcValue == null) {
+                return;
+              }
+              // 如果被合并对象为数组，则直接被覆盖对象覆盖，只要覆盖对象不为空
+              if (_.isArray(objValue)) {
+                return srcValue;
+              }
+            });
           }
           return {
             code: 0,

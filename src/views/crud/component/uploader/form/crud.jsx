@@ -64,7 +64,7 @@ export default function ({ expose }) {
               // 支持异步
               async buildUrl(value) {
                 return value;
-              },
+              }
             }
           }
         },
@@ -92,6 +92,24 @@ export default function ({ expose }) {
             }
           }
         },
+        pictureCard2: {
+          title: "通过urls显示",
+          type: "image-uploader",
+          column: {
+            component: {
+              urls: [
+                {
+                  url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?1",
+                  previewUrl: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?preview1"
+                },
+                {
+                  url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?2",
+                  previewUrl: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?preview2"
+                }
+              ]
+            }
+          }
+        },
         avatar: {
           title: "头像上传",
           type: "avatar-uploader",
@@ -111,6 +129,34 @@ export default function ({ expose }) {
             component: {
               uploader: {
                 type: "form"
+              }
+            }
+          }
+        },
+        keyValueType: {
+          title: "valueType为key",
+          type: "file-uploader",
+          form: {
+            component: {
+              uploader: {
+                type: "form"
+              },
+              valueType: "key",
+              async buildUrl(value) {
+                return new Promise((resolve) => {
+                  const url = "http://www.docmirror.cn:7070/api/upload/form/download?key=" + value;
+                  resolve(url);
+                });
+              }
+            }
+          },
+          column: {
+            component: {
+              async buildUrl(value) {
+                return new Promise((resolve) => {
+                  const url = "http://www.docmirror.cn:7070/api/upload/form/download?key=" + value;
+                  resolve(url);
+                });
               }
             }
           }
@@ -166,7 +212,7 @@ export default function ({ expose }) {
             component: {
               uploader: {
                 type: "form",
-                sizeLimit: 1024 * 1024 *50,
+                sizeLimit: 1024 * 1024 * 50
               }
             }
           }
