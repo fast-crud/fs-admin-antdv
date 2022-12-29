@@ -94,6 +94,7 @@ export default function ({ expose }) {
               name: "a-switch",
               vModel: "checked",
               on: {
+                // 注意：必须要on前缀
                 onChange({ $event }) {
                   remoteDict.url = $event
                     ? "/mock/dicts/moreOpenStatusEnum?remote"
