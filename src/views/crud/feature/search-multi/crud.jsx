@@ -26,7 +26,6 @@ export default function ({ expose }) {
       },
       search: {
         layout: "multi-line",
-        buttonsPosition: "bottom",
         col: {
           span: 4
         },
@@ -45,10 +44,8 @@ export default function ({ expose }) {
             click() {
               if (expose.crudBinding.value.search.layout === "multi-line") {
                 expose.crudBinding.value.search.layout = "";
-                expose.crudBinding.value.search.buttonsPosition = "default";
               } else {
                 expose.crudBinding.value.search.layout = "multi-line";
-                expose.crudBinding.value.search.buttonsPosition = "bottom";
               }
             }
           },
