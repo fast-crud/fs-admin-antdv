@@ -24,7 +24,17 @@ export default function ({ expose }) {
         delRequest
       },
       form: {
-        display: "flex"
+        display: "flex",
+        labelCol: {
+          //固定label宽度
+          span: null,
+          style: {
+            width: "120px"
+          }
+        },
+        wrapperCol: {
+          span: null
+        }
       },
       columns: {
         name: {
