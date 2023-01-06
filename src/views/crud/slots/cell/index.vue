@@ -11,6 +11,10 @@
           </template>
         </a-statistic>
       </template>
+      <template #cell_switch="scope">
+        <fs-icon v-if="scope.row.switch" style="font-size: 16px; color: green" icon="ion:checkmark-circle-outline"></fs-icon>
+        <fs-icon v-if="!scope.row.switch" style="font-size: 16px; color: red" icon="ion:close-circle-outline"></fs-icon>
+      </template>
       <template #cell_createDate="scope">
         创建时间：{{ dateFormat(scope.row.createDate) }}<br />
         修改时间：{{ dateFormat(scope.row.updateDate) }}

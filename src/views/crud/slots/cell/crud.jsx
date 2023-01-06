@@ -52,6 +52,16 @@ export default function ({ expose }) {
           type: "number",
           search: { show: true }
         },
+        switch: {
+          title: "switch",
+          type: "dict-switch",
+          dict: dict({
+            data: [
+              { value: true, label: "开启" },
+              { value: false, label: "关闭" }
+            ]
+          })
+        },
         createDate: {
           title: "时间",
           type: "datetime",

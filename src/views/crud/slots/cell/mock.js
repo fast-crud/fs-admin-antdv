@@ -6,16 +6,19 @@ const options = {
 const list = [
   {
     like: 10000,
+    switch: true,
     createDate: new Date().getTime(),
     updateDate: new Date().getTime()
   },
   {
     like: 10000,
+    switch: false,
     createDate: new Date().getTime(),
     updateDate: new Date().getTime()
   },
   {
-    like: 10000
+    like: 10000,
+    switch: true
   }
 ];
 options.list = list;
