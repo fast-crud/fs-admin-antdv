@@ -8,6 +8,12 @@
 https://github.com/fast-crud/fs-server-js
 
 
+
+# 其他相关项目
+ * [fast-crud](https://github.com/fast-crud/fast-crud) crud主项目    
+ * [fs-admin-element](https://github.com/fast-crud/fs-admin-element) element版示例    
+ * [fs-admin-naive](https://github.com/fast-crud/fs-admin-naive-ui) naive版示例 
+
 # 感谢
 
 ### 依赖
@@ -24,4 +30,5 @@ https://github.com/fast-crud/fs-server-js
 * [vben-admin](https://github.com/anncwb/vue-vben-admin)
 
 感谢这些优秀的项目
+
 
