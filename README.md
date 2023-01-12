@@ -13,6 +13,7 @@ https://github.com/fast-crud/fs-server-js
  * [fast-crud](https://github.com/fast-crud/fast-crud) crud主项目    
  * [fs-admin-element](https://github.com/fast-crud/fs-admin-element) element版示例    
  * [fs-admin-naive](https://github.com/fast-crud/fs-admin-naive-ui) naive版示例 
+ * [fs-in-vben-starter](https://github.com/fast-crud/fs-in-vben-starter) vben示例
 
 # 感谢
 
