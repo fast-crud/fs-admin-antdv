@@ -22,6 +22,15 @@ export default function ({ crudExpose }) {
         editRequest,
         delRequest
       },
+      form: {
+        wrapper: {
+          buttons: {
+            ok: {
+              text: "保存"
+            }
+          }
+        }
+      },
       columns: {
         name: {
           title: "姓名",
