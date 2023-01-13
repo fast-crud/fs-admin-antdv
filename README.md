@@ -7,8 +7,6 @@
 ## fs-server-js
 https://github.com/fast-crud/fs-server-js
 
-
-
 # 其他相关项目
  * [fast-crud](https://github.com/fast-crud/fast-crud) crud主项目    
  * [fs-admin-element](https://github.com/fast-crud/fs-admin-element) element版示例    
