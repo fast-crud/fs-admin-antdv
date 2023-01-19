@@ -1,11 +1,11 @@
 import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
-import { FastCrud, UseCrudProps, useTypes, setLogger } from "@fast-crud/fast-crud";
+import { FastCrud, UseCrudProps, useTypes, setLogger, useColumns, ColumnCompositionProps, MergeColumnPlugin, CrudOptions } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import { FsExtendsUploader, FsExtendsEditor, FsExtendsJson, FsExtendsCopyable, FsExtendsTime } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiAntdv from "@fast-crud/ui-antdv";
-
+import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
 
 function install(app, options: any = {}) {
@@ -27,7 +27,7 @@ function install(app, options: any = {}) {
      */
     commonOptions(context: UseCrudProps) {
       const crudBinding = context.expose?.crudBinding;
-      const opts = {
+      const opts: CrudOptions = {
         table: {
           size: "small",
           pagination: false,
@@ -207,6 +207,7 @@ function install(app, options: any = {}) {
   app.use(FsExtendsTime);
   app.use(FsExtendsCopyable);
 
+  // 此处演示自定义字段类型
   const { addTypes } = useTypes();
   addTypes({
     time2: {
@@ -216,6 +217,25 @@ function install(app, options: any = {}) {
       valueBuilder(context) {
         console.log("time2,valueBuilder", context);
       }
+    }
+  });
+
+  // 此处演示自定义字段合并插件
+  const { registerMergeColumnPlugin } = useColumns();
+  registerMergeColumnPlugin({
+    name: "readonly-plugin",
+    order: 1,
+    handle: (columnProps: ColumnCompositionProps) => {
+      // 你可以在此处做你自己的处理
+      // 比如你可以定义一个readonly的公共属性，处理该字段只读，不能编辑
+      if (columnProps.readonly) {
+        // 合并column配置
+        _.merge(columnProps, {
+          form: { show: false },
+          viewForm: { show: true }
+        });
+      }
+      return columnProps;
     }
   });
 }
