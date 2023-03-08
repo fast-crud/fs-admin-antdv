@@ -2,12 +2,13 @@
   <fs-crud v-if="crudBinding" ref="crudRef" v-bind="crudBinding" />
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, dict, useExpose } from "@fast-crud/fast-crud";
+import { useCrud, dict, useExpose, useFs, UseFsProps } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import { GetCrud } from "./api";
 import _ from "lodash-es";
+import { useFsAsync } from "@fast-crud/fast-crud/src";
 export default defineComponent({
   name: "AdvancedFromBackend",
   setup() {
@@ -15,6 +16,9 @@ export default defineComponent({
     const crudRef = ref();
     // crud 配置的ref
     const crudBinding = ref();
+
+    const customValue: any = {}; //自定义变量，传给createCrudOptions的额外参数
+
     // 暴露的方法
     const { expose } = useExpose({ crudRef, crudBinding });
     // 你的crud配置
@@ -22,6 +26,9 @@ export default defineComponent({
     // 初始化crud配置
     // 页面打开后获取列表数据
     onMounted(async () => {
+      const customValue = {};
+      const { crudBinding, crudRef, crudExpose, extraExport } = await useFsAsync({ crudRef, crudBinding, createCrudOptions, customValue } as UseFsProps);
+
       // 从后台获取crud配置
       const ret = await GetCrud();
       // 编译
