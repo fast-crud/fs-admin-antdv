@@ -8,17 +8,17 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, onMounted } from "vue";
-import {useFs, UseFsProps} from "@fast-crud/fast-crud";
-import createCrudOptions from "./crud";
+import { useFs } from "@fast-crud/fast-crud";
+import createCrudOptions from "./crud.js";
 
 export default defineComponent({
   name: "DictSharedUse",
   setup() {
     // crud组件的ref
     const customValue: any = {}; //自定义变量，传给createCrudOptions的额外参数（可以任意命名，任意多个）
-    const { crudBinding, crudRef, crudExpose, customExport } = useFs({ createCrudOptions, customValue } as UseFsProps);
+    const { crudBinding, crudRef, crudExpose, customExport } = useFs({ createCrudOptions, customValue });
 
     // 页面打开后获取列表数据
     onMounted(() => {

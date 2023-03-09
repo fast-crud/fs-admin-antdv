@@ -18,10 +18,16 @@ export const crudResources = [
         },
         children: [
           {
-            title: "HelloWorld",
+            title: "FirstDemo",
             name: "FsCrudFirst",
             path: "/crud/basis/first",
             component: "/crud/basis/first/index.vue"
+          },
+          {
+            title: "HelloWorld",
+            name: "FsCrudHelloWorld",
+            path: "/crud/basis/helloworld",
+            component: "/crud/basis/helloworld/index.vue"
           },
           {
             title: "动态计算",
