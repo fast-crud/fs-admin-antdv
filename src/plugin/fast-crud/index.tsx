@@ -26,7 +26,7 @@ function install(app: any, options: any = {}) {
      * useCrud时会被执行
      * @param context，useCrud的参数
      */
-    commonOptions(context: UseCrudProps) {
+    commonOptions(context: UseCrudProps): CrudOptions {
       const crudBinding = context.crudExpose?.crudBinding;
       const opts: CrudOptions = {
         table: {

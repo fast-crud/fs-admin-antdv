@@ -1,4 +1,4 @@
-<template xmlns:w="http://www.w3.org/1999/xhtml">
+<template>
   <a-layout class="fs-framework">
     <a-layout-sider v-model:collapsed="asideCollapsed" :trigger="null" collapsible>
       <div class="header-logo">

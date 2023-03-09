@@ -1,12 +1,15 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #actionbar-right>
-        <a-button class="ml-1" @click="getSearchFormData">getSearchFormData</a-button>
-        <a-button class="ml-1" @click="setSearchFormData">setSearchFormData</a-button>
-        <a-button class="ml-1" @click="clearSearchForm">clearSearchForm</a-button>
-      </template>
-    </fs-crud>
+    <template #header>
+      <div class="title">
+        Tabs快捷查询
+        <span class="sub">表格顶部显示tabs，点击tabs快捷查询</span>
+      </div>
+      <div class="more">
+        <a target="_blank" href="http://fast-crud.docmirror.cn/api/crud-options/tabs.html">文档</a>
+      </div>
+    </template>
+    <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
 
@@ -17,7 +20,7 @@ import createCrudOptions from "./crud";
 import { useExpose } from "@fast-crud/fast-crud";
 import { message } from "ant-design-vue";
 export default defineComponent({
-  name: "FeatureSearch",
+  name: "FeatureTabs",
   setup() {
     // crud组件的ref
     const crudRef = ref();

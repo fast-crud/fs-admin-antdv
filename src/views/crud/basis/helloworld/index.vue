@@ -1,5 +1,11 @@
 <template>
   <fs-page>
+    <template #header>
+      <div class="title">HelloWorld</div>
+      <div class="more">
+        <a target="_blank" href="http://fast-crud.docmirror.cn/guide/start/integration.html">文档</a>
+      </div>
+    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding" />
   </fs-page>
 </template>

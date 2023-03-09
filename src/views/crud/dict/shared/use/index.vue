@@ -1,10 +1,12 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #actionbar-right>
-        <a-alert class="ml-1" type="warning" message="共享字典的使用" />
-      </template>
-    </fs-crud>
+    <template #header>
+      <div class="title">
+        共享字典的使用
+        <span class="sub">在管理共享字典页面添加字典后，使用时会自动增加字典选项</span>
+      </div>
+    </template>
+    <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
 

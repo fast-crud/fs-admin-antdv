@@ -5,6 +5,9 @@
         重置CrudOptions
         <span class="sub">重置CrudOptions,演示2秒后追加一个字段</span>
       </div>
+      <div class="more">
+        <a target="_blank" href="http://fast-crud.docmirror.cn/api/use.html">文档</a>
+      </div>
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
