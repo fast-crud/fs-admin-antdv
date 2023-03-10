@@ -169,6 +169,19 @@ function install(app: any, options: any = {}) {
       },
       domain: "http://d2p.file.handsfree.work/"
     },
+    s3: {
+      bucket: "fast-crud",
+      sdkOpts: {
+        endPoint: "play.min.io",
+        port: 9000,
+        useSSL: true,
+        accessKey: "Q3AM3UQ867SPQQA43P2F",
+        secretKey: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+      },
+      custom: {
+        // buildKey，获取授权等接口中将会传入
+      }
+    },
     form: {
       action: "http://www.docmirror.cn:7070/api/upload/form/upload",
       name: "file",
