@@ -1,5 +1,6 @@
 import * as api from "./api";
 import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
+import { GetSignedUrl } from "./api";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -53,6 +54,17 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             component: {
               uploader: {
                 type: "s3"
+              },
+              valueType: "key"
+            }
+          },
+          column: {
+            component: {
+              async buildUrl(key: string) {
+                const url = await GetSignedUrl("fast-crud", key);
+                debugger;
+                console.log("url", url);
+                return url;
               }
             }
           }

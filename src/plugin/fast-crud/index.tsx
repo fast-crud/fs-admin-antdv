@@ -172,14 +172,23 @@ function install(app: any, options: any = {}) {
     s3: {
       bucket: "fast-crud",
       sdkOpts: {
-        endPoint: "play.min.io",
-        port: 9000,
-        useSSL: true,
-        accessKey: "Q3AM3UQ867SPQQA43P2F",
-        secretKey: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+        s3ForcePathStyle: true,
+        signatureVersion: "v4",
+        region: "us-east-1",
+        forcePathStyle: true,
+        endpoint: "https://play.min.io",
+        credentials: {
+          accessKeyId: "Q3AM3UQ867SPQQA43P2F", //访问登录名
+          secretAccessKey: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG" //访问密码
+        }
       },
       custom: {
         // buildKey，获取授权等接口中将会传入
+      },
+      successHandle(ret: any) {
+        // 上传完成后可以在此处处理结果，修改url什么的
+        console.log("success handle:", ret);
+        return ret;
       }
     },
     form: {
