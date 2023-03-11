@@ -1,7 +1,6 @@
 import * as api from "./api";
 import { GetSignedUrl } from "./api";
 import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
-import { SignedUrlType } from "@fast-crud/fast-extends";
 
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
