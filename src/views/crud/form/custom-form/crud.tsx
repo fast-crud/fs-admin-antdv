@@ -33,6 +33,9 @@ function useCustomFormWrapperDemo(crudExpose: CrudExpose) {
               openCustomForm();
             }
           }
+        },
+        onOpened() {
+          console.log("fsFormWrapper", crudExpose.getFormWrapperRef());
         }
       },
       group: {
