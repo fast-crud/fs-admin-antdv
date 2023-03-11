@@ -7,7 +7,7 @@ import "@fast-crud/fast-extends/dist/style.css";
 import UiAntdv from "@fast-crud/ui-antdv";
 import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
-import { TransformResProps } from "@fast-crud/fast-crud/src";
+import { TransformResProps } from "@fast-crud/fast-crud";
 import { GetSignedUrl } from "/@/views/crud/component/uploader/s3/api";
 
 function install(app: any, options: any = {}) {

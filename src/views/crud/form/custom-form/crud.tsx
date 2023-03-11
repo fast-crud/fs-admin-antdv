@@ -1,7 +1,7 @@
 import * as api from "./api.js";
 import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, CrudExpose, CrudOptions, DelReq, dict, EditReq, useColumns, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
 import { message } from "ant-design-vue";
-import { useFormWrapper } from "@fast-crud/fast-crud/src";
+import { useFormWrapper } from "@fast-crud/fast-crud";
 
 function useCustomFormWrapperDemo(crudExpose: CrudExpose) {
   let index = 0;
