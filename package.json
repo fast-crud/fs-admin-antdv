@@ -40,7 +40,7 @@
     "cos-js-sdk-v5": "^1.4.16",
     "cropperjs": "^1.5.13",
     "dayjs": "^1.11.7",
-    "deepdash-es": "5.3.9",
+    "deepdash-es": "5.3.5",
     "highlight.js": "^11.7.0",
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.0",
