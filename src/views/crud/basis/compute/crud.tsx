@@ -63,16 +63,13 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         }),
         buttons: {
           edit: {
-            show: compute(({ row }) => {
+            show: compute<boolean>(({ row }) => {
               return row.editable;
             })
           },
           remove: {
             show: compute(({ row }) => {
               return row.editable;
-            }),
-            icon: compute(({ row }) => {
-              return row.icon;
             })
           },
           custom: compute(({ row }) => {
@@ -151,9 +148,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             component: {
               show: compute(({ row }) => {
                 return row.compute;
-              }),
-              vModel: compute(() => {
-                return "modelValue";
               })
             }
           }
