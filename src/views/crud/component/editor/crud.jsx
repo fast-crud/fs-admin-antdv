@@ -41,15 +41,15 @@ export default function ({ expose }) {
           column: {
             width: 400
           },
-          form:{
-            col: { span: 24 },
-          },
+          form: {
+            col: { span: 24 }
+          }
         },
         text: {
           title: "摘要",
           type: "textarea",
-          form:{
-            col: { span: 24 },
+          form: {
+            col: { span: 24 }
           },
           viewForm: {
             component: {
@@ -79,7 +79,7 @@ export default function ({ expose }) {
           },
           type: ["editor-wang5"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
           form: {
-            helper:"示例已升级到wangEditor5版本，原来的editor-wang目前仍然可以使用，后续fs升级可能会将其删除，请尽快升级到editor-wang5版本",
+            helper: "示例已升级到wangEditor5版本，原来的editor-wang目前仍然可以使用，后续fs升级可能会将其删除，请尽快升级到editor-wang5版本",
             col: { span: 24 },
             // 动态显隐字段
             // show: compute(({ form }) => {
