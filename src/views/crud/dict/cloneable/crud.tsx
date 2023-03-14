@@ -1,5 +1,5 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes, ValueChangeContext } from "@fast-crud/fast-crud";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -16,9 +16,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
     return await api.AddObj(form);
   };
 
-
   const remoteDict = dict({
-    cloneable: true,
     url: "/mock/dicts/OpenStatusEnum"
   });
 
@@ -61,7 +59,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
               name: "a-switch",
               vModel: "checked"
             },
-            valueChange({ row, getComponentRef }) {
+            valueChange({ row, getComponentRef }: ValueChangeContext) {
               // 这里不能使用remoteDict,因为在分发时已经clone到form配置中了
               // 这里dict修改不会影响列里面的数据
               const targetDict = getComponentRef("remote").dict;
@@ -74,7 +72,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
               name: "a-switch",
               vModel: "checked"
             },
-            valueChange({ form, getComponentRef }) {
+            valueChange({ form, getComponentRef }: ValueChangeContext) {
               // 这里不能使用remoteDict,因为在分发时已经clone到form配置中了
               // 这里dict修改不会影响列里面的数据
               const targetDict = getComponentRef("remote").dict;

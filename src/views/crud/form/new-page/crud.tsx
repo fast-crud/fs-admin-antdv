@@ -1,5 +1,6 @@
 import * as api from "./api";
 import { useRouter } from "vue-router";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -16,7 +17,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
     return await api.AddObj(form);
   };
 
-  const router = useRouter()
+  const router = useRouter();
   return {
     crudOptions: {
       request: {

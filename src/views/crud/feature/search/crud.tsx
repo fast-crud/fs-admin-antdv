@@ -1,5 +1,5 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
 import { computed, ref } from "vue";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
@@ -17,7 +17,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
     return await api.AddObj(form);
   };
 
-  let statusRef = dict({
+  const statusRef = dict({
     url: "/mock/dicts/OpenStatusEnum?single"
   });
   return {

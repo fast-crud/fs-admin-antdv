@@ -1,5 +1,6 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
+
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -40,7 +41,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         "profile.name": {
           title: "profile.name",
           type: "text",
-          search:{show:true},
+          search: { show: true },
           form: {
             key: ["profile", "name"],
             rules: [{ required: true, message: "姓名必填" }]

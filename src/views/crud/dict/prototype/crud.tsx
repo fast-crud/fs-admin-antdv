@@ -1,5 +1,5 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes, ValueChangeContext } from "@fast-crud/fast-crud";
 import { requestForMock } from "../../../../api/service";
 
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
@@ -17,7 +17,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
   const addRequest = async ({ form }: AddReq) => {
     return await api.AddObj(form);
   };
-
 
   const remoteDict = dict({
     prototype: true, //这个dict只是一个原型，引用它的dict组件初始化时都会把此dict对象clone一份
@@ -81,9 +80,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             valueChange({ form, value, getComponentRef }) {
               console.log("form", value);
               const targetDict = getComponentRef("remote").getDict();
-              targetDict.url = form.modifyDict
-                ? "/mock/dicts/moreOpenStatusEnum?remote"
-                : "/mock/dicts/OpenStatusEnum?remote";
+              targetDict.url = form.modifyDict ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
               targetDict.reloadDict();
             }
           },

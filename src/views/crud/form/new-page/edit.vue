@@ -15,7 +15,7 @@
 <script>
 import { useRoute } from "vue-router";
 import { defineComponent, ref, onMounted } from "vue";
-import {useCrud, useExpose, useColumns, useFs} from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useColumns, useFs } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import * as api from "./api";
 import _ from "lodash-es";

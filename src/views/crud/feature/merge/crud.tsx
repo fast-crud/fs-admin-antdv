@@ -1,5 +1,5 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -16,11 +16,10 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
     return await api.AddObj(form);
   };
 
-
   /**
    * 列合并render
    */
-  function colMergeRender({ index }) {
+  function colMergeRender({ index }: any) {
     return {
       props: {
         colSpan: 5
@@ -57,9 +56,10 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         },
         cellMerge: {
           title: "上下合并",
+          type: "text",
           column: {
-            customRender: ({ text, index }, cellRender) => {
-              const obj = {
+            customRender: ({ text, index }: any, cellRender: any) => {
+              const obj: any = {
                 props: {}
               };
               if (index === 2) {
@@ -76,9 +76,10 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         },
         colMerge1: {
           title: "左右合并",
+          type: "text",
           column: {
             align: "center",
-            customRender({ text, index, record, dataIndex }, cellRender) {
+            customRender({ text, index, record, dataIndex }: any, cellRender: any) {
               if (index !== 4) {
                 return {
                   children: cellRender()
@@ -95,8 +96,9 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         },
         colMerge2: {
           title: "左右合并",
+          type: "text",
           column: {
-            customRender({ text, index, record, dataIndex }, cellRender) {
+            customRender({ text, index, record, dataIndex }: any, cellRender: any) {
               if (index !== 4) {
                 return {
                   children: cellRender()

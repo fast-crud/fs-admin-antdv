@@ -25,7 +25,7 @@ export function AddObj(obj: any) {
   });
 }
 
-export function UpdateObj(obj :any) {
+export function UpdateObj(obj: any) {
   return request({
     url: apiPrefix + "/update",
     method: "post",

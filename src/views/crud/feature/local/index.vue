@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import createCrudOptions from "./crud";
-import {useExpose, useCrud, useFs} from "@fast-crud/fast-crud";
+import { useExpose, useCrud, useFs } from "@fast-crud/fast-crud";
 
 export default defineComponent({
   name: "FeatureLocal",

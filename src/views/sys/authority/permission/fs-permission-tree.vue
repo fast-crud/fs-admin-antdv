@@ -16,23 +16,15 @@
         <div class="node-title">{{ scope.title }}</div>
         <div v-if="editable === true" class="node-suffix">
           <fs-icon v-if="actions.add !== false" :icon="$fsui.icons.add" @click.stop="add(scope)" />
-          <fs-icon
-            v-if="actions.edit !== false && scope.id !== -1"
-            :icon="$fsui.icons.edit"
-            @click.stop="edit(scope)"
-          />
-          <fs-icon
-            v-if="actions.remove !== false && scope.id !== -1"
-            :icon="$fsui.icons.remove"
-            @click.stop="remove(scope)"
-          />
+          <fs-icon v-if="actions.edit !== false && scope.id !== -1" :icon="$fsui.icons.edit" @click.stop="edit(scope)" />
+          <fs-icon v-if="actions.remove !== false && scope.id !== -1" :icon="$fsui.icons.remove" @click.stop="remove(scope)" />
         </div>
       </div>
     </template>
   </a-tree>
 </template>
 
-<script>
+<script lang="ts">
 import _ from "lodash-es";
 import getEachDeep from "deepdash-es/getEachDeep";
 const eachDeep = getEachDeep(_);

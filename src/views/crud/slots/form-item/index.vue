@@ -6,14 +6,7 @@
       </template>
 
       <template #form_topics="scope">
-        <a-input-search
-          v-for="(item, index) in scope.form.topics"
-          :key="index"
-          v-model:value="scope.form.topics[index]"
-          :disabled="scope.mode === 'view'"
-          class="mb-1"
-          @search="removeTopic(index, scope.form, scope.key)"
-        >
+        <a-input-search v-for="(item, index) in scope.form.topics" :key="index" v-model:value="scope.form.topics[index]" :disabled="scope.mode === 'view'" class="mb-1" @search="removeTopic(index, scope.form, scope.key)">
           <template #enterButton>
             <a-button :disabled="scope.mode === 'view'">
               <DeleteOutlined />

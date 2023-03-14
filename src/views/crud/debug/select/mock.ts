@@ -3,7 +3,7 @@ const options: any = {
   name: "DebugSelect",
   idGenerator: 0
 };
-const list = [];
+const list: any = [];
 options.list = list;
 const mock = mockUtil.buildMock(options);
 export default mock;

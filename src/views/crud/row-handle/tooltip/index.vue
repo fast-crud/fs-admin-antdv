@@ -23,8 +23,7 @@ export default defineComponent({
     });
 
     function columnsSetToggleMode() {
-      crudBinding.value.toolbar.columnsFilter.mode =
-        crudBinding.value.toolbar.columnsFilter.mode === "simple" ? "default" : "simple";
+      crudBinding.value.toolbar.columnsFilter.mode = crudBinding.value.toolbar.columnsFilter.mode === "simple" ? "default" : "simple";
       message.info("当前列设置组件的模式为：" + crudBinding.value.toolbar.columnsFilter.mode);
     }
 

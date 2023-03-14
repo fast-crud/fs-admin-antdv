@@ -1,6 +1,7 @@
 import { message } from "ant-design-vue";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
 
-export default function ({ expose }) {
+export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   return {
     crudOptions: {
       form: {

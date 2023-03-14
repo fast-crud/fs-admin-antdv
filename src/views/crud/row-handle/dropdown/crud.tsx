@@ -1,6 +1,7 @@
 import * as api from "./api";
 import { dict, compute } from "@fast-crud/fast-crud";
 import { message } from "ant-design-vue";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);

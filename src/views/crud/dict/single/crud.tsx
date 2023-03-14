@@ -1,5 +1,5 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -17,7 +17,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
   };
 
   const statusDict = dict({
-    cloneable: false, // 关闭cloneable，任何情况下，都使用同一个dict
     data: [
       { value: "1", label: "开启", color: "success" },
       { value: "2", label: "停止", color: "blue" },
@@ -26,7 +25,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
   });
 
   const remoteDict = dict({
-    cloneable: false, // 关闭cloneable，任何情况下，都使用同一个dict
     url: "/mock/dicts/OpenStatusEnum",
     immediate: false
   });
@@ -66,7 +64,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           type: "dict-select",
           column: {
             component: {
-              onDictChange(opts) {
+              onDictChange(opts: any) {
                 console.log("字典变化：", opts);
               }
             }
@@ -83,9 +81,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             },
             valueChange({ form }) {
               console.log("changed", form.modifyDict);
-              remoteDict.url = form.modifyDict
-                ? "/mock/dicts/moreOpenStatusEnum?remote"
-                : "/mock/dicts/OpenStatusEnum?remote";
+              remoteDict.url = form.modifyDict ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
               // 由于remoteDict.cloneable =false,所以全局公用一个实例，修改会影响全部地方
               remoteDict.reloadDict();
             }
@@ -97,9 +93,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
               on: {
                 // 注意：必须要on前缀
                 onChange({ $event }) {
-                  remoteDict.url = $event
-                    ? "/mock/dicts/moreOpenStatusEnum?remote"
-                    : "/mock/dicts/OpenStatusEnum?remote";
+                  remoteDict.url = $event ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
                   remoteDict.reloadDict();
                 }
               }
