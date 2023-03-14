@@ -44,7 +44,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 import { message } from "ant-design-vue";
 import { useCrud, useExpose, useColumns, useFs } from "@fast-crud/fast-crud";

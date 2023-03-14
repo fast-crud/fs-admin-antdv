@@ -11,10 +11,10 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import createCrudOptions from "./crud";
-import { useExpose, useCrud } from "@fast-crud/fast-crud";
+import {useExpose, useCrud, useFs} from "@fast-crud/fast-crud";
 
 export default defineComponent({
   name: "FeatureLocal",
@@ -22,25 +22,11 @@ export default defineComponent({
     modelValue: {}
   },
   setup() {
-    // crud组件的ref
-    const crudRef = ref();
-    // crud 配置的ref
-    const crudBinding = ref();
-    // 暴露的方法
-    const { expose } = useExpose({ crudRef, crudBinding });
-    // 你的crud配置
-    const { crudOptions } = createCrudOptions({ expose });
-    // 初始化crud配置
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-    const { resetCrudOptions } = useCrud({ expose, crudOptions });
-    // 你可以调用此方法，重新初始化crud配置
-    // resetCrudOptions(options)
-
+    const { crudBinding, crudRef, crudExpose } = useFs({ createCrudOptions });
     // 页面打开后获取列表数据
-    // onMounted(() => {
-    //   expose.doRefresh();
-    // });
-
+    onMounted(() => {
+      crudExpose.doRefresh();
+    });
     // 通过crudBinding.value.data 可以获取表格实时数据
     function showData() {
       console.log("data:", crudBinding.value.data);

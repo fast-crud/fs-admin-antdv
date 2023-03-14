@@ -25,7 +25,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import {defineComponent, reactive} from 'vue';
 import {message} from 'ant-design-vue'
 import FeatureLocalModelValueInput from './local.vue'

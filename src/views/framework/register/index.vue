@@ -42,7 +42,7 @@
     </a-form>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, reactive, ref, toRaw } from "vue";
 import { useUserStore } from "/src/store/modules/user";
 export default defineComponent({
