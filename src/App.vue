@@ -4,7 +4,7 @@
   </a-config-provider>
 </template>
 
-<script>
+<script lang="ts">
 import zhCN from "ant-design-vue/es/locale/zh_CN";
 import enUS from "ant-design-vue/es/locale/en_US";
 import { provide, ref, nextTick } from "vue";

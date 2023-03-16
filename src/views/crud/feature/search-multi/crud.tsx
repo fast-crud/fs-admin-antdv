@@ -43,23 +43,23 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           change: {
             text: "切换模式",
             click() {
-              if (expose.crudBinding.value.search.layout === "multi-line") {
-                expose.crudBinding.value.search.layout = "";
+              if (crudExpose.crudBinding.value.search.layout === "multi-line") {
+                crudExpose.crudBinding.value.search.layout = "";
               } else {
-                expose.crudBinding.value.search.layout = "multi-line";
+                crudExpose.crudBinding.value.search.layout = "multi-line";
               }
             }
           },
           search: {
             text: "查询",
             click() {
-              expose.getSearchRef().doSearch();
+              crudExpose.getSearchRef().doSearch();
             }
           },
           reset: {
             text: "重置查询",
             click() {
-              expose.getSearchRef().doReset();
+              crudExpose.getSearchRef().doReset();
             }
           }
         }
@@ -89,12 +89,10 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
               { text: "关", value: "0" },
               { text: "停", value: "2" }
             ],
-            // specify the condition of filtering result
-            // here is that finding the name started with `value`
-            onFilter: (value, record) => {
+            onFilter: (value: any, record: any) => {
               return record.radio === value;
             },
-            sorter: (a, b) => a.radio - b.radio,
+            sorter: (a: any, b: any) => a.radio - b.radio,
             sortDirections: ["descend"]
           }
         },

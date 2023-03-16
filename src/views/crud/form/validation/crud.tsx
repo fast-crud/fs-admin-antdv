@@ -18,7 +18,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
   };
 
   const { getFormRef, getFormData } = crudExpose;
-  const validatePass1 = async (rule, value) => {
+  const validatePass1 = async (rule: any, value: any) => {
     if (value === "") {
       throw new Error("请输入密码");
     }
@@ -26,7 +26,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       getFormRef().getFormRef().validateFields(["password2"]);
     }
   };
-  const validatePass2 = async (rule, value) => {
+  const validatePass2 = async (rule: any, value: any) => {
     if (value === "") {
       throw new Error("请再次输入密码");
     } else if (value !== getFormData().password) {

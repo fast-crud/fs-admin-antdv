@@ -1,6 +1,6 @@
-import { uiContext } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, uiContext } from "@fast-crud/fast-crud";
 
-export default function ({ expose }) {
+export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   return {
     crudOptions: {
       mode: {

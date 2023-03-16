@@ -1,6 +1,6 @@
 import { request } from "/src/api/service";
 const apiPrefix = "/sys/authority/role";
-export async function GetList(query) {
+export async function GetList(query: any) {
   return request({
     url: apiPrefix + "/page",
     method: "post",
@@ -8,7 +8,7 @@ export async function GetList(query) {
   });
 }
 
-export async function AddObj(obj) {
+export async function AddObj(obj: any) {
   return request({
     url: apiPrefix + "/add",
     method: "post",
@@ -16,7 +16,7 @@ export async function AddObj(obj) {
   });
 }
 
-export async function UpdateObj(obj) {
+export async function UpdateObj(obj: any) {
   return request({
     url: apiPrefix + "/update",
     method: "post",
@@ -24,7 +24,7 @@ export async function UpdateObj(obj) {
   });
 }
 
-export async function DelObj(id) {
+export async function DelObj(id: any) {
   return request({
     url: apiPrefix + "/delete",
     method: "post",
@@ -32,7 +32,7 @@ export async function DelObj(id) {
   });
 }
 
-export async function GetObj(id) {
+export async function GetObj(id: any) {
   return request({
     url: apiPrefix + "/info",
     method: "post",
@@ -46,7 +46,7 @@ export async function GetObj(id) {
  * @returns {*}
  * @constructor
  */
-export function getPermissionIds(roleId) {
+export function getPermissionIds(roleId: any) {
   return request({
     url: apiPrefix + "/getPermissionIds",
     method: "post",
@@ -61,7 +61,7 @@ export function getPermissionIds(roleId) {
  * @returns {*}
  * @constructor
  */
-export function DoAuthz(roleId, permissionIds) {
+export function DoAuthz(roleId: any, permissionIds: any) {
   return request({
     url: apiPrefix + "/authz",
     method: "post",

@@ -14,11 +14,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
-import { useCrud } from "@fast-crud/fast-crud";
+import { defineComponent, onMounted } from "vue";
+import { useFs } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
-import { useExpose } from "@fast-crud/fast-crud";
-import { message } from "ant-design-vue";
+
 export default defineComponent({
   name: "FeatureColumnResize",
   setup() {

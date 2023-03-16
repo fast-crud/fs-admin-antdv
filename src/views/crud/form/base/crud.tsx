@@ -1,6 +1,6 @@
 import * as api from "./api";
 import { message } from "ant-design-vue";
-import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, EditReq, UserPageQuery, UserPageRes, utils } from "@fast-crud/fast-crud";
+import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, EditReq, FormWrapperContext, ScopeContext, UserPageQuery, UserPageRes, utils } from "@fast-crud/fast-crud";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -32,7 +32,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             },
             custom: {
               text: "自定义按钮",
-              click: async (context) => {
+              click: async (context: FormWrapperContext) => {
                 utils.logger.info("btn context", context);
                 message.info({ content: "通过自定义按钮，触发保存" });
                 await context.submit();
@@ -51,7 +51,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           title: "labelRender",
           type: "text",
           form: {
-            title(context) {
+            title(context: ScopeContext) {
               console.log("render label context:", context);
               return <div style={{ color: "red" }}>LabelRender</div>;
             },

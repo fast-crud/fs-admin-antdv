@@ -4,11 +4,12 @@ import getEachDeep from "deepdash-es/getEachDeep";
 import _ from "lodash-es";
 import BScroll from "better-scroll";
 import "./index.less";
+// @ts-ignore
 const eachDeep = getEachDeep(_);
 
 function useBetterScroll(enabled = true) {
-  let bsRef = ref(null);
-  let asideMenuRef = ref();
+  const bsRef = ref(null);
+  const asideMenuRef = ref();
 
   let onOpenChange = () => {};
   if (enabled) {
@@ -71,7 +72,7 @@ export default defineComponent({
     scroll: {}
   },
   setup(props, ctx) {
-    async function open(path) {
+    async function open(path: any) {
       if (path == null) {
         return;
       }
@@ -90,18 +91,18 @@ export default defineComponent({
         console.error("导航失败", e);
       }
     }
-    function onSelect(item) {
+    function onSelect(item: any) {
       open(item.key);
     }
 
     const FsIcon = resolveComponent("FsIcon");
 
-    const buildMenus = (children) => {
-      const slots = [];
+    const buildMenus = (children: any) => {
+      const slots: any = [];
       if (children == null) {
         return slots;
       }
-      for (let sub of children) {
+      for (const sub of children) {
         const title = () => {
           if (sub?.meta?.icon) {
             return (
@@ -147,14 +148,14 @@ export default defineComponent({
     const route = useRoute();
     const router = useRouter();
 
-    function openSelectedParents(fullPath) {
+    function openSelectedParents(fullPath: any) {
       if (!props.expandSelected) {
         return;
       }
       if (props.menus == null) {
         return;
       }
-      const keys = [];
+      const keys: any = [];
       let changed = false;
       eachDeep(props.menus, (value, key, parent, context) => {
         if (value == null) {
@@ -170,7 +171,7 @@ export default defineComponent({
         }
       });
       if (keys.length > 0) {
-        for (let key of keys) {
+        for (const key of keys) {
           if (openKeys.value.indexOf(key) === -1) {
             openKeys.value.push(key);
             changed = true;
@@ -180,7 +181,7 @@ export default defineComponent({
       return changed;
     }
 
-    const { asideMenuRef, onOpenChange } = useBetterScroll(props.scroll);
+    const { asideMenuRef, onOpenChange } = useBetterScroll(props.scroll as any);
 
     watch(
       () => {

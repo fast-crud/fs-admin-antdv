@@ -32,14 +32,14 @@ export default defineComponent({
       crudBinding,
       crudRef,
       getSearchFormData() {
-        const form = expose.getSearchFormData();
+        const form = crudExpose.getSearchFormData();
         message.info(`searchForm:${JSON.stringify(form)}`);
       },
       setSearchFormData() {
-        expose.setSearchFormData({ form: { radio: "1" }, mergeForm: true });
+        crudExpose.setSearchFormData({ form: { radio: "1" }, mergeForm: true });
       },
       clearSearchForm() {
-        expose.setSearchFormData({ form: { radio: null }, mergeForm: false });
+        crudExpose.setSearchFormData({ form: { radio: null }, mergeForm: false });
       }
     };
   }

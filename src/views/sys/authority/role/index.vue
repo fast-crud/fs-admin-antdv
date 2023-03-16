@@ -18,6 +18,7 @@ import * as permissionApi from "../permission/api";
 import * as api from "./api";
 import { message } from "ant-design-vue";
 import FsPermissionTree from "../permission/fs-permission-tree.vue";
+import { UseCrudPermissionCompProps, UseCrudPermissionExtraProps, UseCrudPermissionProps } from "/@/plugin/permission";
 function useAuthz() {
   const checkedKeys = ref();
 
@@ -87,9 +88,9 @@ export default defineComponent({
   setup() {
     //授权配置
     const authz = useAuthz();
-    const permission = {
+    const permission: UseCrudPermissionCompProps = {
       prefix: "sys:auth:role", //权限代码前缀
-      extra: ({ hasActionPermission }) => {
+      extra: ({ hasActionPermission }: UseCrudPermissionExtraProps): any => {
         //额外按钮权限控制
         return { rowHandle: { buttons: { authz: { show: hasActionPermission("authz") } } } };
       }

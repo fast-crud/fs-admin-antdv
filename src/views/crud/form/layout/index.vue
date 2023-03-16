@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
-import { useCrud } from "@fast-crud/fast-crud";
+import { defineComponent, onMounted } from "vue";
+import { useFs } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
-import { useExpose } from "@fast-crud/fast-crud";
+
 export default defineComponent({
   name: "FormLayout",
   setup() {

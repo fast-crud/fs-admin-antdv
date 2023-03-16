@@ -3,9 +3,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, Ref } from "vue";
-import { useCrud, dict, useExpose, useFs, UseFsProps, CrudBinding, CreateCrudOptionsRet, useFsAsync } from "@fast-crud/fast-crud";
+import { defineComponent, onMounted, ref, Ref } from "vue";
+import { CrudBinding, useFsAsync } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
+
 export default defineComponent({
   name: "AdvancedFromBackend",
   setup() {

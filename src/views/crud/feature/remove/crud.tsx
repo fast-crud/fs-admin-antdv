@@ -32,7 +32,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
               Modal.confirm({
                 content: `确定删除记录(${context.row.id})吗?`,
                 onOk() {
-                  resolve();
+                  resolve(true);
                 },
                 onCancel() {
                   reject();

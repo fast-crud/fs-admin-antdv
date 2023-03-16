@@ -19,7 +19,7 @@
   </a-dropdown>
 </template>
 
-<script>
+<script lang="ts">
 import i18n from "../../../i18n";
 import { computed, inject } from "vue";
 import _ from "lodash-es";
@@ -46,7 +46,7 @@ export default {
     const changeLocale = (change) => {
       i18n.global.locale.value = change.key;
       routerReload();
-      localeChanged(change.key)
+      localeChanged(change.key);
     };
     return {
       languages,

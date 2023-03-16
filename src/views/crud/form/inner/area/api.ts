@@ -9,7 +9,7 @@ export function GetList(query: any) {
   });
 }
 
-export function GetAll(query) {
+export function GetAll(query: any) {
   return request({
     url: apiPrefix + "/all",
     method: "get",

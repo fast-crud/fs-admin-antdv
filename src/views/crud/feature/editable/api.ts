@@ -41,7 +41,7 @@ export function GetObj(id: any) {
   });
 }
 
-export function BatchDelete(ids) {
+export function BatchDelete(ids: any) {
   return request({
     url: apiPrefix + "/batchDelete",
     method: "post",

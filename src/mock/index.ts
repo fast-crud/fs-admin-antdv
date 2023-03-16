@@ -2,14 +2,14 @@ import { mock } from "../api/service";
 import * as tools from "../api/tools";
 import _ from "lodash-es";
 // @ts-ignore
-const commonMocks = import.meta.glob("./common/mock.*.[j|t]s", { eager: true });
+const commonMocks: any = import.meta.glob("./common/mock.*.[j|t]s", { eager: true });
 // @ts-ignore
-const apiMocks = import.meta.glob("../api/modules/*.mock.ts", { eager: true });
+const apiMocks: any = import.meta.glob("../api/modules/*.mock.ts", { eager: true });
 // @ts-ignore
-const viewMocks = import.meta.glob("../views/**/mock.[j|t]s", { eager: true });
+const viewMocks: any = import.meta.glob("../views/**/mock.[j|t]s", { eager: true });
 
 const list: any = [];
-_.forEach(commonMocks, (value) => {
+_.forEach(commonMocks, (value: any) => {
   list.push(value.default);
 });
 _.forEach(apiMocks, (value) => {

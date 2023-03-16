@@ -1,5 +1,4 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
 import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
 
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
@@ -38,6 +37,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       columns: {
         id: {
           title: "id",
+          type: "text",
           form: { show: false }, // 表单配置
           column: {
             width: 70,

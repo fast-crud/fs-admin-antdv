@@ -27,7 +27,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       },
       table: {
         // 表头过滤改变事件
-        onFilterChange(e) {
+        onFilterChange(e: any) {
           console.log("onFilterChange", e);
         }
       },
@@ -58,10 +58,10 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             ],
             // specify the condition of filtering result
             // here is that finding the name started with `value`
-            onFilter: (value, record) => {
+            onFilter: (value: any, record: any) => {
               return record.radio === value;
             },
-            sorter: (a, b) => a.radio - b.radio,
+            sorter: (a: any, b: any) => a.radio - b.radio,
             sortDirections: ["descend"]
           }
         }

@@ -2,13 +2,13 @@
   <pre class="fs-highlight hljs" v-html="highlightHTML"></pre>
 </template>
 
-<script>
+<script lang="ts">
 // 相关文档
 // https://highlightjs.org/usage/
 // http://highlightjs.readthedocs.io/en/latest/api.html#configure-options
 import highlight from "highlight.js";
 import "../highlight-styles/github-gist.css";
-import htmlFormat from "./libs/htmlFormat";
+// import htmlFormat from "./libs/htmlFormat";
 export default {
   name: "FsHighlight",
   props: {
@@ -37,25 +37,17 @@ export default {
     code() {
       this.highlight();
     }
-  },
+  } as any,
   mounted() {
     this.highlight();
   },
   methods: {
     highlight() {
-      const code = this.formatHtml ? htmlFormat(this.code) : this.code;
-      this.highlightHTML = highlight.highlightAuto(code, [
-        this.lang,
-        "html",
-        "javascript",
-        "json",
-        "css",
-        "scss",
-        "less"
-      ]).value;
+      // const code = this.formatHtml ? htmlFormat(this.code) : this.code;
+      this.highlightHTML = highlight.highlightAuto(this.code, [this.lang, "html", "javascript", "json", "css", "scss", "less"]).value;
     }
-  }
-};
+  } as any
+} as any;
 </script>
 
 <style lang="less">

@@ -2,10 +2,10 @@
   <fs-crud ref="crudRef" v-bind="crudBinding" />
 </template>
 
-<script>
-import { defineComponent, ref, onMounted, watch } from "vue";
+<script lang="ts">
+import { defineComponent, watch } from "vue";
 import createCrudOptions from "./crud";
-import { useExpose, useCrud, useFs } from "@fast-crud/fast-crud";
+import { useFs } from "@fast-crud/fast-crud";
 
 export default defineComponent({
   name: "FeatureLocalModelValueInput",

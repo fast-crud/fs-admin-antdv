@@ -29,10 +29,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, onMounted } from "vue";
 import createCrudOptions from "./crud";
-import { useExpose, useCrud } from "@fast-crud/fast-crud";
+import { useFs } from "@fast-crud/fast-crud";
 import { message } from "ant-design-vue";
+
 export default defineComponent({
   name: "FeatureEditable",
   setup() {
@@ -54,7 +55,7 @@ export default defineComponent({
     return {
       crudBinding,
       crudRef,
-      enabledChanged(event) {
+      enabledChanged(event: boolean) {
         if (event) {
           enable();
         } else {
@@ -70,7 +71,7 @@ export default defineComponent({
         crudExpose.editable.inactive();
       },
       save() {
-        crudExpose.getTableRef().editable.submit(({ changed, removed, setData }) => {
+        crudExpose.getTableRef().editable.submit(({ changed, removed, setData }: any) => {
           console.log("changed", changed);
           console.log("removed", removed);
           // setData({ 0: {id:1} }); //设置data

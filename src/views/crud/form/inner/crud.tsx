@@ -2,6 +2,7 @@ import * as api from "./api";
 import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
 import { useRouter } from "vue-router";
 import { message } from "ant-design-vue";
+import { SyncOutlined } from "@ant-design/icons-vue";
 
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {

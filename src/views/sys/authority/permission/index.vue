@@ -14,11 +14,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose, CrudExpose, useUi } from "@fast-crud/fast-crud";
+import { defineComponent, onMounted, ref } from "vue";
 import createCrudOptions from "./crud.js";
 import FsPermissionTree from "./fs-permission-tree.vue";
 import { usePermission } from "/src/plugin/permission";
+import { useFs } from "@fast-crud/fast-crud";
+
 export default defineComponent({
   name: "AuthorityPermission",
   components: { FsPermissionTree },
@@ -35,13 +36,13 @@ export default defineComponent({
     //用户业务代码
 
     async function addHandle(item) {
-      await expose.openAdd({ initialForm: { parentId: item?.id ?? -1 } });
+      await crudExpose.openAdd({ initialForm: { parentId: item?.id ?? -1 } });
     }
     async function editHandle(item) {
-      await expose.openEdit({ row: item });
+      await crudExpose.openEdit({ row: item });
     }
     async function removeHandle(item) {
-      await expose.doRemove({ row: { id: item.id } });
+      await crudExpose.doRemove({ row: { id: item.id } });
     }
 
     const { hasPermissions } = usePermission();

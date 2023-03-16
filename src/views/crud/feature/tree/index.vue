@@ -33,7 +33,7 @@ export default defineComponent({
           async onOk() {
             await BatchDelete(selectedRowKeys.value);
             message.info("删除成功");
-            expose.doRefresh();
+            crudExpose.doRefresh();
             selectedRowKeys.value = [];
           }
         });

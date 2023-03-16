@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
-import { useCrud } from "@fast-crud/fast-crud";
+import { defineComponent, onMounted } from "vue";
 import createCrudOptions from "./crud";
-import { useExpose } from "@fast-crud/fast-crud";
+import { useFs } from "@fast-crud/fast-crud";
+
 export default defineComponent({
   name: "FormText",
   setup() {
@@ -16,7 +16,7 @@ export default defineComponent({
 
     // 页面打开后获取列表数据
     onMounted(() => {
-      expose.doRefresh();
+      crudExpose.doRefresh();
     });
 
     return {

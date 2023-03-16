@@ -170,6 +170,48 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             }
           }
         },
+        anyValueType: {
+          title: "valueType=any",
+          type: "file-uploader",
+          form: {
+            component: {
+              uploader: {
+                type: "form",
+                successHandle(res: any) {
+                  // 模拟后台返回fileId
+                  const key = res.replace("/api/upload/form/download?key=", "");
+                  return {
+                    url: "http://www.docmirror.cn:7070" + res,
+                    key: key,
+                    fileId: key
+                  };
+                }
+              },
+              valueType: "fileId",
+              async buildUrls(value: any[]) {
+                //批量构建url
+                return new Promise((resolve) => {
+                  const urls: string[] = [];
+                  for (const item of value) {
+                    const url = "http://www.docmirror.cn:7070/api/upload/form/download?key=" + item;
+                    urls.push(url);
+                  }
+                  resolve(urls);
+                });
+              }
+            }
+          },
+          column: {
+            component: {
+              async buildUrl(value: any) {
+                return new Promise((resolve) => {
+                  const url = "http://www.docmirror.cn:7070/api/upload/form/download?key=" + value;
+                  resolve(url);
+                });
+              }
+            }
+          }
+        },
         limit: {
           title: "限制数量",
           type: "file-uploader",
@@ -211,10 +253,11 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           type: "file-uploader",
           form: {
             rules: [
-              { required: true, message: "此项必传" },
+              { required: true, message: "此项必传", trigger: "input" },
               {
                 validator: AllUploadSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
-                message: "还有文件正在上传，请稍候"
+                message: "还有文件正在上传，请稍候",
+                trigger: "input"
               }
             ],
             helper: "大小不能超过50M，文件未上传完成之前，阻止提交",

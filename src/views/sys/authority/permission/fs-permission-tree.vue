@@ -27,8 +27,10 @@
 <script lang="ts">
 import _ from "lodash-es";
 import getEachDeep from "deepdash-es/getEachDeep";
+import { computed, defineComponent, ref } from "vue";
+
+//@ts-ignore
 const eachDeep = getEachDeep(_);
-import { defineComponent, ref, computed } from "vue";
 export default defineComponent({
   name: "FsPermissionTree",
   props: {
@@ -94,16 +96,16 @@ export default defineComponent({
         }
       ];
     });
-    function add(scope) {
+    function add(scope: any) {
       ctx.emit("add", scope.dataRef);
     }
-    function edit(scope) {
+    function edit(scope: any) {
       ctx.emit("edit", scope.dataRef);
     }
-    function remove(scope) {
+    function remove(scope: any) {
       ctx.emit("remove", scope.dataRef);
     }
-    function onChecked(a, b, c) {
+    function onChecked(a: any, b: any, c: any) {
       console.log("chedcked", a, b, c);
     }
     function getChecked() {

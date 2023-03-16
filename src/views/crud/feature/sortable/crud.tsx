@@ -33,7 +33,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             url: "/mock/dicts/OpenStatusEnum?single"
           }),
           column: {
-            sorter(a, b) {
+            sorter(a: any, b: any) {
               return a.radio < b.radio ? 1 : -1;
             }
           }

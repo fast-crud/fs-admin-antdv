@@ -22,12 +22,8 @@
       <div class="left"></div>
       <div class="right">
         <div>如果觉得好用，请不要吝啬你的star哟！</div>
-        <a href="https://gitee.com/fast-crud/fast-crud" target="_blank"
-          ><img src="https://gitee.com/fast-crud/fast-crud/badge/star.svg?theme=dark" alt="star"
-        /></a>
-        <a href="https://github.com/fast-crud/fast-crud" target="_blank"
-          ><img alt="GitHub stars" src="https://img.shields.io/github/stars/fast-crud/fast-crud?logo=github"
-        /></a>
+        <a href="https://gitee.com/fast-crud/fast-crud" target="_blank"><img src="https://gitee.com/fast-crud/fast-crud/badge/star.svg?theme=dark" alt="star" /></a>
+        <a href="https://github.com/fast-crud/fast-crud" target="_blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/fast-crud/fast-crud?logo=github" /></a>
       </div>
     </div>
   </div>
@@ -36,6 +32,7 @@
 import helper from "./helper";
 
 import { defineComponent, ref } from "vue";
+
 export default defineComponent({
   name: "PageCover",
   setup() {

@@ -17,7 +17,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
     return await api.AddObj(form);
   };
 
-  const crudBinding = expose.crudBinding;
+  const crudBinding = crudExpose.crudBinding;
   return {
     crudOptions: {
       request: {
@@ -27,7 +27,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         delRequest
       },
       table: {
-        onResizeColumn: (w, col) => {
+        onResizeColumn: (w: number, col: any) => {
           //触发resize事件后，修改column宽度，width只能配置为number类型
           //可以将此方法写在app.use()中的commonOptions里面
           crudBinding.value.table.columnsMap[col.key].width = w;

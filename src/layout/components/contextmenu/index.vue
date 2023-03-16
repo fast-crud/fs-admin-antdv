@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "FsContextmenu",
   props: {
@@ -30,10 +30,10 @@ export default {
         }
         return this.visible;
       },
-      set(newVal) {
+      set(newVal: any) {
         this.$emit("update:visible", newVal);
       }
-    },
+    } as any,
     style() {
       return {
         left: this.x + "px",
@@ -41,18 +41,18 @@ export default {
         display: this.visible ? "block" : "none "
       };
     }
-  },
+  } as any,
   mounted() {
     // 将菜单放置到body下
     document.querySelector("body").appendChild(this.$el);
   },
   methods: {
-    watchContextmenu(event) {
+    watchContextmenu(event: any) {
       if (!this.$el.contains(event.target) || event.button !== 0) this.flag = false;
       window.removeEventListener("mousedown", this.watchContextmenu);
     }
-  }
-};
+  } as any
+} as any;
 </script>
 
 <style>

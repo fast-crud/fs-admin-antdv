@@ -29,6 +29,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       columns: {
         _index: {
           title: "序号",
+          type: "text",
           form: { show: false },
           column: {
             // type: "index",
@@ -38,7 +39,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             formatter: (context) => {
               //计算序号,你可以自定义计算规则，此处为翻页累加
               const index = context.index ?? 1;
-              const pagination = expose.crudBinding.value.pagination;
+              const pagination = crudExpose.crudBinding.value.pagination;
               return ((pagination.current ?? 1) - 1) * pagination.pageSize + index + 1;
             }
           }

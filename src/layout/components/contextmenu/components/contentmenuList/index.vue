@@ -1,12 +1,6 @@
 <template>
   <div class="fs-contentmenu-list" @click="rowClick">
-    <div
-      v-for="item in menulist"
-      :key="item.value"
-      :data-value="item.value"
-      class="fs-contentmenu-item"
-      flex="cross:center main:center"
-    >
+    <div v-for="item in menulist" :key="item.value" :data-value="item.value" class="fs-contentmenu-item" flex="cross:center main:center">
       <d2-icon v-if="item.icon" :name="item.icon" />
       <div class="fs-contentmenu-item-title" flex-box="1">
         {{ item.title }}
@@ -15,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "FsContextmenuList",
   props: {

@@ -20,7 +20,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
 
   const selectedRowKeys = ref([]);
 
-  const onSelectChange = (changed) => {
+  const onSelectChange = (changed: any) => {
     console.log("selection", changed);
     selectedRowKeys.value = changed;
   };
@@ -76,6 +76,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         },
         amount: {
           title: "金额(元)",
+          type: "number",
           key: "amount"
         },
         radio: {

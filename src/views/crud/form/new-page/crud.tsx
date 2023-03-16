@@ -60,6 +60,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         },
         price: {
           title: "价格",
+          type: "number",
           sortable: true
         },
         store: {

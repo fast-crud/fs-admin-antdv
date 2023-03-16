@@ -47,7 +47,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             },
             valueBuilder({ form }) {
               if (form.roles) {
-                form.roles = form.roles.map((item) => item.id);
+                form.roles = form.roles.map((item: any) => item.id);
               }
             }
           }

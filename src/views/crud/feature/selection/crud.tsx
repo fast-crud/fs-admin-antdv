@@ -19,7 +19,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
 
   const selectedRowKeys = ref([]);
 
-  const onSelectChange = (changed) => {
+  const onSelectChange = (changed: any) => {
     console.log("selection", changed);
     selectedRowKeys.value = changed;
   };
@@ -31,7 +31,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         rowSelection: {
           selectedRowKeys: selectedRowKeys,
           onChange: onSelectChange,
-          getCheckboxProps: (record) => ({
+          getCheckboxProps: (record: any) => ({
             disabled: record.id === 1 // 此处演示第一行禁用
           })
         }

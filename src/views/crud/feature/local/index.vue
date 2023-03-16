@@ -37,7 +37,7 @@ export default defineComponent({
 
     //启用行编辑
     function enabledRowEdit() {
-      expose.editable.enable({
+      crudExpose.editable.enable({
         mode: "row"
       });
       crudBinding.value.actionbar.buttons.add.show = false;
@@ -46,7 +46,7 @@ export default defineComponent({
 
     //启用自由编辑
     function enabledFreeEdit() {
-      expose.editable.enable({
+      crudExpose.editable.enable({
         mode: "free"
       });
       crudBinding.value.actionbar.buttons.add.show = false;
@@ -55,7 +55,7 @@ export default defineComponent({
 
     //启用关闭编辑模式
     function disabledEdit() {
-      expose.editable.enable({
+      crudExpose.editable.enable({
         enabled: false
       });
       crudBinding.value.actionbar.buttons.add.show = true;
