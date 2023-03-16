@@ -27,7 +27,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         show: true,
         name: "city",
         type: "card"
-      },
+      } as any,
       request: {
         pageRequest,
         addRequest,
