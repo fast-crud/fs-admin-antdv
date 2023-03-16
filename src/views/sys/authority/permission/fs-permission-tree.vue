@@ -25,12 +25,10 @@
 </template>
 
 <script lang="ts">
+import { utils } from "@fast-crud/fast-crud";
 import _ from "lodash-es";
-import getEachDeep from "deepdash-es/getEachDeep";
 import { computed, defineComponent, ref } from "vue";
 
-//@ts-ignore
-const eachDeep = getEachDeep(_);
 export default defineComponent({
   name: "FsPermissionTree",
   props: {
@@ -56,7 +54,7 @@ export default defineComponent({
         return null;
       }
       const clone = _.cloneDeep(props.tree);
-      eachDeep(clone, (value, key, pNode, context) => {
+      utils.deepdash.forEachDeep(clone, (value: any, key: any, pNode: any, context: any) => {
         if (value == null) {
           return;
         }

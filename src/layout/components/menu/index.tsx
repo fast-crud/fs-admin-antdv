@@ -1,11 +1,9 @@
 import { useRoute, useRouter } from "vue-router";
 import { ref, watch, onMounted, onUnmounted, resolveComponent, nextTick, defineComponent } from "vue";
-import getEachDeep from "deepdash-es/getEachDeep";
 import _ from "lodash-es";
 import BScroll from "better-scroll";
 import "./index.less";
-// @ts-ignore
-const eachDeep = getEachDeep(_);
+import { utils } from "@fast-crud/fast-crud";
 
 function useBetterScroll(enabled = true) {
   const bsRef = ref(null);
@@ -158,7 +156,7 @@ export default defineComponent({
       }
       const keys: any = [];
       let changed = false;
-      eachDeep(props.menus, (value, key, parent, context) => {
+      utils.deepdash.forEachDeep(props.menus, (value: any, key: any, parent: any, context: any) => {
         if (value == null) {
           return;
         }

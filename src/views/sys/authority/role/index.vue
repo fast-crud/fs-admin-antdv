@@ -11,14 +11,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose, useFs } from "@fast-crud/fast-crud";
+import {defineComponent, onMounted, ref} from "vue";
+import {useFs} from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import * as permissionApi from "../permission/api";
 import * as api from "./api";
-import { message } from "ant-design-vue";
+import {message} from "ant-design-vue";
 import FsPermissionTree from "../permission/fs-permission-tree.vue";
-import { UseCrudPermissionCompProps, UseCrudPermissionExtraProps, UseCrudPermissionProps } from "/@/plugin/permission";
+import {UseCrudPermissionCompProps, UseCrudPermissionExtraProps} from "/@/plugin/permission";
+
 function useAuthz() {
   const checkedKeys = ref();
 
