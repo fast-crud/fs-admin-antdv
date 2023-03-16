@@ -49,7 +49,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         options: computed(() => {
           return cityDictRef.data;
         })
-      },
+      } as any,
       columns: {
         id: {
           title: "ID",
