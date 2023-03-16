@@ -9,10 +9,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, Ref } from "vue";
+import { defineComponent, onMounted } from "vue";
 import createCrudOptions from "./crud.jsx";
-import { useExpose, useCrud, CrudBinding } from "@fast-crud/fast-crud";
-import { message, Modal, notification } from "ant-design-vue";
+import { message } from "ant-design-vue";
+import { useFs } from "@fast-crud/fast-crud";
+
 export default defineComponent({
   name: "BasisRowHandle",
   setup() {

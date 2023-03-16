@@ -5,7 +5,7 @@
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <a-button v-permission="'sys:auth:per:add'" style="margin-left: 20px" @click="addHandle({})">
-        <fs-icon :icon="$fsui.icons.add"></fs-icon>
+        <fs-icon :icon="ui.icons.add"></fs-icon>
         添加</a-button
       >
       <fs-permission-tree class="permission-tree" :tree="crudBinding.data" :checkable="false" :actions="permission" @add="addHandle" @edit="editHandle" @remove="removeHandle"></fs-permission-tree>
@@ -18,7 +18,7 @@ import { defineComponent, onMounted, ref } from "vue";
 import createCrudOptions from "./crud.js";
 import FsPermissionTree from "./fs-permission-tree.vue";
 import { usePermission } from "/src/plugin/permission";
-import { useFs } from "@fast-crud/fast-crud";
+import { useFs, useUi } from "@fast-crud/fast-crud";
 
 export default defineComponent({
   name: "AuthorityPermission",
@@ -33,16 +33,18 @@ export default defineComponent({
       await crudExpose.doRefresh();
     });
 
+    const { ui } = useUi();
+
     //用户业务代码
 
-    async function addHandle(item) {
-      await crudExpose.openAdd({ initialForm: { parentId: item?.id ?? -1 } });
+    async function addHandle(item: any) {
+      await crudExpose.openAdd({ row: { parentId: item?.id ?? -1 } });
     }
-    async function editHandle(item) {
+    async function editHandle(item: any) {
       await crudExpose.openEdit({ row: item });
     }
-    async function removeHandle(item) {
-      await crudExpose.doRemove({ row: { id: item.id } });
+    async function removeHandle(item: any) {
+      await crudExpose.doRemove({ row: { id: item.id }, index: null });
     }
 
     const { hasPermissions } = usePermission();
@@ -53,6 +55,7 @@ export default defineComponent({
     });
 
     return {
+      ui,
       crudBinding,
       crudRef,
       addHandle,

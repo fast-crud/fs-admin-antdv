@@ -10,18 +10,15 @@
         <a target="_blank" href="http://fast-crud.docmirror.cn/api/crud-options/columns.html#key-form-order">表单字段顺序配置</a>
       </div>
     </template>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #actionbar-right>
-        <a-alert class="ml-1" type="info" message="" />
-      </template>
-    </fs-crud>
+    <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, onMounted } from "vue";
 import createCrudOptions from "./crud";
-import { useExpose, useCrud } from "@fast-crud/fast-crud";
+import { useFs } from "@fast-crud/fast-crud";
+
 export default defineComponent({
   name: "FeatureColumnSort",
   setup() {

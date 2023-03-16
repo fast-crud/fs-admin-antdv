@@ -22,7 +22,7 @@ import { BatchDelete } from "./api";
 export default defineComponent({
   name: "FeatureSelection",
   setup() {
-    const { crudBinding, crudRef, crudExpose } = useFs({ createCrudOptions });
+    const { crudBinding, crudRef, crudExpose, selectedRowKeys } = useFs({ createCrudOptions });
     // 页面打开后获取列表数据
     onMounted(() => {
       crudExpose.doRefresh();

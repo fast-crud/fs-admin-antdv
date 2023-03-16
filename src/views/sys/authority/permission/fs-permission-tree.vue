@@ -47,9 +47,9 @@ export default defineComponent({
     actions: {
       default: {}
     }
-  },
+  } as any,
   emits: ["add", "edit", "remove"],
-  setup(props, ctx) {
+  setup(props: any, ctx) {
     const treeRef = ref();
     const computedTree = computed(() => {
       if (props.tree == null) {

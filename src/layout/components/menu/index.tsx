@@ -95,7 +95,7 @@ export default defineComponent({
       open(item.key);
     }
 
-    const FsIcon = resolveComponent("FsIcon");
+    const fsIcon = resolveComponent("FsIcon");
 
     const buildMenus = (children: any) => {
       const slots: any = [];
@@ -103,11 +103,12 @@ export default defineComponent({
         return slots;
       }
       for (const sub of children) {
-        const title = () => {
+        const title: any = () => {
           if (sub?.meta?.icon) {
+            // @ts-ignore
             return (
               <div class={"menu-item-title"}>
-                <FsIcon class={"anticon"} icon={sub.meta.icon} />
+                <fsIcon class={"anticon"} icon={sub.meta.icon} />
                 <span>{sub.title}</span>
               </div>
             );

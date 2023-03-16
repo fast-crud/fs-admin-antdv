@@ -47,13 +47,13 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { message } from "ant-design-vue";
-import { useColumns, useFormWrapper, useFs } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, useColumns, useFormWrapper, useFs } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 
 function createFormOptionsFromCrudOptions() {
   const { buildFormOptions } = useColumns();
   //可以直接复用crud.js
-  const { crudOptions } = createCrudOptions({});
+  const { crudOptions } = createCrudOptions({} as CreateCrudOptionsProps);
   return buildFormOptions(crudOptions);
 }
 

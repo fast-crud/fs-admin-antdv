@@ -41,7 +41,7 @@ export default defineComponent({
   setup() {
     const userStore = useUserStore();
     const formRef = ref();
-    const formState = reactive({
+    const formState: any = reactive({
       username: "",
       password: ""
     });

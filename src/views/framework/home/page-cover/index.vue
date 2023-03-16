@@ -1,6 +1,6 @@
 <template>
   <div class="d2-page-cover">
-    <div class="d2-page-cover__title" @click="$open('https://github.com/fast-crud/fast-crud')">
+    <div class="d2-page-cover__title">
       <div class="title-line">
         <img width="50" src="./image/logo.svg" />
         FsAdmin v{{ version }}
@@ -9,10 +9,10 @@
     <p class="d2-page-cover__sub-title">面向配置的crud编程，快速开发crud功能</p>
     <div class="exampleBox">
       <div class="left">
-        <fs-highlight :code="helper.crud" lang="javascript" />
+        <fs-highlight :code="helperRef.crud" lang="javascript" />
       </div>
       <div class="icon">
-        <fs-icon :icon="$fsui.icons.arrowRight" />
+        <fs-icon :icon="ui.icons.arrowRight" />
       </div>
       <div class="right">
         <img style="border: 1px solid #eee" src="./image/crud.png" />
@@ -29,22 +29,19 @@
   </div>
 </template>
 <script lang="ts">
-import helper from "./helper";
-
 import { defineComponent, ref } from "vue";
-
+import { useUi } from "@fast-crud/fast-crud";
+import helper from "./helper";
 export default defineComponent({
   name: "PageCover",
   setup() {
     const version = ref(import.meta.env.VITE_APP_VERSION);
-
+    const helperRef = ref(helper);
+    const { ui } = useUi();
     return {
-      version
-    };
-  },
-  data() {
-    return {
-      helper: helper
+      ui,
+      version,
+      helperRef
     };
   }
 });

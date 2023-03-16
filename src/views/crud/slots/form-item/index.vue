@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useFs } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 export default defineComponent({
   name: "SlotsForm",
@@ -32,13 +32,13 @@ export default defineComponent({
       crudExpose.doRefresh();
     });
 
-    function addTopic(form, key) {
+    function addTopic(form: any, key: string) {
       if (form[key] == null) {
         form[key] = [];
       }
       form[key].push("");
     }
-    function removeTopic(index, form, key) {
+    function removeTopic(index: number, form: any, key: string) {
       form[key].splice(index, 1);
     }
     return {

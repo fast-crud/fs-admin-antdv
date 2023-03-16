@@ -35,9 +35,18 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         delRequest
       },
       table: {
+        //这里要减去总结栏的高度
+        maxHeightAdjust: -39,
         slots: {
           summary() {
-            return <div>总结栏</div>;
+            return (
+              <a-table-summary fixed>
+                <a-table-summary-row>
+                  <a-table-summary-cell index={0}>总结栏</a-table-summary-cell>
+                  <a-table-summary-cell index={1}>这里是总结内容</a-table-summary-cell>
+                </a-table-summary-row>
+              </a-table-summary>
+            );
           }
         }
       },

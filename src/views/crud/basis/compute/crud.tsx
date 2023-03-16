@@ -60,7 +60,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       rowHandle: {
         fixed: "right",
         show: computed(() => {
-          return false;
+          return true;
         }),
         buttons: {
           edit: {
@@ -72,13 +72,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             show: compute(({ row }) => {
               return row.editable;
             })
-          },
-          custom: compute(({ row }) => {
-            return {
-              text: "动态按钮:" + row.id,
-              show: true
-            };
-          })
+          }
         }
       },
       columns: {

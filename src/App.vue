@@ -25,7 +25,7 @@ export default {
       await nextTick();
       routerEnabled.value = true;
     }
-    function localeChanged(value) {
+    function localeChanged(value: any) {
       console.log("locale changed:", value);
       if (value === "zh-cn") {
         locale.value = zhCN;

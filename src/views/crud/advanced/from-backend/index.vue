@@ -1,5 +1,13 @@
 <template>
-  <fs-crud v-if="crudBinding" ref="crudRef" v-bind="crudBinding" />
+  <fs-page>
+    <template #header>
+      <div class="title">CrudOptions从后台加载</div>
+      <div class="more">
+        <a target="_blank" href="http://fast-crud.docmirror.cn/api/use.html#usefsasync">文档</a>
+      </div>
+    </template>
+    <fs-crud v-if="crudBinding" ref="crudRef" v-bind="crudBinding" />
+  </fs-page>
 </template>
 
 <script lang="ts">

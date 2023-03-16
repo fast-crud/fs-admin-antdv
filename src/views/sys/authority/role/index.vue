@@ -31,7 +31,7 @@ function useAuthz() {
 
   // 如果勾选节点中存在非叶子节点，tree组件会将其所有子节点全部勾选
   // 所以要找出所有叶子节点，仅勾选叶子节点，tree组件会将父节点同步勾选
-  function getAllCheckedLeafNodeId(tree, checkedIds, temp) {
+  function getAllCheckedLeafNodeId(tree: any, checkedIds: any, temp: any) {
     for (let i = 0; i < tree.length; i++) {
       const item = tree[i];
       if (item.children && item.children.length !== 0) {
@@ -47,7 +47,7 @@ function useAuthz() {
   function authzClose() {
     authzDialogVisible.value = false;
   }
-  async function authzOpen(roleId) {
+  async function authzOpen(roleId: any) {
     permissionTreeData.value = await permissionApi.GetTree();
     checkedKeys.value = [];
     currentRoleId.value = roleId;
@@ -55,7 +55,7 @@ function useAuthz() {
     await updateChecked(roleId);
     authzDialogVisible.value = true;
   }
-  async function updateChecked(roleId) {
+  async function updateChecked(roleId: any) {
     let checkedIds = await api.getPermissionIds(roleId);
     // 找出所有的叶子节点
     checkedIds = getAllCheckedLeafNodeId(permissionTreeData.value, checkedIds, []);

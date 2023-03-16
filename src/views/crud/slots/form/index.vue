@@ -35,9 +35,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { defineComponent, onMounted } from "vue";
 import createCrudOptions from "./crud";
+import { useFs } from "@fast-crud/fast-crud";
+
 export default defineComponent({
   name: "SlotsForm",
   setup() {

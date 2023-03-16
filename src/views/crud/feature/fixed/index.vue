@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
+import { useFs } from "@fast-crud/fast-crud";
 import { defineComponent, ref, onMounted } from "vue";
 import createCrudOptions from "./crud";
-import { useExpose, useCrud } from "@fast-crud/fast-crud";
 export default defineComponent({
   name: "FeatureFixed",
   setup() {

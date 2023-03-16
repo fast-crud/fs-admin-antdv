@@ -35,23 +35,23 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useFs } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import dayjs from "dayjs";
 export default defineComponent({
   name: "SlotsCell",
   setup() {
-    const { crudBinding, crudRef, crudExpose } = useFs({ createCrudOptions });
+    const { crudBinding, crudRef, crudExpose, radioDict } = useFs({ createCrudOptions });
     // 页面打开后获取列表数据
     onMounted(() => {
       crudExpose.doRefresh();
     });
 
-    function dateFormat(time, formatter = "YYYY-MM-DD") {
+    function dateFormat(time: any, formatter = "YYYY-MM-DD") {
       return dayjs(time).format(formatter);
     }
 
-    function showScope(scope) {
+    function showScope(scope: any) {
       console.log("scope", scope);
     }
     return {
