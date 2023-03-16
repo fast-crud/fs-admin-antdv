@@ -1,5 +1,6 @@
 import * as api from "./api";
 import { utils, dict, compute, CreateCrudOptionsProps, CreateCrudOptionsRet, UserPageQuery, UserPageRes, EditReq, DelReq, AddReq, ScopeContext } from "@fast-crud/fast-crud";
+import { FsUploaderFormOptions } from "@fast-crud/fast-extends";
 
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
@@ -28,7 +29,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       columns: {
         id: {
           title: "ID",
-          key: "id",
           type: "number",
           column: {
             width: 50
@@ -54,11 +54,8 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             col: { span: 24 }
           },
           viewForm: {
-            component: {
-              name: null,
-              render(h: any, scope: ScopeContext) {
-                return <div>{scope.value}</div>;
-              }
+            render(scope: ScopeContext) {
+              return <div>{scope.value}</div>;
             }
           }
         },
@@ -79,7 +76,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             width: 300,
             show: false
           },
-          type: ["editor-wang5"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
+          type: "editor-wang5", // 富文本图片上传依赖file-uploader，请先配置好file-uploader
           form: {
             helper: "示例已升级到wangEditor5版本，原来的editor-wang目前仍然可以使用，后续fs升级可能会将其删除，请尽快升级到editor-wang5版本",
             col: { span: 24 },
@@ -99,7 +96,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
                 buildUrl(res: any) {
                   return res.url;
                 }
-              }
+              } as FsUploaderFormOptions
             }
           }
         }

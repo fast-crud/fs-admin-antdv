@@ -33,7 +33,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             reset: {
               text: "重置",
               order: -1,
-              click(context: any) {
+              click(context) {
                 console.log("on reset", context);
                 crudExpose.getFormRef().reset();
               }

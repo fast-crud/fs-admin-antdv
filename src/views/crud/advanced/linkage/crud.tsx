@@ -30,7 +30,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       columns: {
         id: {
           title: "ID",
-          key: "id",
           type: "number",
           column: {
             width: 50
@@ -51,7 +50,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             cache: true
           }),
           form: {
-            valueChange({ form, value, getComponentRef }: ScopeContext) {
+            valueChange({ form, value, getComponentRef }) {
               form.city = undefined; // 将“city”的值置空
               form.county = undefined; // 将“county”的值置空
               if (value) {

@@ -83,10 +83,8 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           title: "密码",
           type: "password",
           column: {
-            component: {
-              cellRender() {
-                return <span>******</span>;
-              }
+            cellRender() {
+              return <span>******</span>;
             }
           },
           form: {
