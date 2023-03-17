@@ -16,7 +16,7 @@ import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, Edi
 import _ from "lodash-es";
 
 //此处为crudOptions配置
-const createCrudOptions = function ({ crudOptions, customValue }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+const createCrudOptions = function ({ crudOptions }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   //本地模拟后台crud接口方法 ----开始
   const records = [{ id: 1, name: "Hello World", type: 1 }];
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
@@ -95,7 +95,7 @@ export default defineComponent({
     // // 暴露的方法
     // const { crudExpose } = useExpose({ crudRef, crudBinding });
     // // 你的crud配置
-    // const { crudOptions, customExport } = createCrudOptions({ crudExpose, customValue });
+    // const { crudOptions, customExport } = createCrudOptions({ crudExpose, context });
     // // 初始化crud配置
     // const { resetCrudOptions, appendCrudBinding } = useCrud({ crudExpose, crudOptions });
 
