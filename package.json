@@ -27,7 +27,7 @@
     "@fast-crud/fast-crud": "^1.11.4",
     "@fast-crud/fast-extends": "^1.11.4",
     "@fast-crud/ui-antdv": "^1.11.4",
-    "@fast-crud/ui-interface": "^1.11.4",
+    "@fast-crud/ui-interface": "^1.11.3",
     "@iconify/iconify": "^3.1.0",
     "@iconify/json": "^2.2.35",
     "@purge-icons/generated": "^0.9.0",
