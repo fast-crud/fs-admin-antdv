@@ -50,14 +50,11 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         statusRemote: {
           title: "单选远程",
           search: {
-            show: true,
-            value: []
+            show: false
           },
           type: "dict-select",
           dict: dict({
-            url: "/mock/dicts/_OpenStatusEnum2?simple",
-            value: "id",
-            label: "text"
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict1"
           }),
           form: {
             component: { mode: "multiple" },
@@ -65,39 +62,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           },
           column: {
             width: 200
-          }
-        },
-        id2: {
-          title: "ID",
-          key: "id",
-          type: "number",
-          column: {
-            width: 300
-          },
-          form: {
-            show: false
-          }
-        },
-        id3: {
-          title: "ID",
-          key: "id",
-          type: "number",
-          column: {
-            width: 300
-          },
-          form: {
-            show: false
-          }
-        },
-        id4: {
-          title: "ID",
-          key: "id",
-          type: "number",
-          column: {
-            width: 300
-          },
-          form: {
-            show: false
           }
         }
       }
