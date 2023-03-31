@@ -27,10 +27,11 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       },
       search: {
         container: {
-          layout: "multi-line"
-        },
-        col: {
-          span: 4
+          layout: "multi-line",
+          action: {
+            label: "操作"
+            //col: { span: 4 }
+          }
         },
         options: {
           labelCol: {
