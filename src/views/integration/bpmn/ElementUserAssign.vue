@@ -128,13 +128,13 @@ export default defineComponent({
       return {
         ref: formData,
         key: valueKey,
-        onChange: (value) => {
+        onChange: (value: any) => {
           onPropertyChange(key, value);
         }
       };
     }
 
-    function onPropertyChange(key, value) {
+    function onPropertyChange(key: string, value: any) {
       setProcessProperty(modelerStore, getActive.value as Base, key, value);
     }
 
