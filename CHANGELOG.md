@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/fast-crud/fast-crud/compare/v1.12.2...v1.13.0) (2023-04-07)
+
+**Note:** Version bump only for package @fast-crud/fs-admin-antdv
+
+## [1.12.2](https://github.com/fast-crud/fast-crud/compare/v1.12.1...v1.12.2) (2023-04-06)
+
+**Note:** Version bump only for package @fast-crud/fs-admin-antdv
+
+## [1.12.1](https://github.com/fast-crud/fast-crud/compare/v1.12.0...v1.12.1) (2023-04-04)
+
+### Performance Improvements
+
+* 增加自定义组件示例 ([c1f5b40](https://github.com/fast-crud/fast-crud/commit/c1f5b407d6137a0f5cbedb1ec2a56a18140e77a1))
+
 # [1.12.0](https://github.com/fast-crud/fast-crud/compare/v1.11.10...v1.12.0) (2023-03-31)
 
 ### Performance Improvements
