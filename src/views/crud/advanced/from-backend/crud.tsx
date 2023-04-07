@@ -43,6 +43,7 @@ export default async function (props: CreateCrudOptionsProps): Promise<CreateCru
   // 与本地options合并
   const crudOptions = _.merge(localCrudOptions, remoteCrudOptions);
 
+  debugger;
   return {
     crudOptions
   };
