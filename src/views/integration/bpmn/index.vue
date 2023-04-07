@@ -18,7 +18,14 @@
       </div>
     </div>
     <div class="main">
-      <fs-bpmn v-model:xml="xmlRef" :panel="panelProps" v-bind="binding"></fs-bpmn>
+      <fs-bpmn v-model:xml="xmlRef" :panel="panelProps" :toolbar="toolbarProps" v-bind="binding" @save="onSave">
+        <template #toolbar_left>
+          <a-tag>toolbar_left插槽</a-tag>
+        </template>
+        <template #toolbar_right>
+          <a-tag>toolbar_right插槽</a-tag>
+        </template>
+      </fs-bpmn>
     </div>
   </div>
 </template>
@@ -29,7 +36,7 @@ import { defineComponent, Ref, ref } from "vue";
 import FsBpmnPreviewDemo from "./preview.vue";
 import { demoXml } from "./xml";
 import { useUi } from "@fast-crud/ui-interface";
-import { FsBpmnPanelProps, Base } from "@fast-crud/fast-bpmn";
+import { FsBpmnPanelProps, Base, FsBpmnToolbarProps } from "@fast-crud/fast-bpmn";
 import ElementUserAssign from "./ElementUserAssign.vue";
 
 const FsBpmnDemo = defineComponent({
@@ -48,6 +55,11 @@ const FsBpmnDemo = defineComponent({
       showContextMenu: true,
       showNameAndCode: true,
       showExtensionProperties: true
+    });
+    const toolbarProps = ref<FsBpmnToolbarProps>({
+      buttons: {
+        miniMap: true
+      }
     });
     const panelProps = ref<FsBpmnPanelProps>({
       //注册自定义组件
@@ -84,13 +96,19 @@ const FsBpmnDemo = defineComponent({
         }
       }
     });
+
+    function onSave(xml: string) {
+      console.log("onsave", xml);
+    }
     return {
       localRef,
       xmlRef,
       ui,
       activeKey,
       panelProps,
-      binding
+      binding,
+      onSave,
+      toolbarProps
     };
   }
 });
