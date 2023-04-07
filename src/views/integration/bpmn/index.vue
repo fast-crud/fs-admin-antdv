@@ -5,6 +5,8 @@
         <component :is="ui.tabPane.name" key="designer" tab="设计器"> </component>
       </component>
       <div>
+        <span class="m-l"> showMiniMapButton<a-switch v-model:checked="toolbarProps.buttons.miniMap" /> </span>
+        <span class="m-l"></span>
         <span class="m-l"> showExtensionProperties <a-switch v-model:checked="binding.showExtensionProperties" /> </span>
         <span class="m-l"> showNameAndCode<a-switch v-model:checked="binding.showNameAndCode" /> </span>
         <span class="m-l"></span>
