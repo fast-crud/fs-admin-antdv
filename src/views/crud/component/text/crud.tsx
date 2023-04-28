@@ -79,6 +79,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
                   if (!value) {
                     return undefined;
                   }
+                  return value;
                 }
               },
               maxlength: 20,
