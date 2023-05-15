@@ -26,7 +26,7 @@ export const frameworkResource = [
         }
       },
       ...crudResources,
-      //...integrationResources,
+      // ...integrationResources,
       ...sysResources
     ]
   }
