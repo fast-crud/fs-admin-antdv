@@ -79,13 +79,14 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         },
         customRender: {
           title: "自定义render",
-          search: { show: true },
+          search: {
+            show: true
+          },
           type: "text",
           form: {
-            component: {
-              render({ value }) {
-                return <div>自定义render: {{ value }}</div>;
-              }
+            render({ form }) {
+              //注意此处的v-model写法
+              return <a-input v-model={[form.customRender, "value"]} />;
             }
           }
         }
