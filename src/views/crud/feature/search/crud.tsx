@@ -103,8 +103,21 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             component: {
               render({ form }) {
                 //注意此处的v-model写法
-                return <a-switch v-model={[form.customRender2, "checked"]} title={"注意vModel的写法,不能触发search的自动查询"} />;
+                return <a-switch v-model={[form.customRender2, "checked"]} title={"render配置在component之下，注意vModel的写法,不能触发search的自动查询"} />;
               }
+            }
+          }
+        },
+        customRender3: {
+          title: "自定义render3",
+          search: {
+            show: true
+          },
+          type: "text",
+          form: {
+            render({ form }) {
+              //注意此处的v-model写法
+              return <a-switch v-model={[form.customRender3, "checked"]} title={"render配置在form之下，注意vModel的写法,不能触发search的自动查询"} />;
             }
           }
         }
