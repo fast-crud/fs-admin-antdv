@@ -86,7 +86,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           form: {
             render({ form }) {
               //注意此处的v-model写法
-              return <a-input v-model={[form.customRender, "value"]} />;
+              return <a-switch v-model={[form.customRender, "value"]} />;
             }
           }
         }
