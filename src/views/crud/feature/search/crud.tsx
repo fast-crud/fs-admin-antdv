@@ -30,6 +30,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         delRequest
       },
       search: {
+        validate: true,
         initialForm: {
           radio: null
         },
@@ -73,7 +74,15 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         },
         radio: {
           title: "状态",
-          search: { show: true },
+          search: {
+            show: true,
+            rules: [
+              {
+                required: true,
+                message: "请选择状态"
+              }
+            ]
+          },
           type: "dict-radio",
           dict: statusRef
         },
