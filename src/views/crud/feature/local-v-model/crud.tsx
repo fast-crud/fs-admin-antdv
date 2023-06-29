@@ -8,6 +8,17 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         isMergeWhenUpdate: true,
         isAppendWhenAdd: true
       },
+      table: {
+        remove: {
+          //删除数据后不请求后台
+          refreshTable: false
+        },
+        editable: {
+          enabled: true,
+          mode: "row",
+          activeTrigger: false
+        }
+      },
       search: {
         show: false
       },
