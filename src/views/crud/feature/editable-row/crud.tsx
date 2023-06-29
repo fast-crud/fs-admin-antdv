@@ -24,6 +24,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         editRequest,
         delRequest
       },
+      //将 addRow 按钮启用
       actionbar: { buttons: { add: { show: false }, addRow: { show: true } } },
       table: {
         editable: {

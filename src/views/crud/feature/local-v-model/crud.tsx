@@ -8,6 +8,8 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         isMergeWhenUpdate: true,
         isAppendWhenAdd: true
       },
+      //启用addRow按钮
+      actionbar: { buttons: { add: { show: false }, addRow: { show: true } } },
       table: {
         remove: {
           //删除数据后不请求后台
