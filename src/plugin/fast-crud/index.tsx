@@ -1,14 +1,15 @@
 import { request, requestForMock } from "/src/api/service";
 // import "/src/mock";
-import { ColumnCompositionProps, CrudOptions, FastCrud, PageQuery, PageRes, setLogger, TransformResProps, useColumns, UseCrudProps, UserPageQuery, useTypes } from "@fast-crud/fast-crud";
+import { ColumnCompositionProps, CrudOptions, FastCrud, PageQuery, PageRes, setLogger, TransformResProps, useColumns, UseCrudProps, UserPageQuery, useTypes, useUi } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
-import { FsExtendsCopyable, FsExtendsEditor, FsExtendsJson, FsExtendsTime, FsExtendsUploader } from "@fast-crud/fast-extends";
+import { CsvColumn, ExportUtil, FsExtendsCopyable, FsExtendsEditor, FsExtendsJson, FsExtendsTime, FsExtendsUploader, FsExtendsExport } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiAntdv from "@fast-crud/ui-antdv";
 import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
 import { GetSignedUrl } from "/@/views/crud/component/uploader/s3/api";
 import { notification } from "ant-design-vue";
+import { useAsync } from "@fast-crud/fast-crud/src/use/use-async";
 
 function install(app: any, options: any = {}) {
   app.use(UiAntdv);
@@ -29,6 +30,7 @@ function install(app: any, options: any = {}) {
      */
     commonOptions(props: UseCrudProps): CrudOptions {
       const crudBinding = props.crudExpose?.crudBinding;
+      const { ui } = useUi();
       const opts: CrudOptions = {
         table: {
           size: "small",
@@ -46,6 +48,37 @@ function install(app: any, options: any = {}) {
             },
             render() {
               return "-";
+            }
+          }
+        },
+        toolbar: {
+          buttons: {
+            _export: {
+              type: "primary",
+              icon: ui.icons.search,
+              title: "导出",
+              circle: true,
+              click: async () => {
+                const { loadAsyncLib } = useAsync();
+                const exportUtil: ExportUtil = await loadAsyncLib({
+                  name: "FsExportUtil"
+                });
+                const columns: CsvColumn[] = [];
+                _.each(crudBinding.value.table.columnsMap, (col: ColumnCompositionProps) => {
+                  if (col.exportable !== false && col.type !== "index") {
+                    columns.push({
+                      prop: col.key,
+                      label: col.title
+                    });
+                  }
+                });
+                await exportUtil.csv({
+                  columns,
+                  data: crudBinding.value.data,
+                  title: "table",
+                  noHeader: false
+                });
+              }
             }
           }
         },
@@ -258,6 +291,7 @@ function install(app: any, options: any = {}) {
   app.use(FsExtendsJson);
   app.use(FsExtendsTime);
   app.use(FsExtendsCopyable);
+  app.use(FsExtendsExport);
 
   // 此处演示自定义字段类型
   const { addTypes } = useTypes();
