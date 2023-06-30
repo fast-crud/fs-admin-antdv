@@ -10,11 +10,13 @@ import { useCrudPermission } from "../permission";
 import { GetSignedUrl } from "/@/views/crud/component/uploader/s3/api";
 import { notification } from "ant-design-vue";
 import { useAsync } from "@fast-crud/fast-crud/src/use/use-async";
+import { useI18n } from "vue-i18n";
 
 function install(app: any, options: any = {}) {
   app.use(UiAntdv);
   //设置日志级别
   setLogger({ level: "debug" });
+  const { t } = useI18n();
   app.use(FastCrud, {
     i18n: options.i18n,
     async dictRequest({ url }: any) {
@@ -53,24 +55,28 @@ function install(app: any, options: any = {}) {
         },
         toolbar: {
           buttons: {
-            _export: {
+            export: {
+              show: true,
               type: "primary",
-              icon: ui.icons.search,
-              title: "导出",
+              icon: ui.icons.export,
+              order: 4,
+              title: t("fs.toolbar.export.title"), // '导出',
               circle: true,
               click: async () => {
-                const { loadAsyncLib } = useAsync();
-                const exportUtil: ExportUtil = await loadAsyncLib({
-                  name: "FsExportUtil"
-                });
                 const columns: CsvColumn[] = [];
                 _.each(crudBinding.value.table.columnsMap, (col: ColumnCompositionProps) => {
-                  if (col.exportable !== false && col.type !== "index") {
+                  if (col.exportable !== false && col.key !== "_index") {
                     columns.push({
                       prop: col.key,
                       label: col.title
                     });
                   }
+                });
+
+                const { loadAsyncLib } = useAsync();
+                //加载异步组件，不影响首页加载速度
+                const exportUtil: ExportUtil = await loadAsyncLib({
+                  name: "FsExportUtil"
                 });
                 await exportUtil.csv({
                   columns,
