@@ -99,7 +99,11 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
                 return form.disabled;
               }),
               id: "1", // 当同一个页面有多个editor时，需要配置不同的id
-              config: {},
+              toolbarConfig: {},
+              editorConfig: {},
+              onOnChange(value: any) {
+                console.log("value changed", value);
+              },
               uploader: {
                 type: "form",
                 buildUrl(res: any) {
