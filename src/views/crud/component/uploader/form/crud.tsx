@@ -1,7 +1,6 @@
 import * as api from "./api";
-import { AllUploadSuccessValidator } from "@fast-crud/fast-extends";
 import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
-import { createUploaderRules } from "@fast-crud/fast-extends/src/uploader/type/validators";
+import { createUploaderRules } from "@fast-crud/fast-extends";
 
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
