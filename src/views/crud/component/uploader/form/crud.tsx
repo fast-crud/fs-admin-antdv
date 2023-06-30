@@ -79,6 +79,14 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
                 type: "form"
               }
             },
+            rules: [
+              { required: true, message: "此项必传", trigger: "change" },
+              {
+                validator: AllUploadSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
+                message: "还有文件正在上传，请稍候",
+                trigger: "blur"
+              }
+            ],
             helper: "最大可上传2个文件"
           },
           column: {
@@ -249,11 +257,11 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           type: "file-uploader",
           form: {
             rules: [
-              { required: true, message: "此项必传", trigger: "input" },
+              { required: true, message: "此项必传", trigger: "change" },
               {
                 validator: AllUploadSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
                 message: "还有文件正在上传，请稍候",
-                trigger: "input"
+                trigger: "blur"
               }
             ],
             helper: "大小不能超过50M，文件未上传完成之前，阻止提交",
