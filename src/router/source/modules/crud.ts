@@ -580,6 +580,12 @@ export const crudResources = [
             component: "/crud/feature/local-v-model/index.vue"
           },
           {
+            title: "导入示例",
+            name: "FeatureVModel",
+            path: "/crud/feature/local-import",
+            component: "/crud/feature/local-import/index.vue"
+          },
+          {
             title: "自定义删除",
             name: "FeatureRemove",
             path: "/crud/feature/remove",
