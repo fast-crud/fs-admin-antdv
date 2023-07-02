@@ -580,8 +580,8 @@ export const crudResources = [
             component: "/crud/feature/local-v-model/index.vue"
           },
           {
-            title: "导入示例",
-            name: "FeatureVModel",
+            title: "导入",
+            name: "FeatureImport",
             path: "/crud/feature/local-import",
             component: "/crud/feature/local-import/index.vue"
           },

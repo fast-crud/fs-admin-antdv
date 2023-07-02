@@ -8,7 +8,7 @@ import createCrudOptions from "./crud";
 import { useFs } from "@fast-crud/fast-crud";
 
 export default defineComponent({
-  name: "FeatureLocalModelValueInput",
+  name: "FeatureLocalImportValueInput",
   props: {
     modelValue: {
       default() {

@@ -10,7 +10,7 @@
         </a-form-item>
         <a-form-item label="表格">
           <div style="min-height: 300px">
-            <FeatureLocalModelValueInput v-model="form.data" />
+            <FeatureLocalImportValueInput v-model="form.data" />
           </div>
         </a-form-item>
         <a-form-item>
@@ -24,10 +24,10 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from "vue";
 import { message } from "ant-design-vue";
-import FeatureLocalModelValueInput from "./local.vue";
+import FeatureLocalImportValueInput from "./local.vue";
 export default defineComponent({
   name: "FeatureLocalImport",
-  components: { FeatureLocalModelValueInput },
+  components: { FeatureLocalImportValueInput },
   setup() {
     const form = reactive({
       name: "test",
