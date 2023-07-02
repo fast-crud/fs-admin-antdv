@@ -1,6 +1,5 @@
-import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, importTable } from "@fast-crud/fast-crud";
 import { Modal, notification } from "ant-design-vue";
-import { importTable } from "@fast-crud/fast-crud/src/lib/fs-export";
 
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const crudBinding = crudExpose.crudBinding;
