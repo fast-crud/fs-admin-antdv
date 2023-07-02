@@ -30,7 +30,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
                 content() {
                   async function onChange(e: any) {
                     const file = e.target.files[0];
-                    await importTable(crudBinding, { file });
+                    await importTable(crudBinding, { file, append: true });
                     modal.destroy();
                     notification.success({
                       message: "导入成功"
