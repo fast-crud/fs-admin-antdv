@@ -43,7 +43,7 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
             }
           },
           fileType: context.fileType, //导出类型为excel
-          dataFrom: "search", //search查询获取， local 当前页数据
+          dataFrom: context.dataFrom, //search查询获取， local 当前页数据
           searchParams: {
             //查询条件
             page: {
