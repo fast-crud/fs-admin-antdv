@@ -49,9 +49,10 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
             page: {
               currentPage: 1,
               pageSize: 99999999
-            },
-            form: {},
-            sort: {}
+            }
+            //以下不传，以当前查询条件为准
+            // form: {},
+            // sort: {}
           }
         }
       },
