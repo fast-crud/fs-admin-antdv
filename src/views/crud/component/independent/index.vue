@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineOptions, reactive, ref } from "vue";
+import { reactive, ref } from "vue";
 import { message } from "ant-design-vue";
 import { dict, useUi } from "@fast-crud/fast-crud";
 import dayjs from "dayjs";
