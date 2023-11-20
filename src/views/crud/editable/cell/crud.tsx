@@ -2,7 +2,7 @@ import * as api from "./api";
 import { dict, compute, CreateCrudOptionsProps, CreateCrudOptionsRet, UserPageQuery, UserPageRes, EditReq, DelReq, AddReq } from "@fast-crud/fast-crud";
 import { computed, reactive, ref } from "vue";
 import _ from "lodash-es";
-import { EditableEachCellsOpts } from "@fast-crud/fast-crud/src/components/crud/editable/d";
+import { EditableEachCellsOpts } from "@fast-crud/fast-crud";
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const { crudBinding } = crudExpose;
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
