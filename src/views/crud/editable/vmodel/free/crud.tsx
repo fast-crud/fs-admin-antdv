@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict, compute, CreateCrudOptionsProps, CreateCrudOptionsRet, UserPageQuery, UserPageRes, EditReq, DelReq, AddReq } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const { crudBinding } = crudExpose;
 
